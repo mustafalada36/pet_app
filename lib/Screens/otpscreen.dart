@@ -13,64 +13,90 @@ class _OTPScreenState extends State<OTPScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop(); // Navigate back
-          },
-        ),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/Vector.png',
-                width: 183,
-                height: 170,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Thank you for registering with us.\nPlease type the OTP as shared on your mobile XXXXXXX123',
-                style: TextStyle(fontSize: 12),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20),
-              Row(
+      body: Stack(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  OTPDigitTextField(
-                      controller: controllers[0], borderRadius: 20),
-                  SizedBox(width: 10),
-                  OTPDigitTextField(
-                      controller: controllers[1], borderRadius: 20),
-                  SizedBox(width: 10),
-                  OTPDigitTextField(
-                      controller: controllers[2], borderRadius: 20),
-                  SizedBox(width: 10),
-                  OTPDigitTextField(
-                      controller: controllers[3], borderRadius: 20),
+                  Image.asset(
+                    'assets/images/Vector.png',
+                    width: 183,
+                    height: 170,
+                  ),
+                  SizedBox(height: 20),
+                  const Text('OTP Verification',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  const SizedBox(height: 20.0),
+                  Text(
+                    'Thank you for registering with us.\nPlease type the OTP as shared on your mobile XXXXXXX123',
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OTPDigitTextField(
+                          controller: controllers[0], borderRadius: 20),
+                      SizedBox(width: 10),
+                      OTPDigitTextField(
+                          controller: controllers[1], borderRadius: 20),
+                      SizedBox(width: 10),
+                      OTPDigitTextField(
+                          controller: controllers[2], borderRadius: 20),
+                      SizedBox(width: 10),
+                      OTPDigitTextField(
+                          controller: controllers[3], borderRadius: 20),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'OTP not received?',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // Add functionality for create account button
+                          },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14.0),
+                              ),
+                            ),
+                          ),
+                          child: const Text('Create Account'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-              SizedBox(height: 10),
-              Text(
-                'OTP not received?',
-                style: TextStyle(fontSize: 12),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement your submit logic here
-                },
-                child: Text('Submit'),
-              ),
-            ],
+            ),
           ),
-        ),
+          Positioned(
+            top: 20,
+            left: 0,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop(); // Navigate back
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
