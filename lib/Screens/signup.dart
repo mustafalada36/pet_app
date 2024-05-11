@@ -100,6 +100,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Row(
                 children: [
                   // Simple checkbox
+                  // Checkbox(
+                  //   value: _acceptTerms,
+                  //   onChanged: (value) {
+                  //     setState(() {
+                  //       _acceptTerms = value!;
+                  //     });
+                  //   },
+                  // ),
+                  // With custom border
+
                   Checkbox(
                     value: _acceptTerms,
                     onChanged: (value) {
@@ -107,8 +117,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _acceptTerms = value!;
                       });
                     },
+                    splashRadius: 20,
+                    materialTapTargetSize: MaterialTapTargetSize.padded,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                      side: BorderSide(
+                        color: _acceptTerms
+                            ? Colors.transparent
+                            : const Color(
+                                0xFFC6CED9), // Border color when not selected
+                      ),
+                    ),
                   ),
-                  // With custom border
 
                   const Text(
                     'Accept Terms and Conditions',
@@ -162,18 +182,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      // Add functionality for log in button
-                    },
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(
-                          const Color(0xFF267E1E)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14.0),
-                        ),
-                      ),
-                    ),
+                    onPressed: () {},
+                    // style: ButtonStyle(
+                    //   foregroundColor: MaterialStateProperty.all<Color>(
+                    //       const Color(0xFF267E1E)),
+                    //   // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    //   //   RoundedRectangleBorder(
+                    //   //     borderRadius: BorderRadius.circular(14.0),
+                    //   //   ),
+                    //   // ),
+                    // ),
                     child: const Text(
                       'Log in here!',
                       style: TextStyle(

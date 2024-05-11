@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class OTPScreen extends StatefulWidget {
+  const OTPScreen({super.key});
+
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
@@ -17,7 +19,7 @@ class _OTPScreenState extends State<OTPScreen> {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,41 +29,58 @@ class _OTPScreenState extends State<OTPScreen> {
                     width: 183,
                     height: 170,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 75),
                   const Text('OTP Verification',
                       style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF000000),
+                        fontFamily: 'Montserrat',
                       )),
-                  const SizedBox(height: 20.0),
-                  Text(
-                    'Thank you for registering with us.\nPlease type the OTP as shared on your mobile XXXXXXX123',
-                    style: TextStyle(fontSize: 12),
-                    textAlign: TextAlign.center,
+                  const SizedBox(height: 6.0),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 29.0),
+                    child: Text(
+                      'Thank you for registering with us. Please type the OTP as shared on your mobile XXXXXXX123',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFF000000),
+                        fontFamily: 'Montserrat',
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OTPDigitTextField(
-                          controller: controllers[0], borderRadius: 20),
-                      SizedBox(width: 10),
-                      OTPDigitTextField(
-                          controller: controllers[1], borderRadius: 20),
-                      SizedBox(width: 10),
-                      OTPDigitTextField(
-                          controller: controllers[2], borderRadius: 20),
-                      SizedBox(width: 10),
-                      OTPDigitTextField(
-                          controller: controllers[3], borderRadius: 20),
-                    ],
+                  const SizedBox(height: 32),
+                  SingleChildScrollView(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OTPDigitTextField(
+                            controller: controllers[0], borderRadius: 20),
+                        const SizedBox(width: 14.45),
+                        OTPDigitTextField(
+                            controller: controllers[1], borderRadius: 20),
+                        const SizedBox(width: 14.45),
+                        OTPDigitTextField(
+                            controller: controllers[2], borderRadius: 20),
+                        const SizedBox(width: 14.45),
+                        OTPDigitTextField(
+                            controller: controllers[3], borderRadius: 20),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 33),
+                  const Text(
                     'OTP not received?',
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                      color: Color(0xFF000000),
+                      fontFamily: 'Montserrat',
+                    ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 128),
                   Row(
                     children: [
                       Expanded(
@@ -70,14 +89,23 @@ class _OTPScreenState extends State<OTPScreen> {
                             // Add functionality for create account button
                           },
                           style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color(0xFF267E1E)),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14.0),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                             ),
                           ),
-                          child: const Text('Create Account'),
+                          child: const Text(
+                            'Submit',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500, // medium weight
+                              color: Colors.white, // text color
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -87,10 +115,11 @@ class _OTPScreenState extends State<OTPScreen> {
             ),
           ),
           Positioned(
-            top: 20,
-            left: 0,
+            top: 25,
+            left: -10,
             child: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
+              color: const Color(0xFF267E1E),
               onPressed: () {
                 Navigator.of(context).pop(); // Navigate back
               },
@@ -115,8 +144,7 @@ class OTPDigitTextField extends StatelessWidget {
   final double borderRadius;
 
   const OTPDigitTextField(
-      {Key? key, required this.controller, this.borderRadius = 20})
-      : super(key: key);
+      {super.key, required this.controller, this.borderRadius = 14.45});
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +155,8 @@ class OTPDigitTextField extends StatelessWidget {
         controller: controller,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 8),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
           ),
