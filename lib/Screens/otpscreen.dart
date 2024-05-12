@@ -80,7 +80,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       fontFamily: 'Montserrat',
                     ),
                   ),
-                  const SizedBox(height: 128),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Expanded(
@@ -120,9 +120,7 @@ class _OTPScreenState extends State<OTPScreen> {
             child: IconButton(
               icon: const Icon(Icons.arrow_back),
               color: const Color(0xFF267E1E),
-              onPressed: () {
-                Navigator.of(context).pop(); // Navigate back
-              },
+              onPressed: () {},
             ),
           ),
         ],
