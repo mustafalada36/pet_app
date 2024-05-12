@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/otpscreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
@@ -182,7 +184,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const OTPScreen()),
+                      );
+                    },
                     // style: ButtonStyle(
                     //   foregroundColor: MaterialStateProperty.all<Color>(
                     //       const Color(0xFF267E1E)),

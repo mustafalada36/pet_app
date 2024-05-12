@@ -5,6 +5,7 @@ class OTPScreen extends StatefulWidget {
   const OTPScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OTPScreenState createState() => _OTPScreenState();
 }
 
@@ -120,7 +121,9 @@ class _OTPScreenState extends State<OTPScreen> {
             child: IconButton(
               icon: const Icon(Icons.arrow_back),
               color: const Color(0xFF267E1E),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
         ],
