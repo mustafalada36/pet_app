@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -188,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const OTPScreen()),
+                            builder: (context) => const LoginScreen()),
                       );
                     },
                     // style: ButtonStyle(
