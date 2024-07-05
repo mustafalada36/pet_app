@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Import the google_fonts package
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_app/Screens/otpscreen.dart'; // Import the google_fonts package
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -81,7 +82,11 @@ class LoginScreen extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // Add functionality for create account button
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const OTPScreen()),
+                        );
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
