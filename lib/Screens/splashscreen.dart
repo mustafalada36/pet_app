@@ -21,23 +21,22 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // const SizedBox(
-            //   height: 60,
-            // ),
+            // Logo Image at the top
             Image.asset(
               'assets/images/LogoContainer.png',
               width: 375,
               height: 213,
             ),
+            // Stack containing overlapping circles and a centered image
             SizedBox(
               width: 500,
               height: 570,
               child: Stack(
                 children: [
+                  // First Circle
                   Positioned(
                     top: 0,
                     left: -198,
-                    // bottom: -80,
                     child: Container(
                       margin: const EdgeInsets.all(30),
                       width: 755.5,
@@ -48,6 +47,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Second Circle
                   Positioned(
                     top: 42.25,
                     left: -146.25,
@@ -61,6 +61,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Third Circle
                   Positioned(
                     top: 97,
                     left: -77.95,
@@ -75,6 +76,7 @@ class SplashScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Centered Image
                   Positioned(
                     top: 94,
                     left: -55,
