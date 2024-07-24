@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const SplashScreen(),
       //shows
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
     );
   }
 }
