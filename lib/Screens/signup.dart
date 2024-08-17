@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -187,8 +188,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const OTPScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                     // style: ButtonStyle(

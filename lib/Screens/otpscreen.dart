@@ -20,41 +20,41 @@ class _OTPScreenState extends State<OTPScreen> {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/Vector.png',
-                    width: 183,
-                    height: 170,
-                  ),
-                  const SizedBox(height: 75),
-                  const Text('OTP Verification',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF000000),
-                        fontFamily: 'Montserrat',
-                      )),
-                  const SizedBox(height: 6.0),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 29.0),
-                    child: Text(
-                      'Thank you for registering with us. Please type the OTP as shared on your mobile XXXXXXX123',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                        color: Color(0xFF000000),
-                        fontFamily: 'Montserrat',
-                      ),
-                      textAlign: TextAlign.center,
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/Vector.png',
+                      width: 183,
+                      height: 170,
                     ),
-                  ),
-                  const SizedBox(height: 32),
-                  SingleChildScrollView(
-                    child: Row(
+                    const SizedBox(height: 75),
+                    const Text('OTP Verification',
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF000000),
+                          fontFamily: 'Montserrat',
+                        )),
+                    const SizedBox(height: 6.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 29.0),
+                      child: Text(
+                        'Thank you for registering with us. Please type the OTP as shared on your mobile XXXXXXX123',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xFF000000),
+                          fontFamily: 'Montserrat',
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         OTPDigitTextField(
@@ -70,48 +70,48 @@ class _OTPScreenState extends State<OTPScreen> {
                             controller: controllers[3], borderRadius: 20),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 33),
-                  const Text(
-                    'OTP not received?',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF000000),
-                      fontFamily: 'Montserrat',
+                    const SizedBox(height: 33),
+                    const Text(
+                      'OTP not received?',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFF000000),
+                        fontFamily: 'Montserrat',
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Add functionality for create account button
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                const Color(0xFF267E1E)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Add functionality for create account button
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  const Color(0xFF267E1E)),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                            child: const Text(
+                              'Submit',
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w500, // medium weight
+                                color: Colors.white, // text color
                               ),
                             ),
                           ),
-                          child: const Text(
-                            'Submit',
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w500, // medium weight
-                              color: Colors.white, // text color
-                            ),
-                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

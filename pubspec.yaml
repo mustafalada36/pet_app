@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core: ^2.30.1
   firebase_auth: ^4.19.4
+  # flutter_icons_null_safety: ^1.0.0
+  google_fonts: ^6.2.1
+  # flutter_icons: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +69,11 @@ flutter:
     - assets/images/pngtree-isolated-cat-on-white-background-png-image_70949271.png
     - assets/images/Group8.png
     - assets/images/Vector.png
+    - assets/images/Group1386.png
+    - assets/images/google-logo-9822.png
+    - assets/images/logo-facebookpng-32202.png
+   
+
     
 
 
