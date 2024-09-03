@@ -11,7 +11,6 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
-
   int _currentIndex = 0;
   final List<Widget> _pages = [
     Center(child: Text('Home Screen')),
@@ -47,12 +46,13 @@ class _homeScreenState extends State<homeScreen> {
       case 4:
         print("Profile tapped");
         // Navigate to Profile page or perform any action
-       // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
         break;
       default:
         print("Unknown tab");
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,10 +94,10 @@ class _homeScreenState extends State<homeScreen> {
                 ),
               ),
             ),
-      SizedBox(height: 20),
-      Expanded(
-        child: _pages[_currentIndex],
-      ),
+            SizedBox(height: 20),
+            Expanded(
+              child: _pages[_currentIndex],
+            ),
             // Add more widgets below the search bar if needed
           ],
         ),
@@ -118,17 +118,7 @@ class _homeScreenState extends State<homeScreen> {
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 600),
         index: _currentIndex,
-
       ),
     );
   }
 }
-
-/*
-- assets/images/LogoContainer.png
-- assets/images/pngtree-isolated-cat-on-white-background-png-image_70949271.png
-- assets/images/Group8.png
-- assets/images/Vector.png
-- assets/images/Group1386.png
-- assets/images/google-logo-9822.png
-- assets/images/logo-facebookpng-32202.png*/
