@@ -57,6 +57,7 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // HEAD ===================================================
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
@@ -83,6 +84,7 @@ class _homeScreenState extends State<homeScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          // SEARCH BUTTON=====================================
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
@@ -103,6 +105,7 @@ class _homeScreenState extends State<homeScreen> {
                 color: Color(0xff267E1E),
               ),
               child: Stack(children: [
+                // FEATURED CONTAINER =====================================
                 Padding(
                   padding: const EdgeInsets.fromLTRB(12, 70, 0, 0),
                   child: Column(
@@ -151,20 +154,131 @@ class _homeScreenState extends State<homeScreen> {
                 ),
               ]),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Categories',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w800),
+                      ),
+                      Text(
+                        'See All',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/buysell.jpg',
+                              fit: BoxFit.cover,
+                              width: 60,
+                              height: 60,
+                            ),
+                            Text(
+                              'Buy & Sell',
+                              style: TextStyle(fontSize: 12),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/petfood.jpg',
+                              fit: BoxFit.cover,
+                              width: 60,
+                              height: 60,
+                            ),
+                            Text(
+                              'Buy & Sell',
+                              style: TextStyle(fontSize: 12),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/maintain.png',
+                              fit: BoxFit.cover,
+                              width: 60,
+                              height: 60,
+                            ),
+                            Text(
+                              'Buy & Sell',
+                              style: TextStyle(fontSize: 12),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/adopt.png',
+                              fit: BoxFit.cover,
+                              width: 60,
+                              height: 60,
+                            ),
+                            Text(
+                              'Buy & Sell',
+                              style: TextStyle(fontSize: 12),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/medical.jpg',
+                              fit: BoxFit.cover,
+                              width: 60,
+                              height: 60,
+                            ),
+                            Text(
+                              'Medical',
+                              style: TextStyle(fontSize: 12),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
             SizedBox(height: 20),
             Expanded(
               child: _pages[_currentIndex],
             ),
-            // Add more widgets below the search bar if needed
           ],
         ),
       ),
+      //BOTTOM NAV BAR ======================================================================
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         items: <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.chat, size: 30, color: Colors.white),
-          Icon(Icons.add, size: 30, color: Colors.white),
+          Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
           Icon(Icons.list_alt, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
         ],
