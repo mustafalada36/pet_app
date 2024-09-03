@@ -95,6 +95,63 @@ class _homeScreenState extends State<homeScreen> {
               ),
             ),
             SizedBox(height: 20),
+            Container(
+              height: 200,
+              width: 400,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Color(0xff267E1E),
+              ),
+              child: Stack(children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 70, 0, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Find the best pet',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            ' in your Location ',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Icon(
+                            Icons.place,
+                            color: Colors.white,
+                            size: 23,
+                          ),
+                        ],
+                      ),
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size.square(12), // Width and height
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 13, vertical: 7),
+                          ),
+                          child: Text(
+                            'View All',
+                            style: TextStyle(fontSize: 10),
+                          ))
+                    ],
+                  ),
+                ),
+                Positioned(
+                  right: 20,
+                  top: 35,
+                  child: Image.asset(
+                    'assets/images/girldog.png',
+                  ),
+                ),
+              ]),
+            ),
+            SizedBox(height: 20),
             Expanded(
               child: _pages[_currentIndex],
             ),
