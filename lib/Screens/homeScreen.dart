@@ -164,12 +164,12 @@ class _homeScreenState extends State<homeScreen> {
                       Text(
                         'Categories',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
+                            fontSize: 18, fontWeight: FontWeight.w800),
                       ),
                       Text(
                         'See All',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
+                            fontSize: 18, fontWeight: FontWeight.w800),
                       ),
                     ],
                   ),
@@ -186,8 +186,9 @@ class _homeScreenState extends State<homeScreen> {
                               height: 60,
                             ),
                             Text(
-                              'Buy & Sell',
-                              style: TextStyle(fontSize: 12),
+                              'Buy & Sell \n     ',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -203,8 +204,9 @@ class _homeScreenState extends State<homeScreen> {
                               height: 60,
                             ),
                             Text(
-                              'Buy & Sell',
-                              style: TextStyle(fontSize: 12),
+                              'Pet Food \n     ',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -220,8 +222,9 @@ class _homeScreenState extends State<homeScreen> {
                               height: 60,
                             ),
                             Text(
-                              'Buy & Sell',
-                              style: TextStyle(fontSize: 12),
+                              '         Pet\n Maintainance',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -237,8 +240,9 @@ class _homeScreenState extends State<homeScreen> {
                               height: 60,
                             ),
                             Text(
-                              'Buy & Sell',
-                              style: TextStyle(fontSize: 12),
+                              '      Pet\n Adoption',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
@@ -254,8 +258,9 @@ class _homeScreenState extends State<homeScreen> {
                               height: 60,
                             ),
                             Text(
-                              'Medical',
-                              style: TextStyle(fontSize: 12),
+                              '   Medical\n Consultation',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
