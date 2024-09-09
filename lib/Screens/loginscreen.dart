@@ -15,7 +15,8 @@ class LoginScreen extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: 40),
                 Center(
-                 child: Image.asset('assets/images/loginimg.png',width: 360.0, height: 214.0),
+                  child: Image.asset('assets/images/loginimg.png',
+                      width: 360.0, height: 214.0),
                 ),
                 SizedBox(height: 20),
                 TextField(
@@ -90,10 +91,10 @@ class LoginScreen extends StatelessWidget {
                           );
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
+                          backgroundColor: WidgetStateProperty.all<Color>(
                               const Color(0xFF267E1E)),
                           shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(14.0),
                             ),
@@ -124,7 +125,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 70),
-
                 Row(
                   children: [
                     Expanded(
@@ -146,8 +146,9 @@ class LoginScreen extends StatelessWidget {
                           // Continue with Google action
                         },
                         style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                          padding: WidgetStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 20),
                           ),
                         ),
                       ),
@@ -176,10 +177,11 @@ class LoginScreen extends StatelessWidget {
                           // Continue with Facebook action
                         },
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Color(0xFF3B5998)),
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                              Color(0xFF3B5998)),
+                          padding: WidgetStateProperty.all<EdgeInsets>(
+                            EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 10),
                           ),
                         ),
                       ),
