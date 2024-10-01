@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
+import 'package:pet_app/Reuseable%20Components/customTextField.dart';
+import 'package:pet_app/Reuseable%20Components/textHeading.dart';
+
+import 'homeScreen.dart';
 
 class adDetails extends StatelessWidget {
   const adDetails({super.key});
@@ -79,7 +84,7 @@ class adDetails extends StatelessWidget {
             ),
 
             SizedBox(height: 20),
-            Container(
+            /*Container(
               padding: EdgeInsets.symmetric(horizontal: 15),
               alignment: Alignment.centerLeft,
               child: Text(
@@ -89,7 +94,9 @@ class adDetails extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.black),
               ),
-            ),
+            ),*/
+            textHeading(text: "Categories *"),
+
             Row(
               children: [
                 Padding(
@@ -112,8 +119,326 @@ class adDetails extends StatelessWidget {
                     ),
                   ),
                 ),
+                Text(
+                  "Animals",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    color: Color(0xFF267E1E),
+                  ),
+                ),
               ],
-            )
+            ),
+            SizedBox(height: 15),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+
+            textHeading(text: "Price *"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: customTextField(
+                width: double.infinity,
+                height: 60,
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            textHeading(text: "Breed *"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "None",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: Color(0xFF267E1E),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            textHeading(text: "Sex *"),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    width: 80,
+                    height: 50,
+                    hintText: "  Male",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    width: 100,
+                    height: 50,
+                    hintText: "  Female",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    width: 80,
+                    height: 50,
+                    hintText: "Cross",
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            textHeading(text: "Age *"),
+            SizedBox(height: 10),
+            Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: customDropDownButton(
+                    width: 120,
+                    height: 60,
+                    hintText: "Age",
+                    dropdownItems: [
+                      "NA",
+                      "New Born",
+                      "3 months",
+                      "6 months",
+                      "9 months",
+                      "1 year old",
+                      "2 year old",
+                      "3 year old",
+                      "4 year old",
+                      "5 year old",
+                      "More than 5 years old"
+                    ])),
+            SizedBox(height: 10),
+
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            textHeading(text: "Vaccinated *"),
+            SizedBox(height: 10),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    width: 80,
+                    height: 50,
+                    hintText: "  Yes",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    width: 80,
+                    height: 50,
+                    hintText: "   No",
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 10),
+
+            //tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+            textHeading(text: "Location *"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
+                    "Choose",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: Color(0xFF267E1E),
+                  ),
+                )
+              ],
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+            textHeading(
+              text: "Ad Title *",
+              textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: customTextField(
+                width: double.infinity,
+                height: 60,
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+
+            textHeading(
+              text: "Description *",
+              textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: customTextField(
+                width: double.infinity,
+                height: 60,
+              ),
+            ),
+            SizedBox(height: 15),
+            Padding(
+              //=====================================================  line
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Container(
+                color: Color(0xFF267E1E),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 1,
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
+
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const homeScreen()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      WidgetStateProperty.all<Color>(const Color(0xFF267E1E)),
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500, // medium weight
+                    color: Colors.white, // text color
+                  ),
+                ),
+              ),
+            ),
           ], //=================================================main col
         ),
       ),
