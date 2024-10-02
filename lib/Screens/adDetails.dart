@@ -31,7 +31,7 @@ class adDetails extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //=====================================main col
+            //===========================================main col
 
             SizedBox(height: 15),
             Padding(
@@ -84,17 +84,7 @@ class adDetails extends StatelessWidget {
             ),
 
             SizedBox(height: 20),
-            /*Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Categories *",
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20,
-                    color: Colors.black),
-              ),
-            ),*/
+
             textHeading(text: "Categories *"),
 
             Row(
