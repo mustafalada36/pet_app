@@ -38,17 +38,17 @@ class MessagesScreen extends StatelessWidget {
           )
         ],
       ),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.local_phone),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.videocam),
-          onPressed: () {},
-        ),
-        const SizedBox(width: kDefaultPadding / 2),
-      ],
+      // actions: [
+      //   IconButton(
+      //     icon: const Icon(Icons.local_phone),
+      //     onPressed: () {},
+      //   ),
+      //   IconButton(
+      //     icon: const Icon(Icons.videocam),
+      //     onPressed: () {},
+      //   ),
+      //   const SizedBox(width: kDefaultPadding / 2),
+      // ],
     );
   }
 }

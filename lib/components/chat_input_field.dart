@@ -27,7 +27,7 @@ class ChatInputField extends StatelessWidget {
       child: SafeArea(
         child: Row(
           children: [
-            const Icon(Icons.mic, color: kPrimaryColor),
+            // const Icon(Icons.mic, color: kPrimaryColor),
             const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Container(
@@ -36,44 +36,44 @@ class ChatInputField extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: kPrimaryColor.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(40),
+                  // borderRadius: BorderRadius.circular(40),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
-                    Icon(
-                      Icons.sentiment_satisfied_alt_outlined,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.64),
-                    ),
-                    const SizedBox(width: kDefaultPadding / 4),
-                    const Expanded(
+                    // Icon(
+                    //   Icons.sentiment_satisfied_alt_outlined,
+                    //   color: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyLarge!
+                    //       .color!
+                    //       .withOpacity(0.64),
+                    // ),
+                    // const SizedBox(width: kDefaultPadding / 4),
+                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: "Type message",
+                          hintText: "Type a message",
                           border: InputBorder.none,
                         ),
                       ),
-                    ),
-                    Icon(
-                      Icons.attach_file,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.64),
-                    ),
-                    const SizedBox(width: kDefaultPadding / 4),
-                    Icon(
-                      Icons.camera_alt_outlined,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.64),
-                    ),
+                    )
+                    // Icon(
+                    //   Icons.attach_file,
+                    //   color: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyLarge!
+                    //       .color!
+                    //       .withOpacity(0.64),
+                    // ),
+                    // const SizedBox(width: kDefaultPadding / 4),
+                    // Icon(
+                    //   Icons.camera_alt_outlined,
+                    //   color: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyLarge!
+                    //       .color!
+                    //       .withOpacity(0.64),
+                    // ),
                   ],
                 ),
               ),
