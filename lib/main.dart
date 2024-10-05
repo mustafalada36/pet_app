@@ -1,6 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/adDetails.dart';
+import 'package:pet_app/Screens/breeds.dart';
 import 'package:pet_app/Screens/chatsScreen.dart';
 import 'package:pet_app/Screens/messageScreen.dart';
 import 'package:pet_app/Screens/getStarted.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: const adDetails(),
+      home: const breeds(),
       //shows
       // debugShowCheckedModeBanner: false,
     );
