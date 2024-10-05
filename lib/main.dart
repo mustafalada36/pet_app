@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/breeds.dart';
 import 'package:pet_app/Screens/chatsScreen.dart';
+import 'package:pet_app/Screens/location.dart';
 import 'package:pet_app/Screens/messageScreen.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/homeScreen.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: const breeds(),
+      home: location(),
       //shows
       // debugShowCheckedModeBanner: false,
     );
