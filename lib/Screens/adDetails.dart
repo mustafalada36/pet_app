@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
+import 'package:pet_app/constants.dart';
 
 import 'homeScreen.dart';
 
@@ -67,7 +68,7 @@ class adDetails extends StatelessWidget {
 
             GestureDetector(
               child: CircleAvatar(
-                backgroundColor: Color(0x2931EE21),
+                backgroundColor: secondaryColor,
                 radius: 70,
                 child: Column(
                   children: [
