@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Defined By Haseeb
+// Defined By Haseeb(L)
 const primaryColor = Color(0xFF267E1E);
 const secondaryColor = Color(0x2931EE21);
 
