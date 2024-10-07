@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
+import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
 import 'package:pet_app/constants.dart';
 
@@ -122,16 +123,7 @@ class adDetails extends StatelessWidget {
             ),
             SizedBox(height: 15),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
 
             textHeading(text: "Price *"),
@@ -143,17 +135,7 @@ class adDetails extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
             textHeading(text: "Breed *"),
             Row(
@@ -180,17 +162,7 @@ class adDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
             textHeading(text: "Sex *"),
             SizedBox(height: 10),
@@ -224,17 +196,7 @@ class adDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
             textHeading(text: "Age *"),
             SizedBox(height: 10),
@@ -260,17 +222,7 @@ class adDetails extends StatelessWidget {
                     ])),
             SizedBox(height: 10),
 
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
             textHeading(text: "Vaccinated *"),
             SizedBox(height: 10),
@@ -298,17 +250,7 @@ class adDetails extends StatelessWidget {
             ),
 
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
 
             SizedBox(height: 10),
 
@@ -338,17 +280,7 @@ class adDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
             textHeading(
               text: "Ad Title *",
@@ -362,17 +294,7 @@ class adDetails extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
 
             textHeading(
@@ -387,17 +309,7 @@ class adDetails extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Padding(
-              //=====================================================  line
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Container(
-                color: Color(0xFF267E1E),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 1,
-                ),
-              ),
-            ),
+            lineWidget(),
             SizedBox(height: 15),
 
             Container(
