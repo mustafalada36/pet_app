@@ -12,6 +12,9 @@ import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/Screens/signup.dart';
 import 'package:pet_app/Screens/splashscreen.dart';
+import 'package:pet_app/Screens/testingScreen.dart';
+
+import 'Screens/addNewAddress.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: adDetails(),
+      home: adNewAddress(),
       //shows
       // debugShowCheckedModeBanner: false,
     );
