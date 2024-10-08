@@ -12,6 +12,11 @@ class adNewAddress extends StatefulWidget {
 class _adNewAddressState extends State<adNewAddress> {
   bool isChecked1 = false;
   bool isChecked2 = false;
+  String selectedValue = "";
+
+  // Define selectedValue to track the selected radio button
+  String selectedBillValue = "";
+  bool useDifferentAddress = false;
 
   @override
   Widget build(BuildContext context) {
@@ -219,6 +224,7 @@ class _adNewAddressState extends State<adNewAddress> {
                                       fontWeight: FontWeight.w700),
                                 ),
                               ),
+                              SizedBox(height: 20),
                             ],
                           ),
                         ),
@@ -226,9 +232,233 @@ class _adNewAddressState extends State<adNewAddress> {
                     ],
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 20),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: secondaryColor,
+                elevation: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, left: 20),
+                        child: Text(
+                          "Payment",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 30,
+                              color: Colors.black),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, left: 20),
+                        child: Text(
+                          "All transactions are secure and encrypted",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20,
+                              color: Colors.grey),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomRadioButton(
+                          value: "COD",
+                          groupValue: selectedValue,
+                          // Use selectedValue to keep track
+                          onChange: (value) {
+                            setState(() {
+                              selectedValue =
+                                  value; // Update selectedValue when radio button is selected
+                            });
+                          },
+                          text: "Cash on Delivery (COD)",
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomRadioButton(
+                          value: "card",
+                          groupValue: selectedValue,
+                          // Use selectedValue to keep track
+                          onChange: (value) {
+                            setState(() {
+                              selectedValue =
+                                  value; // Update selectedValue when radio button is selected
+                            });
+                          },
+                          text: "Debit - Credit Card ",
+                          imagePaths: [
+                            "assets/images/jazzcash.png",
+                            "assets/images/masterCard.png",
+                            "assets/images/visa.png"
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: secondaryColor,
+                elevation: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, left: 20),
+                        child: Text(
+                          "Billing Address",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 30,
+                              color: Colors.black),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomRadioButton(
+                          value: "shipAdd",
+                          groupValue: selectedBillValue,
+                          // Use selectedValue to keep track
+                          onChange: (value) {
+                            setState(() {
+                              selectedBillValue = value;
+                              // Update selectedValue when radio button is selected
+                              useDifferentAddress = false;
+                            });
+                          },
+                          text: "Same as Shipping Address",
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomRadioButton(
+                          value: "diffAdd",
+                          groupValue: selectedBillValue,
+                          // Use selectedValue to keep track
+                          onChange: (value) {
+                            setState(() {
+                              selectedBillValue = value;
+                              print("value is " + value);
+                              useDifferentAddress = true;
+                              // Update selectedValue when radio button is selected
+                            });
+                          },
+                          text: "Use a Different Billing Address",
+                        ),
+                      ),
+                      // Conditionally show the TextField based on useDifferentAddress
+                      SizedBox(height: 10),
+                      if (useDifferentAddress)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: customTextField(
+                            width: double.infinity,
+                            height: 60,
+                            hintText: 'Enter Different Address',
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 180),
             ], //   main Col =========================================================
           ),
         ));
+  }
+}
+
+//class for radio button
+class CustomRadioButton extends StatelessWidget {
+  final String value;
+  final String groupValue;
+  final Function(String) onChange;
+  final String text;
+  final Color? backgroundColor;
+
+  // Optional list of image paths
+  final List<String>? imagePaths;
+
+  CustomRadioButton({
+    required this.value,
+    required this.groupValue,
+    required this.onChange,
+    required this.text,
+    this.backgroundColor = Colors.white,
+    this.imagePaths, // Optional list of images
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onChange(value); // Handle on change when tapped
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: secondaryColor, // Background color for the button
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: primaryColor,
+            width: 2,
+          ),
+        ),
+        padding: EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Radio<String>(
+              value: value,
+              groupValue: groupValue,
+              onChanged: (value) {
+                if (value != null) {
+                  onChange(value); // Trigger the onChange callback
+                }
+              },
+            ),
+            Text(
+              text,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700),
+            ),
+            Spacer(),
+            // Dynamically add images from the list if provided
+            if (imagePaths != null)
+              Row(
+                children: imagePaths!.map((imagePath) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Image.asset(
+                      imagePath,
+                      width: 30,
+                      height: 30,
+                    ),
+                  );
+                }).toList(),
+              ),
+          ],
+        ),
+      ),
+    );
   }
 }
