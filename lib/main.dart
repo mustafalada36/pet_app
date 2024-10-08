@@ -9,6 +9,7 @@ import 'package:pet_app/Screens/messageScreen.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/homeScreen.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
+import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/Screens/signup.dart';
 import 'package:pet_app/Screens/splashscreen.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: favourites(),
+      home: adDetails(),
       //shows
       // debugShowCheckedModeBanner: false,
     );

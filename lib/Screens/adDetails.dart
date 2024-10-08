@@ -7,9 +7,12 @@ import 'package:pet_app/constants.dart';
 
 import 'homeScreen.dart';
 
-class adDetails extends StatelessWidget {
-  const adDetails({super.key});
+class adDetails extends StatefulWidget {
+  @override
+  State<adDetails> createState() => _adDetailsState();
+}
 
+class _adDetailsState extends State<adDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class adDetails extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "UPLOAD UPTO 5 IMAGES",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -171,26 +174,61 @@ class adDetails extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: customTextField(
-                    width: 80,
-                    height: 50,
-                    hintText: "  Male",
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 80,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: primaryColor, width: 2)),
+                      child: Center(
+                        child: Text(
+                          "Male",
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: customTextField(
-                    width: 100,
-                    height: 50,
-                    hintText: "  Female",
+                  child: Container(
+                    width: 100, // Width from the original customTextField
+                    height: 50, // Height from the original customTextField
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Female",
+                        // Hint text converted to display as regular text
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: customTextField(
-                    width: 80,
-                    height: 50,
-                    hintText: "Cross",
+                  child: Container(
+                    width: 80, // Width from the original customTextField
+                    height: 50, // Height from the original customTextField
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Cross",
+                        // Hint text converted to display as regular text
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -232,18 +270,39 @@ class adDetails extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: customTextField(
-                    width: 80,
-                    height: 50,
-                    hintText: "  Yes",
+                  child: Container(
+                    width: 80, // Width from the original customTextField
+                    height: 50, // Height from the original customTextField
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Yes",
+                        // Hint text converted to display as regular text
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: customTextField(
+                  child: Container(
                     width: 80,
                     height: 50,
-                    hintText: "   No",
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "No",
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ],

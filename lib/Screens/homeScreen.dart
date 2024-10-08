@@ -1,7 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
+import 'package:pet_app/Screens/myAds.dart';
+import 'package:pet_app/Screens/profileScreen.dart';
+import 'package:pet_app/models/Chat.dart';
+
+import 'chatsScreen.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -29,24 +35,28 @@ class _homeScreenState extends State<homeScreen> {
     switch (index) {
       case 0:
         print("Home tapped");
-        // Navigate to Home page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => homeScreen()));
         break;
       case 1:
         print("Chat tapped");
-        // Navigate to Chat page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ChatsScreen()));
         break;
       case 2:
         print("Post Ad tapped");
-        // Navigate to Post Ad page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => adDetails()));
         break;
       case 3:
         print("My Ads tapped");
-        // Navigate to My Ads page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => myAds()));
         break;
       case 4:
         print("Profile tapped");
-        // Navigate to Profile page or perform any action
-        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ProfileScreen()));
         break;
       default:
         print("Unknown tab");

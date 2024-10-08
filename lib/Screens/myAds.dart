@@ -39,7 +39,7 @@ class myAds extends StatelessWidget {
             ],
           ),
           SizedBox(height: 15),
-          adsCard(),
+          adsCard(), // From Favourites Screen
         ],
       ),
     );
