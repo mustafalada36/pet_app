@@ -1,6 +1,11 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
+import 'adDetails.dart';
+import 'chatsScreen.dart';
+import 'homeScreen.dart';
+import 'myAds.dart';
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -10,8 +15,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final Color primaryColor = Color(0xFF267E1E);
   final Color containerColor = Color(0xFFD9D9D9);
 
-
-  int _currentIndex = 0;
+  int _currentIndex = 4;
   final List<Widget> _pages = [
     Center(child: Text('Home Screen')),
     Center(child: Text('Chat Screen')),
@@ -19,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     Center(child: Text('My Ads Screen')),
     Center(child: Text('Profile Screen')),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -28,31 +33,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
     switch (index) {
       case 0:
         print("Home tapped");
-        // Navigate to Home page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => homeScreen()));
         break;
       case 1:
         print("Chat tapped");
-        // Navigate to Chat page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ChatsScreen()));
         break;
       case 2:
         print("Post Ad tapped");
-        // Navigate to Post Ad page or perform any action
-        break;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => adDetails()));
+
       case 3:
         print("My Ads tapped");
-        // Navigate to My Ads page or perform any action
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => myAds()));
         break;
       case 4:
         print("Profile tapped");
-        // Navigate to Profile page or perform any action
-        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> LoginScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ProfileScreen()));
         break;
       default:
         print("Unknown tab");
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +111,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           'View and edit profile',
                           style: TextStyle(
                             color: primaryColor,
-                            decoration: TextDecoration.underline, // Underline text
+                            decoration: TextDecoration.underline,
+                            // Underline text
                             fontSize: 14,
                           ),
                         ),
@@ -112,7 +120,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: MaterialStateProperty.all<EdgeInsets>(
                             EdgeInsets.zero, // Remove padding for alignment
                           ),
-                          minimumSize: MaterialStateProperty.all(Size(0, 0)), // Min size for alignment
+                          minimumSize: MaterialStateProperty.all(
+                              Size(0, 0)), // Min size for alignment
                         ),
                       ),
                     ],
@@ -176,7 +185,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   // Helper method to build each row
-  Widget _buildProfileRow({required IconData icon, required String title, required String subtitle}) {
+  Widget _buildProfileRow(
+      {required IconData icon,
+      required String title,
+      required String subtitle}) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
