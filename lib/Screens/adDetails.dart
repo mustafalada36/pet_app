@@ -48,12 +48,14 @@ class _adDetailsState extends State<adDetails> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "UPLOAD UPTO 5 IMAGES",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
-                          color: Color(0xFF267E1E)),
+                    Expanded(
+                      child: const Text(
+                        "UPLOAD UPTO 5 IMAGES",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
+                            color: Color(0xFF267E1E)),
+                      ),
                     ),
                     SizedBox(width: 15),
                     IconButton(
