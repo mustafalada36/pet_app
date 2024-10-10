@@ -45,7 +45,7 @@ class _myAdsState extends State<myAds> {
         print("Post Ad tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => adDetails()));
-        
+
       case 3:
         print("My Ads tapped");
         Navigator.pushReplacement(
@@ -66,6 +66,13 @@ class _myAdsState extends State<myAds> {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
+          leading: IconButton(
+            color: Color(0xFF267E1E),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
           title: Text(
             "My Ads",
             style: TextStyle(

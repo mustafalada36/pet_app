@@ -46,12 +46,12 @@ class _ChatsScreenState extends State<ChatsScreen> {
         print("Post Ad tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => adDetails()));
-        
+
       case 3:
         print("My Ads tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => myAds()));
-        break;
+        
       case 4:
         print("Profile tapped");
         Navigator.pushReplacement(context,

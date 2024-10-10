@@ -48,9 +48,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       case 3:
         print("My Ads tapped");
-        Navigator.pushReplacement(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => myAds()));
-        break;
+        
       case 4:
         print("Profile tapped");
         Navigator.pushReplacement(context,
