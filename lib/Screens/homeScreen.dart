@@ -45,9 +45,9 @@ class _homeScreenState extends State<homeScreen> {
         break;
       case 2:
         print("Post Ad tapped");
-        Navigator.pushReplacement(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => adDetails()));
-        break;
+        
       case 3:
         print("My Ads tapped");
         Navigator.pushReplacement(
