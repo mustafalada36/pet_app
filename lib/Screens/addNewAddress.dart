@@ -391,6 +391,160 @@ class _adNewAddressState extends State<adNewAddress> {
                       color: Colors.black),
                 ),
               ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  color: secondaryColor,
+                  elevation: 0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 20),
+                              child: Container(
+                                width: 150,
+                                height: 150,
+                                child: Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Image.asset(
+                                        "assets/images/pet_food1.png")),
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  "Animal King",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, top: 5),
+                                  child: Text(
+                                    "Cat Food",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, top: 5),
+                                  child: Text(
+                                    "Johar Town",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, top: 5),
+                                  child: Text(
+                                    "PKR 2,000",
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+
+                      // Conditionally show the TextField based on useDifferentAddress
+                      SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Items Total",
+                              style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Rs. 2,000",
+                              style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Delivery Fee",
+                              style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Rs. 99",
+                              style: TextStyle(
+                                  color: primaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Items Total",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Rs. 2,099",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(height: 180),
             ], //   main Col =========================================================
           ),
