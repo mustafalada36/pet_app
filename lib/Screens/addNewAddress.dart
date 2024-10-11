@@ -380,6 +380,17 @@ class _adNewAddressState extends State<adNewAddress> {
                   ),
                 ),
               ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, left: 20),
+                child: Text(
+                  "Order Summary",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 30,
+                      color: Colors.black),
+                ),
+              ),
               SizedBox(height: 180),
             ], //   main Col =========================================================
           ),
