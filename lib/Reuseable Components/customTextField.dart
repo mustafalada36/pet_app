@@ -6,13 +6,16 @@ class customTextField extends StatelessWidget {
   final String hintText;
   final TextStyle hintStyle;
   final BorderRadius borderRadius;
+  final bool useDefaultDecoration;
 
   customTextField({
     required this.width,
     required this.height,
     this.hintText = '',
     TextStyle? hintStyle,
-    BorderRadius? borderRadius, // Accept hintStyle as optional
+    BorderRadius? borderRadius,
+    this.useDefaultDecoration = true,
+    // Accept hintStyle as optional
   })  : hintStyle = hintStyle ??
             TextStyle(
               // Set a default hintStyle if none is provided
@@ -27,25 +30,19 @@ class customTextField extends StatelessWidget {
       width: width,
       height: height,
       child: TextField(
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: hintStyle,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: borderRadius,
-            borderSide: BorderSide(
-              color: Color(0xFF267E1E), // Green border color
-              width: 2.0,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.0),
-            borderSide: BorderSide(
-              color: Color(0xFF267E1E),
-              width: 2.0,
-            ),
-          ),
-        ),
-      ),
+          decoration: useDefaultDecoration
+              ? InputDecoration(
+                  hintText: hintText,
+                  hintStyle: hintStyle,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: borderRadius,
+                    borderSide: BorderSide(
+                      color: Color(0xFF267E1E), // Green border color
+                      width: 2.0,
+                    ),
+                  ),
+                )
+              : InputDecoration(hintText: hintText, hintStyle: hintStyle)),
     );
   }
 }
