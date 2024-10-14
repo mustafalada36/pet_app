@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/breeds.dart';
+import 'package:pet_app/Screens/cashonDelivery.dart';
 import 'package:pet_app/Screens/chatsScreen.dart';
 import 'package:pet_app/Screens/creditndebit.dart';
 import 'package:pet_app/Screens/favourites.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: creditDebit(),
+      home: cashonDelivery(),
 
       //shows
       // debugShowCheckedModeBanner: false,
