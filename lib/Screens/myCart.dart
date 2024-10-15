@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import 'homeScreen.dart';
 
 class myCart extends StatelessWidget {
   const myCart({super.key});
@@ -38,7 +39,9 @@ class myCart extends StatelessWidget {
                         child: Container(
                           width: 130,
                           height: 130,
-                          color: secondaryColor,
+                          decoration: BoxDecoration(
+                              color: secondaryColor,
+                              borderRadius: BorderRadius.circular(20)),
                           child:
                               Image.asset("assets/images/Food Timothy.png"),
                         ),
@@ -131,6 +134,37 @@ class myCart extends StatelessWidget {
                   ),
                 ),
               ]),
+            ),
+            SizedBox(height: 180),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const homeScreen()),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      WidgetStateProperty.all<Color>(const Color(0xFF267E1E)),
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14.0),
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Next',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500, // medium weight
+                    color: Colors.white, // text color
+                  ),
+                ),
+              ),
             ),
           ],
         ),
