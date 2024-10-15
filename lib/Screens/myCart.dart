@@ -3,8 +3,15 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
-class myCart extends StatelessWidget {
+class myCart extends StatefulWidget {
   const myCart({super.key});
+
+  @override
+  State<myCart> createState() => _myCartState();
+}
+
+class _myCartState extends State<myCart> {
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -81,18 +88,28 @@ class myCart extends StatelessWidget {
                                 CircleAvatar(
                                   radius: 13,
                                   backgroundColor: primaryColor,
-                                  child: Text(
-                                    "-",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white),
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    icon: Text(
+                                      "-",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        if (quantity > 1) {
+                                          quantity--;
+                                        }
+                                      });
+                                    },
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "1",
+                                    "$quantity",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25,
@@ -102,12 +119,20 @@ class myCart extends StatelessWidget {
                                 CircleAvatar(
                                   radius: 13,
                                   backgroundColor: primaryColor,
-                                  child: Text(
-                                    "+",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.white),
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    icon: Text(
+                                      "+",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        quantity++;
+                                      });
+                                    },
                                   ),
                                 ),
                               ],
