@@ -65,21 +65,23 @@ class editProfile extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      textHeading(
-                        text: "Enter Your Name",
-                        textStyle: TextStyle(
-                            color: primaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      customTextField(
-                        width: double.infinity,
-                        height: 60,
-                        borderRadius: BorderRadius.circular(12),
-                      )
-                    ],
+                  Expanded(
+                    child: Column(
+                      children: [
+                        textHeading(
+                          text: "Enter Your Name",
+                          textStyle: TextStyle(
+                              color: primaryColor,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        customTextField(
+                          width: double.infinity,
+                          height: 60,
+                          borderRadius: BorderRadius.circular(12),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
