@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
+        padding: const EdgeInsets.only(top: 56.0, left: 18.0, right: 23.11),
         child: Column(
           children: [
             // First Row: Image and Profile Info
@@ -129,7 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 16), // Spacing between rows
+            SizedBox(height: 41), // Spacing between rows
             // First Row: Favorites & Saved Searches
             _buildProfileRow(
               icon: Icons.favorite_border,
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'All of your favorite ads & saved filters',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 16),
+            SizedBox(height: 41),
             // Second Row: Recently Viewed
             _buildProfileRow(
               icon: Icons.history,
@@ -145,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'Check the ads you viewed recently',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 16),
+            SizedBox(height: 41),
             // Third Row: Notifications
             _buildProfileRow(
               icon: Icons.notifications_none,
@@ -153,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'Manage your notifications',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 16),
+            SizedBox(height: 41),
             // Fourth Row: Settings
             _buildProfileRow(
               icon: Icons.settings_outlined,
