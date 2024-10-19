@@ -49,7 +49,7 @@ class pets extends StatelessWidget {
               ),
               topContainer(
                 "Johar Town",
-                170,
+                160,
                 clr: secondaryColor,
                 textClr: primaryColor,
               )
