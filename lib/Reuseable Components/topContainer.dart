@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class topActiveContainer extends StatelessWidget {
+class topContainer extends StatelessWidget {
   final String title;
   final double width;
+  final Color? clr;
+  final Color? textClr;
+  final Image? image;
 
-  topActiveContainer(this.title, this.width);
+  topContainer(this.title, this.width, {this.clr, this.image, this.textClr});
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +19,19 @@ class topActiveContainer extends StatelessWidget {
         width: width,
         height: 60,
         decoration: BoxDecoration(
-            color: primaryColor, borderRadius: BorderRadius.circular(30)),
+          color: clr,
+          borderRadius: BorderRadius.circular(30),
+        ),
         child: Row(
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Image.asset("assets/images/activeSymbol.png"),
+              child: image, //Image.asset("assets/images/activeSymbol.png")
             ),
             Text(
               title,
               style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
+                  fontSize: 18, fontWeight: FontWeight.w700, color: textClr),
             ),
           ],
         ),
