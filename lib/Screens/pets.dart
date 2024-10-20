@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 
 import '../constants.dart';
@@ -49,7 +50,7 @@ class pets extends StatelessWidget {
               ),
               topContainer(
                 "Johar Town",
-                170,
+                160,
                 clr: secondaryColor,
                 textClr: primaryColor,
               )
@@ -91,6 +92,21 @@ class pets extends StatelessWidget {
                 ],
               )),
           SizedBox(height: 10),
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [adsTemplate(), adsTemplate()],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [adsTemplate(), adsTemplate()],
+                  ),
+                ],
+              )),
           SizedBox(height: 10),
         ],
       ),
