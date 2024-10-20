@@ -1,5 +1,6 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/breeds.dart';
 import 'package:pet_app/Screens/cashonDelivery.dart';
@@ -13,6 +14,7 @@ import 'package:pet_app/Screens/messageScreen.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/homeScreen.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
+import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/Screens/myCart.dart';
 import 'package:pet_app/Screens/pets.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: pets(),
+      home: adsTemplate(),
 
       //shows
       // debugShowCheckedModeBanner: false,
