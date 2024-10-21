@@ -17,13 +17,14 @@ import 'package:pet_app/Screens/homeScreen.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/Screens/myCart.dart';
-import 'package:pet_app/Screens/pets.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/Screens/signup.dart';
 import 'package:pet_app/Screens/splashscreen.dart';
 // import 'package:pet_app/Screens/testingScreen.dart';
 
 import 'Screens/addNewAddress.dart';
+import 'Screens/buyFood.dart';
+import 'Screens/buyScreen.dart';
 
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: pets(),
+      home: buyFood(),
 
       //shows
       // debugShowCheckedModeBanner: false,
