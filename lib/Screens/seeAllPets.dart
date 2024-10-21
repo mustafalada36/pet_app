@@ -4,7 +4,7 @@ import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 
 import '../constants.dart';
 
-class pets extends StatelessWidget {
+class seeAllPets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
