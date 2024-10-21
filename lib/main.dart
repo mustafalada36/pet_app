@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: buyFood(),
+      home: addNewAddress(),
 
       //shows
       // debugShowCheckedModeBanner: false,

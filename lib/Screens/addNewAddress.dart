@@ -4,12 +4,12 @@ import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 
 import '../constants.dart';
 
-class adNewAddress extends StatefulWidget {
+class addNewAddress extends StatefulWidget {
   @override
-  State<adNewAddress> createState() => _adNewAddressState();
+  State<addNewAddress> createState() => _adNewAddressState();
 }
 
-class _adNewAddressState extends State<adNewAddress> {
+class _adNewAddressState extends State<addNewAddress> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   String selectedValue = "";
