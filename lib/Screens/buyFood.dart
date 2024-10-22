@@ -17,7 +17,7 @@ class buyFood extends StatelessWidget {
                       width: double.infinity, // Fit to screen width
                       height: 294,
                       child: Image.asset(
-                        'assets/images/Rectangle 103.png',
+                        'assets/images/buyfood.png',
                         fit: BoxFit
                             .cover, // Ensure the image covers the container
                       ),
