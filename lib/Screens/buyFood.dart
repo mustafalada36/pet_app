@@ -1,4 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
+import 'package:pet_app/Reuseable%20Components/secondaryButton.dart';
+import 'package:pet_app/constants.dart';
+
+import 'homeScreen.dart';
 
 class buyFood extends StatelessWidget {
   @override
@@ -19,7 +25,7 @@ class buyFood extends StatelessWidget {
                       child: Image.asset(
                         'assets/images/buyfood.png',
                         fit: BoxFit
-                            .cover, // Ensure the image covers the container
+                            .fill, // Ensure the image covers the container
                       ),
                     ),
                     // Row with back arrow, heart, and share icon
@@ -122,7 +128,7 @@ class buyFood extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'Cat breed',
+                              'Cat Food',
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontSize: 14,
@@ -136,125 +142,142 @@ class buyFood extends StatelessWidget {
                         // "About British Shorthair" text
                         SizedBox(height: 14),
                         // Padding from top
-                        Text(
-                          'About British Shorthair',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600, // Semibold
-                            color: Color(0xFF267E1E), // #267E1E
+                        Container(
+                          width: double.infinity,
+                          color: Colors.grey.shade300,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: Text(
+                                  "Details:",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600, // Semibold
+                                    color: Colors.black, // #000000
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15),
+                                    child: Text(
+                                      "Condition:",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight:
+                                            FontWeight.w400, // Semibold
+                                        color: primaryColor, // #000000
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 70),
+                                    child: Text(
+                                      "New",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight:
+                                            FontWeight.w600, // Semibold
+                                        color: primaryColor, // #000000
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+                            ],
                           ),
                         ),
-                        // First descriptive text with padding from the "About British Shorthair"
-                        SizedBox(height: 13.7),
-                        // Padding only from "About British Shorthair"
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'The British Shorthair Peki Female Tetra Coat Blue',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        SizedBox(height: 20),
+                        Text(
+                          "Description",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600, // Semibold
+                            color: Colors.black, // #000000
+                          ),
                         ),
-                        // The following descriptive texts without extra spacing
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Eyes',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          'Animal King - Best cat food for all ages',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Peke Bloodline',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        SizedBox(height: 20),
+                        Text(
+                          'Net Weight: 1KG',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Piki Female Kitten',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          'Available at just Rs. 1600/-',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Age 8 Months',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          'Cash on Delivery - Across Pakistan',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Very Active Mashallah',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          'Free Delivery',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                ' Attractive Blue Eyes',
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400, // Regular
-                                  color: Colors.black, // #000000
-                                ),
-                              ),
-                            ),
-                          ],
+                        SizedBox(height: 20),
+                        Text(
+                          'Made from all Natural Ingredients ',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
                         ),
-                        // Add more rows as needed for remaining texts
+                        Text(
+                          'Rich in Protein and Nutrients',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
+                        ),
+                        Text(
+                          'Antioxident Formulation',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300, // Regular
+                            color: Colors.black, // 50% opacity
+                          ),
+                        ),
+                        SizedBox(height: 50),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            secondaryButton(170, "Add to Cart"),
+                            primaryButton(170, "Buy Now"),
+                          ],
+                        )
                       ],
                     ),
                   ),
