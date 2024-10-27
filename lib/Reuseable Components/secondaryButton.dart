@@ -20,6 +20,7 @@ class secondaryButton extends StatelessWidget {
           );
         },
         style: ButtonStyle(
+          elevation: WidgetStatePropertyAll(0),
           backgroundColor: WidgetStateProperty.all<Color>(secondaryColor),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
