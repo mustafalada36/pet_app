@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomScreen extends StatelessWidget {
+class buyPet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,8 @@ class CustomScreen extends StatelessWidget {
                     height: 294,
                     child: Image.asset(
                       'assets/images/Rectangle 103.png',
-                      fit: BoxFit.cover, // Ensure the image covers the container
+                      fit: BoxFit
+                          .cover, // Ensure the image covers the container
                     ),
                   ),
                   // Row with back arrow, heart, and share icon
@@ -85,12 +86,14 @@ class CustomScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height - 244,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0), // Padding from left and right
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  // Padding from left and right
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // First Row: "British Shorthair" and "Rs/150,000"
-                      SizedBox(height: 20), // Adding some space from the top
+                      SizedBox(height: 20),
+                      // Adding some space from the top
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -123,13 +126,15 @@ class CustomScreen extends StatelessWidget {
                               fontFamily: 'Montserrat',
                               fontSize: 14,
                               fontWeight: FontWeight.w400, // Regular
-                              color: Colors.black.withOpacity(0.5), // 50% opacity
+                              color: Colors.black
+                                  .withOpacity(0.5), // 50% opacity
                             ),
                           ),
                         ],
                       ),
                       // "About British Shorthair" text
-                      SizedBox(height: 14), // Padding from top
+                      SizedBox(height: 14),
+                      // Padding from top
                       Text(
                         'About British Shorthair',
                         style: TextStyle(
@@ -140,7 +145,8 @@ class CustomScreen extends StatelessWidget {
                         ),
                       ),
                       // First descriptive text with padding from the "About British Shorthair"
-                      SizedBox(height: 13.7), // Padding only from "About British Shorthair"
+                      SizedBox(height: 13.7),
+                      // Padding only from "About British Shorthair"
                       Row(
                         children: [
                           Expanded(
@@ -293,7 +299,8 @@ class CustomScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),Row(
+                      ),
+                      Row(
                         children: [
                           Expanded(
                             child: Text(
@@ -322,7 +329,8 @@ class CustomScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),Row(
+                      ),
+                      Row(
                         children: [
                           Expanded(
                             child: Text(
@@ -336,7 +344,8 @@ class CustomScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),Row(
+                      ),
+                      Row(
                         children: [
                           Expanded(
                             child: Text(
@@ -413,7 +422,8 @@ class CustomScreen extends StatelessWidget {
                       ),
 
                       // Row with two columns for Age and Weight
-                      SizedBox(height: 20), // Add some space
+                      SizedBox(height: 20),
+                      // Add some space
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -422,7 +432,8 @@ class CustomScreen extends StatelessWidget {
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -433,12 +444,14 @@ class CustomScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.pets,
                                     size: 26,
-                                    color: Color(0xFF267E1E), // Dark green icon
+                                    color:
+                                        Color(0xFF267E1E), // Dark green icon
                                   ),
                                 ),
                                 // Text columns
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -447,7 +460,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF267E1E), // Dark green
+                                        color:
+                                            Color(0xFF267E1E), // Dark green
                                       ),
                                     ),
                                     Text(
@@ -456,7 +470,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF101113), // Darker grey
+                                        color:
+                                            Color(0xFF101113), // Darker grey
                                       ),
                                     ),
                                   ],
@@ -469,7 +484,8 @@ class CustomScreen extends StatelessWidget {
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -480,12 +496,14 @@ class CustomScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.scale, // Another example icon
                                     size: 26,
-                                    color: Color(0xFF267E1E), // Dark green icon
+                                    color:
+                                        Color(0xFF267E1E), // Dark green icon
                                   ),
                                 ),
                                 // Text columns
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -494,7 +512,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF267E1E), // Dark green
+                                        color:
+                                            Color(0xFF267E1E), // Dark green
                                       ),
                                     ),
                                     Text(
@@ -503,7 +522,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF101113), // Darker grey
+                                        color:
+                                            Color(0xFF101113), // Darker grey
                                       ),
                                     ),
                                   ],
@@ -513,7 +533,8 @@ class CustomScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 23), // Add some space
+                      SizedBox(height: 23),
+                      // Add some space
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -522,7 +543,8 @@ class CustomScreen extends StatelessWidget {
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -533,12 +555,14 @@ class CustomScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.pets,
                                     size: 26,
-                                    color: Color(0xFF267E1E), // Dark green icon
+                                    color:
+                                        Color(0xFF267E1E), // Dark green icon
                                   ),
                                 ),
                                 // Text columns
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -547,7 +571,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF267E1E), // Dark green
+                                        color:
+                                            Color(0xFF267E1E), // Dark green
                                       ),
                                     ),
                                     Text(
@@ -556,7 +581,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF101113), // Darker grey
+                                        color:
+                                            Color(0xFF101113), // Darker grey
                                       ),
                                     ),
                                   ],
@@ -569,7 +595,8 @@ class CustomScreen extends StatelessWidget {
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -580,12 +607,14 @@ class CustomScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.scale, // Another example icon
                                     size: 26,
-                                    color: Color(0xFF267E1E), // Dark green icon
+                                    color:
+                                        Color(0xFF267E1E), // Dark green icon
                                   ),
                                 ),
                                 // Text columns
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -594,7 +623,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF267E1E), // Dark green
+                                        color:
+                                            Color(0xFF267E1E), // Dark green
                                       ),
                                     ),
                                     Text(
@@ -603,7 +633,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF101113), // Darker grey
+                                        color:
+                                            Color(0xFF101113), // Darker grey
                                       ),
                                     ),
                                   ],
@@ -614,15 +645,18 @@ class CustomScreen extends StatelessWidget {
                         ],
                       ),
                       // Row with one centered container below the previous two containers
-                      SizedBox(height: 20), // Add some space
+                      SizedBox(height: 20),
+                      // Add some space
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center, // Center this container
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // Center this container
                         children: [
                           Container(
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -633,12 +667,14 @@ class CustomScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.info, // Example icon
                                     size: 26,
-                                    color: Color(0xFF267E1E), // Dark green icon
+                                    color:
+                                        Color(0xFF267E1E), // Dark green icon
                                   ),
                                 ),
                                 // Text columns
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -647,7 +683,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF267E1E), // Dark green
+                                        color:
+                                            Color(0xFF267E1E), // Dark green
                                       ),
                                     ),
                                     Text(
@@ -656,7 +693,8 @@ class CustomScreen extends StatelessWidget {
                                         fontFamily: 'Montserrat',
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500, // Medium
-                                        color: Color(0xFF101113), // Darker grey
+                                        color:
+                                            Color(0xFF101113), // Darker grey
                                       ),
                                     ),
                                   ],
@@ -666,7 +704,6 @@ class CustomScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
