@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 
 class buyPet extends StatelessWidget {
   @override
@@ -704,6 +705,206 @@ class buyPet extends StatelessWidget {
                           ),
                         ],
                       ),
+                      // Container with dimensions to fit the screen width and fixed height
+                      SizedBox(height: 20),
+                      Container(
+                        width: double.infinity, // Fit to screen width
+                        height: 109,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 8,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                      ),
+
+// "About your safety!" text with 10px padding below
+                      SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            'About your safety!',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600, // Semibold
+                              color: Color(0xFF267E1E), // #267E1E
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+
+// Bullet points with 4.58px padding between each
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // First bullet point
+                          Row(
+                            children: [
+                              Icon(Icons.circle, size: 6, color: Color(0xFF267E1E)),
+                              SizedBox(width: 8),
+                              Text(
+                                'Avoid sharing personal information.',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400, // Regular
+                                  color: Color(0xFF267E1E), // #267E1E
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4.58),
+                          // Second bullet point
+                          Row(
+                            children: [
+                              Icon(Icons.circle, size: 6, color: Color(0xFF267E1E)),
+                              SizedBox(width: 8),
+                              Text(
+                                'Meet in a public place.',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400, // Regular
+                                  color: Color(0xFF267E1E), // #267E1E
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4.58),
+                          // Third bullet point
+                          Row(
+                            children: [
+                              Icon(Icons.circle, size: 6, color: Color(0xFF267E1E)),
+                              SizedBox(width: 8),
+                              Text(
+                                'Report suspicious activity.',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400, // Regular
+                                  color: Color(0xFF267E1E), // #267E1E
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4.58),
+                          // Fourth bullet point
+                          Row(
+                            children: [
+                              Icon(Icons.circle, size: 6, color: Color(0xFF267E1E)),
+                              SizedBox(width: 8),
+                              Text(
+                                'Trust your instincts.',
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400, // Regular
+                                  color: Color(0xFF267E1E), // #267E1E
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      // Padding from the bullets text
+                      SizedBox(height: 35.11),
+// "Related ads" text
+                      Row(
+                        children: [
+                          Text(
+                            'Related ads',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold, // Bold
+                              color: Colors.black, // #000000
+                            ),
+                          ),
+                        ],
+                      ),
+// Padding from the "Related ads" text
+                      SizedBox(height: 9),
+
+// Row containing two AdsTemplate widgets with padding between them
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // First AdsTemplate widget
+                          Expanded(
+                            child: adsTemplate(),
+                          ),
+                          SizedBox(width: 9.39), // Padding between the two columns
+                          // Second AdsTemplate widget
+                          Expanded(
+                            child: adsTemplate(),
+                          ),
+                        ],
+                      ),
+
+                      // Row with top and bottom padding, and spacing between columns
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30, bottom: 35),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center, // Center the row items
+                          children: [
+                            // First column with message icon
+                            Container(
+                              width: 56,
+                              height: 43,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF31EE21).withOpacity(0.16),
+                                borderRadius: BorderRadius.circular(9),
+                              ),
+                              child: Icon(
+                                Icons.message,
+                                color: Color(0xFF267E1E),
+                              ),
+                            ),
+                            SizedBox(width: 44.96), // Padding between the first and second column
+
+                            // Second column with call icon
+                            Container(
+                              width: 56,
+                              height: 43,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF31EE21).withOpacity(0.16),
+                                borderRadius: BorderRadius.circular(9),
+                              ),
+                              child: Icon(
+                                Icons.call,
+                                color: Color(0xFF267E1E),
+                              ),
+                            ),
+                            SizedBox(width: 44.96), // Padding between the second and third column
+
+                            // Third column with message icon
+                            Container(
+                              width: 56,
+                              height: 43,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF31EE21).withOpacity(0.16),
+                                borderRadius: BorderRadius.circular(9),
+                              ),
+                              child: Icon(
+                                Icons.message,
+                                color: Color(0xFF267E1E),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+
+
+
                     ],
                   ),
                 ),
