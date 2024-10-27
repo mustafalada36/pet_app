@@ -156,6 +156,8 @@ class CustomScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      // Other descriptive texts (same as before)
+                      // ...
                       // The following descriptive texts without extra spacing
                       Row(
                         children: [
@@ -236,7 +238,7 @@ class CustomScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              ' Attractive Blue Eyes',
+                              'Attractive Blue Eyes',
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontSize: 12,
@@ -247,7 +249,424 @@ class CustomScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // Add more rows as needed for remaining texts
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Very Playful',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Very Cute Face Female',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Looking for a new home.',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Girls or Lady New Owner will be Preferred. ',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Selling due transfer. ',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Her Teenage pic is also Attached.',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Both friends cats for Sale. ',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Who will buy both will be Discounted Inshallah',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Avoid Bogus Offers',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'No Thirds Parties or Dealers',
+                              style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400, // Regular
+                                color: Colors.black, // #000000
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // Row with two columns for Age and Weight
+                      SizedBox(height: 20), // Add some space
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // First container (Age)
+                          Container(
+                            width: 144,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                // Icon column
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.pets,
+                                    size: 26,
+                                    color: Color(0xFF267E1E), // Dark green icon
+                                  ),
+                                ),
+                                // Text columns
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Age',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF267E1E), // Dark green
+                                      ),
+                                    ),
+                                    Text(
+                                      '8 months',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF101113), // Darker grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          // Second container (for other info like weight if needed)
+                          Container(
+                            width: 144,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                // Icon column
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.scale, // Another example icon
+                                    size: 26,
+                                    color: Color(0xFF267E1E), // Dark green icon
+                                  ),
+                                ),
+                                // Text columns
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Weight',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF267E1E), // Dark green
+                                      ),
+                                    ),
+                                    Text(
+                                      '4.5 kg',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF101113), // Darker grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 23), // Add some space
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // First container (Age)
+                          Container(
+                            width: 144,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                // Icon column
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.pets,
+                                    size: 26,
+                                    color: Color(0xFF267E1E), // Dark green icon
+                                  ),
+                                ),
+                                // Text columns
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Age',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF267E1E), // Dark green
+                                      ),
+                                    ),
+                                    Text(
+                                      '8 months',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF101113), // Darker grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          // Second container (for other info like weight if needed)
+                          Container(
+                            width: 144,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                // Icon column
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.scale, // Another example icon
+                                    size: 26,
+                                    color: Color(0xFF267E1E), // Dark green icon
+                                  ),
+                                ),
+                                // Text columns
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Weight',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF267E1E), // Dark green
+                                      ),
+                                    ),
+                                    Text(
+                                      '4.5 kg',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF101113), // Darker grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      // Row with one centered container below the previous two containers
+                      SizedBox(height: 20), // Add some space
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center, // Center this container
+                        children: [
+                          Container(
+                            width: 144,
+                            height: 56,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity green
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Row(
+                              children: [
+                                // Icon column
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.info, // Example icon
+                                    size: 26,
+                                    color: Color(0xFF267E1E), // Dark green icon
+                                  ),
+                                ),
+                                // Text columns
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Info',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF267E1E), // Dark green
+                                      ),
+                                    ),
+                                    Text(
+                                      'Details here',
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500, // Medium
+                                        color: Color(0xFF101113), // Darker grey
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
                     ],
                   ),
                 ),
