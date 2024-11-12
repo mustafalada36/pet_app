@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
+=======
+import 'package:pet_app/constants.dart';
+>>>>>>> Stashed changes
 
 class buyPet extends StatelessWidget {
   @override
@@ -656,7 +660,7 @@ class buyPet extends StatelessWidget {
                             width: 144,
                             height: 56,
                             decoration: BoxDecoration(
-                              color: Color(0xFF31EE21).withOpacity(0.16),
+                              color: secondaryColor,
                               // 16% opacity green
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -705,6 +709,7 @@ class buyPet extends StatelessWidget {
                           ),
                         ],
                       ),
+<<<<<<< Updated upstream
                       // Container with dimensions to fit the screen width and fixed height
                       SizedBox(height: 20),
                       Container(
@@ -906,6 +911,10 @@ class buyPet extends StatelessWidget {
 
 
                     ],
+=======
+                      SizedBox(height: 20),
+                    ], // Main Clumn --------------------------------
+>>>>>>> Stashed changes
                   ),
                 ),
               ),
