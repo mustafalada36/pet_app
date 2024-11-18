@@ -6,22 +6,22 @@ import 'chatsScreen.dart';
 import 'homeScreen.dart';
 import 'myAds.dart';
 
-class ProfileScreen extends StatefulWidget {
+class profileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  final Color primaryColor = Color(0xFF267E1E);
-  final Color containerColor = Color(0xFFD9D9D9);
+class _ProfileScreenState extends State<profileScreen> {
+  final Color primaryColor = const Color(0xFF267E1E);
+  final Color containerColor = const Color(0xFFD9D9D9);
 
   int _currentIndex = 4;
   final List<Widget> _pages = [
-    Center(child: Text('Home Screen')),
-    Center(child: Text('Chat Screen')),
-    Center(child: Text('Post Ad Screen')),
-    Center(child: Text('My Ads Screen')),
-    Center(child: Text('Profile Screen')),
+    const Center(child: Text('Home Screen')),
+    const Center(child: Text('Chat Screen')),
+    const Center(child: Text('Post Ad Screen')),
+    const Center(child: Text('My Ads Screen')),
+    const Center(child: Text('Profile Screen')),
   ];
 
   void _onItemTapped(int index) {
@@ -32,32 +32,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // Here you can define the action when an item is tapped
     switch (index) {
       case 0:
-        print("Home tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => homeScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const homeScreen()));
         break;
       case 1:
-        print("Chat tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ChatsScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ChatsScreen()));
         break;
       case 2:
-        print("Post Ad tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => adDetails()));
 
       case 3:
-        print("My Ads tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => myAds()));
-        
+
       case 4:
-        print("Profile tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => ProfileScreen()));
+            MaterialPageRoute(builder: (context) => profileScreen()));
         break;
       default:
-        print("Unknown tab");
     }
   }
 
@@ -88,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 // Profile Info (Aligned like Favorites & Saved searches)
                 Expanded(
                   child: Column(
@@ -103,10 +97,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           fontSize: 18,
                         ),
                       ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       // "View and edit profile" button
                       TextButton(
                         onPressed: () {},
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                            EdgeInsets.zero, // Remove padding for alignment
+                          ),
+                          minimumSize: MaterialStateProperty.all(
+                              const Size(0, 0)), // Min size for alignment
+                        ),
                         child: Text(
                           'View and edit profile',
                           style: TextStyle(
@@ -116,20 +117,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fontSize: 14,
                           ),
                         ),
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.zero, // Remove padding for alignment
-                          ),
-                          minimumSize: MaterialStateProperty.all(
-                              Size(0, 0)), // Min size for alignment
-                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 41), // Spacing between rows
+            const SizedBox(height: 41), // Spacing between rows
             // First Row: Favorites & Saved Searches
             _buildProfileRow(
               icon: Icons.favorite_border,
@@ -137,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'All of your favorite ads & saved filters',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 41),
+            const SizedBox(height: 41),
             // Second Row: Recently Viewed
             _buildProfileRow(
               icon: Icons.history,
@@ -145,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'Check the ads you viewed recently',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 41),
+            const SizedBox(height: 41),
             // Third Row: Notifications
             _buildProfileRow(
               icon: Icons.notifications_none,
@@ -153,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitle: 'Manage your notifications',
             ),
             Divider(color: primaryColor),
-            SizedBox(height: 41),
+            const SizedBox(height: 41),
             // Fourth Row: Settings
             _buildProfileRow(
               icon: Icons.settings_outlined,
@@ -166,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
-        items: <Widget>[
+        items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
           Icon(Icons.chat, size: 30, color: Colors.white),
           Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
@@ -178,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         buttonBackgroundColor: Colors.green.shade700,
         height: 60,
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 600),
         index: _currentIndex,
       ),
     );
@@ -198,7 +192,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: primaryColor,
           size: 28,
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         // Text Section
         Expanded(
           child: Column(
@@ -213,7 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                 ),
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               // Subtitle
               Text(
                 subtitle,

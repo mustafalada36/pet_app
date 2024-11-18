@@ -20,11 +20,11 @@ class _myCartState extends State<myCart> {
         backgroundColor: secondaryColor,
         leading: IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "My Cart",
           style: TextStyle(
               fontWeight: FontWeight.w900, fontSize: 25, color: primaryColor),
@@ -33,7 +33,7 @@ class _myCartState extends State<myCart> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Stack(children: [
@@ -56,10 +56,9 @@ class _myCartState extends State<myCart> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 20),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20),
+                          const SizedBox(height: 20),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               "Tuna",
                               style: TextStyle(
@@ -68,9 +67,8 @@ class _myCartState extends State<myCart> {
                                   color: primaryColor),
                             ),
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
                               "  Rs 1,500",
                               style: TextStyle(
@@ -79,7 +77,7 @@ class _myCartState extends State<myCart> {
                                   color: primaryColor),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20),
@@ -90,7 +88,7 @@ class _myCartState extends State<myCart> {
                                   backgroundColor: primaryColor,
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
-                                    icon: Text(
+                                    icon: const Text(
                                       "-",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -110,7 +108,7 @@ class _myCartState extends State<myCart> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "$quantity",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25,
                                         color: primaryColor),
@@ -121,7 +119,7 @@ class _myCartState extends State<myCart> {
                                   backgroundColor: primaryColor,
                                   child: IconButton(
                                     padding: EdgeInsets.zero,
-                                    icon: Text(
+                                    icon: const Text(
                                       "+",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -143,7 +141,7 @@ class _myCartState extends State<myCart> {
                     ],
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   right: 10,
                   top: 10,
                   child: CircleAvatar(
@@ -160,7 +158,7 @@ class _myCartState extends State<myCart> {
                 ),
               ]),
             ),
-            SizedBox(height: 180),
+            const SizedBox(height: 180),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               width: double.infinity,

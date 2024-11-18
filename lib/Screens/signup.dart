@@ -188,7 +188,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => loginScreen()),
                       );
                     },
                     // style: ButtonStyle(

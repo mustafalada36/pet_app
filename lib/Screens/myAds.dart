@@ -17,11 +17,11 @@ class myAds extends StatefulWidget {
 class _myAdsState extends State<myAds> {
   int _currentIndex = 3;
   final List<Widget> _pages = [
-    Center(child: Text('Home Screen')),
-    Center(child: Text('Chat Screen')),
-    Center(child: Text('Post Ad Screen')),
-    Center(child: Text('My Ads Screen')),
-    Center(child: Text('Profile Screen')),
+    const Center(child: Text('Home Screen')),
+    const Center(child: Text('Chat Screen')),
+    const Center(child: Text('Post Ad Screen')),
+    const Center(child: Text('My Ads Screen')),
+    const Center(child: Text('Profile Screen')),
   ];
 
   void _onItemTapped(int index) {
@@ -33,13 +33,13 @@ class _myAdsState extends State<myAds> {
     switch (index) {
       case 0:
         print("Home tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => homeScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const homeScreen()));
         break;
       case 1:
         print("Chat tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ChatsScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ChatsScreen()));
         break;
       case 2:
         print("Post Ad tapped");
@@ -54,7 +54,7 @@ class _myAdsState extends State<myAds> {
       case 4:
         print("Profile tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => ProfileScreen()));
+            MaterialPageRoute(builder: (context) => profileScreen()));
         break;
       default:
         print("Unknown tab");
@@ -67,13 +67,13 @@ class _myAdsState extends State<myAds> {
       appBar: AppBar(
           centerTitle: true,
           leading: IconButton(
-            color: Color(0xFF267E1E),
+            color: const Color(0xFF267E1E),
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
           ),
-          title: Text(
+          title: const Text(
             "My Ads",
             style: TextStyle(
                 fontSize: 25,
@@ -93,8 +93,8 @@ class _myAdsState extends State<myAds> {
                 textClr: Colors.white,
                 image: Image.asset("assets/images/activeSymbol.png"),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: CircleAvatar(
                   backgroundColor: primaryColor,
                   child: Text(
@@ -108,25 +108,25 @@ class _myAdsState extends State<myAds> {
               ),
             ],
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           adsCard(), // From Favourites Screen
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         items: <Widget>[
-          Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.chat, size: 30, color: Colors.white),
-          Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
-          Icon(Icons.list_alt, size: 30, color: Colors.white),
-          Icon(Icons.person, size: 30, color: Colors.white),
+          const Icon(Icons.home, size: 30, color: Colors.white),
+          const Icon(Icons.chat, size: 30, color: Colors.white),
+          const Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
+          const Icon(Icons.list_alt, size: 30, color: Colors.white),
+          const Icon(Icons.person, size: 30, color: Colors.white),
         ],
         onTap: _onItemTapped,
         color: Colors.green,
         buttonBackgroundColor: Colors.green.shade700,
         height: 60,
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 600),
         index: _currentIndex,
       ),
     );

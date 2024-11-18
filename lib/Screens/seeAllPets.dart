@@ -17,7 +17,7 @@ class seeAllPets extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Pets',
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
@@ -25,20 +25,20 @@ class seeAllPets extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
       ),
       body: Column(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               topContainer(
@@ -56,13 +56,13 @@ class seeAllPets extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text.rich(
+                  const Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
@@ -77,21 +77,21 @@ class seeAllPets extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        Text("Sort By",
+                        const Text("Sort By",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16)),
                         Transform(
                           alignment: Alignment.center,
                           transform: Matrix4.rotationZ(1.5708),
                           // Rotate around Y-axis by 180 degrees (π radians)
-                          child: Icon(Icons.compare_arrows),
+                          child: const Icon(Icons.compare_arrows),
                         )
                       ],
                     ),
                   )
                 ],
               )),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -100,14 +100,14 @@ class seeAllPets extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [adsTemplate(), adsTemplate()],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [adsTemplate(), adsTemplate()],
                   ),
                 ],
               )),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
         ],
       ),
     );

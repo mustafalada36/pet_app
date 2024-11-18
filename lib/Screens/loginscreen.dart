@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_app/Screens/otpscreen.dart'; // Import the google_fonts package
 
-class LoginScreen extends StatelessWidget {
+class loginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,12 +13,12 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Center(
                   child: Image.asset('assets/images/loginimg.png',
                       width: 360.0, height: 214.0),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextField(
                   decoration: InputDecoration(
                     labelText: 'Email',
@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                       fontSize: 15,
                       color: Colors.black,
                     ),
-                    border: UnderlineInputBorder(
+                    border: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black,
                       ),
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextField(
                   obscureText: true,
                   decoration: InputDecoration(
@@ -49,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                       fontSize: 15,
                       color: Colors.black,
                     ),
-                    border: UnderlineInputBorder(
+                    border: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black,
                       ),
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -78,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     Expanded(
@@ -112,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
@@ -124,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 70),
+                const SizedBox(height: 70),
                 Row(
                   children: [
                     Expanded(
@@ -134,7 +134,7 @@ class LoginScreen extends StatelessWidget {
                           width: 17,
                           height: 17,
                         ),
-                        label: Text(
+                        label: const Text(
                           'Continue with Google',
                           style: TextStyle(
                             fontSize: 14.0,
@@ -147,7 +147,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           padding: WidgetStateProperty.all<EdgeInsets>(
-                            EdgeInsets.symmetric(
+                            const EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 20),
                           ),
                         ),
@@ -155,7 +155,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   children: [
                     Expanded(
@@ -165,7 +165,7 @@ class LoginScreen extends StatelessWidget {
                           width: 17,
                           height: 17,
                         ),
-                        label: Text(
+                        label: const Text(
                           'Continue with Facebook',
                           style: TextStyle(
                             fontSize: 14.0,
@@ -178,9 +178,9 @@ class LoginScreen extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor: WidgetStateProperty.all<Color>(
-                              Color(0xFF3B5998)),
+                              const Color(0xFF3B5998)),
                           padding: WidgetStateProperty.all<EdgeInsets>(
-                            EdgeInsets.symmetric(
+                            const EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 10),
                           ),
                         ),
@@ -188,7 +188,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ),

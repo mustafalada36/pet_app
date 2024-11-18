@@ -19,11 +19,11 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    Center(child: Text('Home Screen')),
-    Center(child: Text('Chat Screen')),
-    Center(child: Text('Post Ad Screen')),
-    Center(child: Text('My Ads Screen')),
-    Center(child: Text('Profile Screen')),
+    const Center(child: Text('Home Screen')),
+    const Center(child: Text('Chat Screen')),
+    const Center(child: Text('Post Ad Screen')),
+    const Center(child: Text('My Ads Screen')),
+    const Center(child: Text('Profile Screen')),
   ];
 
   void _onItemTapped(int index) {
@@ -35,13 +35,13 @@ class _homeScreenState extends State<homeScreen> {
     switch (index) {
       case 0:
         print("Home tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => homeScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const homeScreen()));
         break;
       case 1:
         print("Chat tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ChatsScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const ChatsScreen()));
         break;
       case 2:
         print("Post Ad tapped");
@@ -52,11 +52,11 @@ class _homeScreenState extends State<homeScreen> {
         print("My Ads tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => myAds()));
-        
+
       case 4:
         print("Profile tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => ProfileScreen()));
+            MaterialPageRoute(builder: (context) => profileScreen()));
         break;
       default:
         print("Unknown tab");
@@ -71,20 +71,20 @@ class _homeScreenState extends State<homeScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.shopping_cart, color: Color(0xff267E1E)),
+          icon: const Icon(Icons.shopping_cart, color: Color(0xff267E1E)),
           onPressed: () {
             // Add action for the shopping cart icon
           },
         ),
-        title: Center(
-          child: Text(
+        title: const Center(
+          child: const Text(
             'Location',
             style: TextStyle(color: Colors.black),
           ),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.person_rounded, color: Color(0xff267E1E)),
+            icon: const Icon(Icons.person_rounded, color: Color(0xff267E1E)),
             onPressed: () {
               // Add action for the profile icon
             },
@@ -100,19 +100,19 @@ class _homeScreenState extends State<homeScreen> {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Search Pets',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               height: 200,
               width: 400,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                color: Color(0xff267E1E),
+                color: const Color(0xff267E1E),
               ),
               child: Stack(children: [
                 // FEATURED CONTAINER =====================================
@@ -121,11 +121,11 @@ class _homeScreenState extends State<homeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Find the best pet',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Text(
                             ' in your Location ',
@@ -144,11 +144,12 @@ class _homeScreenState extends State<homeScreen> {
                       ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            minimumSize: Size.square(12), // Width and height
-                            padding: EdgeInsets.symmetric(
+                            minimumSize: const Size.square(12),
+                            // Width and height
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 13, vertical: 7),
                           ),
-                          child: Text(
+                          child: const Text(
                             'View All',
                             style: TextStyle(fontSize: 10),
                           ))
@@ -168,7 +169,7 @@ class _homeScreenState extends State<homeScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -195,14 +196,14 @@ class _homeScreenState extends State<homeScreen> {
                               width: 60,
                               height: 60,
                             ),
-                            Text(
+                            const Text(
                               'Buy & Sell \n     ',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -213,14 +214,14 @@ class _homeScreenState extends State<homeScreen> {
                               width: 60,
                               height: 60,
                             ),
-                            Text(
+                            const Text(
                               'Pet Food \n     ',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -231,14 +232,14 @@ class _homeScreenState extends State<homeScreen> {
                               width: 60,
                               height: 60,
                             ),
-                            Text(
+                            const Text(
                               '         Pet\n Maintainance',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -249,14 +250,14 @@ class _homeScreenState extends State<homeScreen> {
                               width: 60,
                               height: 60,
                             ),
-                            Text(
+                            const Text(
                               '      Pet\n Adoption',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -267,7 +268,7 @@ class _homeScreenState extends State<homeScreen> {
                               width: 60,
                               height: 60,
                             ),
-                            Text(
+                            const Text(
                               '   Medical\n Consultation',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
@@ -280,7 +281,7 @@ class _homeScreenState extends State<homeScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: _pages[_currentIndex],
             ),
@@ -291,18 +292,18 @@ class _homeScreenState extends State<homeScreen> {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         items: <Widget>[
-          Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.chat, size: 30, color: Colors.white),
-          Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
-          Icon(Icons.list_alt, size: 30, color: Colors.white),
-          Icon(Icons.person, size: 30, color: Colors.white),
+          const Icon(Icons.home, size: 30, color: Colors.white),
+          const Icon(Icons.chat, size: 30, color: Colors.white),
+          const Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
+          const Icon(Icons.list_alt, size: 30, color: Colors.white),
+          const Icon(Icons.person, size: 30, color: Colors.white),
         ],
         onTap: _onItemTapped,
         color: Colors.green,
         buttonBackgroundColor: Colors.green.shade700,
         height: 60,
         animationCurve: Curves.easeInOut,
-        animationDuration: Duration(milliseconds: 600),
+        animationDuration: const Duration(milliseconds: 600),
         index: _currentIndex,
       ),
     );

@@ -13,7 +13,7 @@ class _favouritesState extends State<favourites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Favourites & Saved Searches",
           style: TextStyle(
               fontWeight: FontWeight.w900, fontSize: 22, color: primaryColor),
@@ -22,7 +22,7 @@ class _favouritesState extends State<favourites> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
@@ -43,7 +43,7 @@ class _favouritesState extends State<favourites> {
                                 toggle = !toggle;
                               });
                             },
-                            child: Text(
+                            child: const Text(
                               "Favourites",
                               style: TextStyle(
                                   fontSize: 20,
@@ -53,7 +53,7 @@ class _favouritesState extends State<favourites> {
                           ),
                         ),
                         Container(
-                          color: Color(0xFF267E1E),
+                          color: const Color(0xFF267E1E),
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width * 0.5,
                             height: 3,
@@ -131,7 +131,7 @@ class _favouritesState extends State<favourites> {
                                 toggle = !toggle;
                               });
                             },
-                            child: Text(
+                            child: const Text(
                               "Saved Searches",
                               style: TextStyle(
                                   fontSize: 20,
@@ -151,7 +151,7 @@ class _favouritesState extends State<favourites> {
                     ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           adsCard()
         ],
       ),
@@ -176,7 +176,7 @@ class adsCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Image.asset("assets/images/rabbitss.png"),
               ),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 25),
@@ -188,7 +188,7 @@ class adsCard extends StatelessWidget {
                         fontWeight: FontWeight.w700),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 5),
+                    padding: EdgeInsets.only(left: 5, top: 5),
                     child: Text(
                       "Rabbit Breed",
                       style: TextStyle(
@@ -198,7 +198,7 @@ class adsCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 5),
+                    padding: EdgeInsets.only(left: 5, top: 5),
                     child: Text(
                       "Johar Town",
                       style: TextStyle(
@@ -208,7 +208,7 @@ class adsCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 5),
+                    padding: EdgeInsets.only(left: 5, top: 5),
                     child: Text(
                       "PKR 20,000",
                       style: TextStyle(

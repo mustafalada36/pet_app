@@ -19,11 +19,11 @@ class _locationState extends State<location> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "Location",
           style: TextStyle(
               fontWeight: FontWeight.w700, fontSize: 25, color: primaryColor),
@@ -31,19 +31,19 @@ class _locationState extends State<location> {
       ),
       body: Column(children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           // Search Container --------------------------------------------
           width: double.infinity,
           height: 80,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: secondaryColor,
           ),
           child: Row(
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     // White background for search container
@@ -51,14 +51,14 @@ class _locationState extends State<location> {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.search, color: primaryColor),
+                      const Icon(Icons.search, color: primaryColor),
                       // Search Icon
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       // Space between icon and text
                       Expanded(
                         child: TextField(
                           controller: searchController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Search ', //$city
                             border: InputBorder.none,
                           ),
@@ -88,7 +88,7 @@ class _locationState extends State<location> {
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           width: double.infinity,
           height: 50,
           color: Colors.white,
@@ -96,11 +96,11 @@ class _locationState extends State<location> {
             children: [
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.location_searching,
                     color: Colors.grey,
                   )),
-              Text(
+              const Text(
                 "Use Current Location",
                 style: TextStyle(
                     fontSize: 20,
@@ -111,12 +111,12 @@ class _locationState extends State<location> {
           ),
         ),
         Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             width: double.infinity,
             height: 50,
             color: secondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 "Recent",
                 style: TextStyle(
@@ -130,14 +130,14 @@ class _locationState extends State<location> {
             ? Column(
                 children: recentSearches.map((search) {
                   return Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     width: double.infinity,
                     color: Colors.white,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         search,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             color: primaryColor,
                             fontWeight: FontWeight.w500),
@@ -146,14 +146,15 @@ class _locationState extends State<location> {
                   );
                 }).toList(),
               )
-            : SizedBox.shrink(), // Hide when there are no recent searches
+            : const SizedBox.shrink(),
+        // Hide when there are no recent searches
         Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             width: double.infinity,
             height: 50,
             color: secondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 "Choose Region",
                 style: TextStyle(
@@ -163,10 +164,10 @@ class _locationState extends State<location> {
               ),
             )),
         Container(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             width: double.infinity,
             color: Colors.white,
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 5),
@@ -210,7 +211,7 @@ class _locationState extends State<location> {
                       fontWeight: FontWeight.w500),
                 ),
                 SizedBox(height: 5),
-                Text(
+                const Text(
                   "Islamabad, Pakistan",
                   style: TextStyle(
                       fontSize: 20,

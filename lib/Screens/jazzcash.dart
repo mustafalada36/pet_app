@@ -21,11 +21,11 @@ class _jazzcashState extends State<jazzcash> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "Jazzcash",
           style: TextStyle(
               fontWeight: FontWeight.w900, fontSize: 25, color: primaryColor),
@@ -35,7 +35,7 @@ class _jazzcashState extends State<jazzcash> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -59,7 +59,7 @@ class _jazzcashState extends State<jazzcash> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -67,11 +67,11 @@ class _jazzcashState extends State<jazzcash> {
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                child: Column(
+                child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, left: 20),
+                      padding: EdgeInsets.only(top: 10, left: 20),
                       child: Text(
                         "How to Approve?",
                         style: TextStyle(
@@ -82,15 +82,16 @@ class _jazzcashState extends State<jazzcash> {
                     ),
                     SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: 20),
                       child: Text(
                         "Login to your Jazzcash account and approve payment request",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text.rich(
                         TextSpan(
                           children: [
@@ -111,7 +112,7 @@ class _jazzcashState extends State<jazzcash> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: customTextField(
@@ -122,7 +123,7 @@ class _jazzcashState extends State<jazzcash> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
                 children: [
                   Checkbox(
@@ -132,14 +133,14 @@ class _jazzcashState extends State<jazzcash> {
                           isChecked = value ?? false;
                         });
                       }),
-                  Text(
+                  const Text(
                     'Save your Jazzcash account for future use.',
                     style: TextStyle(color: Colors.grey),
                   )
                 ],
               ),
             ),
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -150,11 +151,11 @@ class _jazzcashState extends State<jazzcash> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Subtotal",
@@ -165,7 +166,7 @@ class _jazzcashState extends State<jazzcash> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,000",
@@ -177,12 +178,12 @@ class _jazzcashState extends State<jazzcash> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
+                    const SizedBox(height: 10),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Total Amount",
@@ -193,7 +194,7 @@ class _jazzcashState extends State<jazzcash> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,099",
@@ -205,7 +206,7 @@ class _jazzcashState extends State<jazzcash> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       width: double.infinity,
@@ -237,12 +238,12 @@ class _jazzcashState extends State<jazzcash> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ], //main col======================================================
         ),
       ),

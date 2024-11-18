@@ -51,11 +51,11 @@ class _ChatsScreenState extends State<ChatsScreen> {
         print("My Ads tapped");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => myAds()));
-        
+
       case 4:
         print("Profile tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => ProfileScreen()));
+            MaterialPageRoute(builder: (context) => profileScreen()));
         break;
       default:
         print("Unknown tab");
