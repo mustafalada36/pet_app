@@ -16,11 +16,11 @@ class creditDebit extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "Credit/Debit Card",
           style: TextStyle(
               fontWeight: FontWeight.w900, fontSize: 25, color: primaryColor),
@@ -30,7 +30,7 @@ class creditDebit extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -58,7 +58,7 @@ class creditDebit extends StatelessWidget {
                 useDefaultDecoration: false,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: customTextField(
@@ -68,7 +68,7 @@ class creditDebit extends StatelessWidget {
                 useDefaultDecoration: false,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: customTextField(
@@ -78,7 +78,7 @@ class creditDebit extends StatelessWidget {
                 useDefaultDecoration: false,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: customTextField(
@@ -88,10 +88,9 @@ class creditDebit extends StatelessWidget {
                 useDefaultDecoration: false,
               ),
             ),
-            SizedBox(height: 10),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
                 "Save Card",
                 style: TextStyle(
@@ -100,7 +99,7 @@ class creditDebit extends StatelessWidget {
                     color: Colors.black),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Text(
@@ -111,7 +110,7 @@ class creditDebit extends StatelessWidget {
                 "We will save this card for your convenience. If required, you can remove the card in the Payment Options section in the Account menu.",
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -122,11 +121,11 @@ class creditDebit extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Subtotal",
@@ -137,7 +136,7 @@ class creditDebit extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,000",
@@ -149,12 +148,12 @@ class creditDebit extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
+                    const SizedBox(height: 10),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Total Amount",
@@ -165,7 +164,7 @@ class creditDebit extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,099",
@@ -177,7 +176,7 @@ class creditDebit extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       width: double.infinity,
@@ -209,12 +208,12 @@ class creditDebit extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

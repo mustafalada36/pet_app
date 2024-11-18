@@ -13,11 +13,11 @@ class cashonDelivery extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "Cash on Delivery",
           style: TextStyle(
               fontWeight: FontWeight.w900, fontSize: 25, color: primaryColor),
@@ -37,7 +37,7 @@ class cashonDelivery extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       children: [
                         Padding(
@@ -62,12 +62,12 @@ class cashonDelivery extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 350),
+            const SizedBox(height: 350),
             Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -78,11 +78,11 @@ class cashonDelivery extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Subtotal",
@@ -93,7 +93,7 @@ class cashonDelivery extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,000",
@@ -105,12 +105,12 @@ class cashonDelivery extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
+                    const SizedBox(height: 10),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Cash Payment Fee",
@@ -121,7 +121,7 @@ class cashonDelivery extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 199",
@@ -133,12 +133,12 @@ class cashonDelivery extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Row(
+                    const SizedBox(height: 10),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Total Amount",
@@ -149,7 +149,7 @@ class cashonDelivery extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
                             "Rs. 2,199",
@@ -161,7 +161,7 @@ class cashonDelivery extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       width: double.infinity,
@@ -194,7 +194,7 @@ class cashonDelivery extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

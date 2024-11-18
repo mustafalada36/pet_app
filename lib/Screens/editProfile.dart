@@ -14,14 +14,14 @@ class editProfile extends StatelessWidget {
         backgroundColor: secondaryColor,
         leading: IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,
             )),
         actions: [
           TextButton(
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 "Save",
                 style: TextStyle(color: primaryColor, fontSize: 18),
               )),
@@ -33,9 +33,9 @@ class editProfile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   "Basic Information",
                   style: TextStyle(
@@ -52,11 +52,11 @@ class editProfile extends StatelessWidget {
                     child: Container(
                       width: 100,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: secondaryColor,
                         shape: BoxShape.circle, // Circle shape
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.person,
                           color: primaryColor, // Primary color for the icon
@@ -70,7 +70,7 @@ class editProfile extends StatelessWidget {
                       children: [
                         textHeading(
                           text: "Enter Your Name",
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               color: primaryColor,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
@@ -85,10 +85,10 @@ class editProfile extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               textHeading(
                 text: "Something About You",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
@@ -101,10 +101,10 @@ class editProfile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               textHeading(
                 text: "Gender",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
@@ -123,7 +123,7 @@ class editProfile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             border:
                                 Border.all(color: primaryColor, width: 2)),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "Male",
                             style: TextStyle(
@@ -143,7 +143,7 @@ class editProfile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: primaryColor, width: 2),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Female",
                           // Hint text converted to display as regular text
@@ -163,7 +163,7 @@ class editProfile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: primaryColor, width: 2),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Other",
                           // Hint text converted to display as regular text
@@ -176,10 +176,10 @@ class editProfile extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               textHeading(
                 text: "Date of Birth",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
@@ -193,11 +193,11 @@ class editProfile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              SizedBox(height: 20),
-              lineWidget(),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const SizedBox(height: 20),
+              const lineWidget(),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   "Contact Information",
                   style: TextStyle(
@@ -206,10 +206,10 @@ class editProfile extends StatelessWidget {
                       color: Color(0xFF267E1E)),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               textHeading(
                 text: "Phone Number",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
@@ -223,9 +223,9 @@ class editProfile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
@@ -234,10 +234,10 @@ class editProfile extends StatelessWidget {
                   "This number will be used to contact, reminders,\nand other notifications.",
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               textHeading(
                 text: "Email",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
@@ -251,9 +251,9 @@ class editProfile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
@@ -262,9 +262,9 @@ class editProfile extends StatelessWidget {
                   "This email will be useful to keep in touch. We won't share your private email address with other PET APP users",
                 ),
               ),
-              SizedBox(height: 20),
-              lineWidget(),
-              SizedBox(height: 10),
+              const SizedBox(height: 20),
+              const lineWidget(),
+              const SizedBox(height: 10),
             ], //main col ===========================================================
           ),
         ),
