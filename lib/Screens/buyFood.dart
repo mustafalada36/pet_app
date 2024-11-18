@@ -40,17 +40,17 @@ class buyFood extends StatelessWidget {
                           Container(
                             width: 40,
                             height: 40,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xFF267E1E),
                               shape: BoxShape.circle,
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_back,
                               color: Color(0xFFF6FAFF),
                             ),
                           ),
                           // Heart and share icons
-                          Row(
+                          const Row(
                             children: [
                               Icon(
                                 Icons.favorite,
@@ -76,7 +76,7 @@ class buyFood extends StatelessWidget {
               left: 0,
               right: 0,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
@@ -101,7 +101,7 @@ class buyFood extends StatelessWidget {
                         // First Row: "British Shorthair" and "Rs/150,000"
                         SizedBox(height: 20),
                         // Adding some space from the top
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
@@ -140,12 +140,12 @@ class buyFood extends StatelessWidget {
                           ],
                         ),
                         // "About British Shorthair" text
-                        SizedBox(height: 14),
+                        const SizedBox(height: 14),
                         // Padding from top
                         Container(
                           width: double.infinity,
                           color: Colors.grey.shade300,
-                          child: Column(
+                          child: const Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(height: 10),
@@ -195,8 +195,8 @@ class buyFood extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           "Description",
                           style: TextStyle(
                             fontSize: 20,
@@ -204,7 +204,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // #000000
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Animal King - Best cat food for all ages',
                           style: TextStyle(
                             fontSize: 14,
@@ -212,8 +212,8 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           'Net Weight: 1KG',
                           style: TextStyle(
                             fontSize: 14,
@@ -221,7 +221,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Available at just Rs. 1600/-',
                           style: TextStyle(
                             fontSize: 14,
@@ -229,7 +229,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Cash on Delivery - Across Pakistan',
                           style: TextStyle(
                             fontSize: 14,
@@ -237,7 +237,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Free Delivery',
                           style: TextStyle(
                             fontSize: 14,
@@ -245,8 +245,8 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        SizedBox(height: 20),
-                        Text(
+                        const SizedBox(height: 20),
+                        const Text(
                           'Made from all Natural Ingredients ',
                           style: TextStyle(
                             fontSize: 14,
@@ -254,7 +254,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Rich in Protein and Nutrients',
                           style: TextStyle(
                             fontSize: 14,
@@ -262,7 +262,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Antioxident Formulation',
                           style: TextStyle(
                             fontSize: 14,
@@ -270,7 +270,7 @@ class buyFood extends StatelessWidget {
                             color: Colors.black, // 50% opacity
                           ),
                         ),
-                        SizedBox(height: 50),
+                        const SizedBox(height: 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
