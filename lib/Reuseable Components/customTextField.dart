@@ -17,7 +17,7 @@ class customTextField extends StatelessWidget {
     this.useDefaultDecoration = true,
     // Accept hintStyle as optional
   })  : hintStyle = hintStyle ??
-            TextStyle(
+            const TextStyle(
               // Set a default hintStyle if none is provided
               color: Colors.grey, // Default hint text color
               fontSize: 16, // Default hint text size
@@ -36,7 +36,7 @@ class customTextField extends StatelessWidget {
                   hintStyle: hintStyle,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: borderRadius,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color(0xFF267E1E), // Green border color
                       width: 2.0,
                     ),

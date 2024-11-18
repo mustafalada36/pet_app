@@ -9,8 +9,8 @@ class lineWidget extends StatelessWidget {
       //=====================================================  line
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-        color: Color(0xFF267E1E),
-        child: SizedBox(
+        color: const Color(0xFF267E1E),
+        child: const SizedBox(
           width: double.infinity,
           height: 1,
         ),

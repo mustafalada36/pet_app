@@ -19,16 +19,16 @@ class adsTemplate extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10, bottom: 0),
                 child: Image.asset("assets/images/rabbitss.png"),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 "Bella",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w700),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
+              const Padding(
+                padding: EdgeInsets.only(left: 5, top: 5),
                 child: Text(
                   "Rabbit Breed",
                   style: TextStyle(
@@ -37,8 +37,8 @@ class adsTemplate extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
+              const Padding(
+                padding: EdgeInsets.only(left: 5, top: 5),
                 child: Text(
                   "Johar Town",
                   style: TextStyle(
@@ -47,8 +47,8 @@ class adsTemplate extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
+              const Padding(
+                padding: EdgeInsets.only(left: 5, top: 5),
                 child: Text(
                   "PKR 20,000",
                   style: TextStyle(
@@ -57,7 +57,7 @@ class adsTemplate extends StatelessWidget {
                       fontWeight: FontWeight.w700),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         ),

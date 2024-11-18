@@ -6,7 +6,7 @@ class textHeading extends StatelessWidget {
 
   textHeading({required this.text, TextStyle? textStyle})
       : textStyle = textStyle ??
-            TextStyle(
+            const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 20,
                 color: Colors.black);
@@ -14,7 +14,7 @@ class textHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       alignment: Alignment.centerLeft,
       child: Text(
         text,

@@ -14,7 +14,7 @@ class customDropDownButton extends StatefulWidget {
     required this.dropdownItems, // List of items for the dropdown
     TextStyle? hintStyle, // Accept hintStyle as optional
   }) : hintStyle = hintStyle ??
-            TextStyle(
+            const TextStyle(
               color: Colors.grey, // Default hint text color
               fontSize: 16, // Default hint text size
             );
@@ -38,14 +38,14 @@ class _CustomDropDownButtonState extends State<customDropDownButton> {
           hintStyle: widget.hintStyle, // Set hint style
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
-            borderSide: BorderSide(
-              color: Color(0xFF267E1E), // Green border color
+            borderSide: const BorderSide(
+              color: const Color(0xFF267E1E), // Green border color
               width: 2.0,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Color(0xFF267E1E),
               width: 2.0,
             ),

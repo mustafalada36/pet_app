@@ -20,7 +20,7 @@ class secondaryButton extends StatelessWidget {
           );
         },
         style: ButtonStyle(
-          elevation: WidgetStatePropertyAll(0),
+          elevation: const WidgetStatePropertyAll(0),
           backgroundColor: WidgetStateProperty.all<Color>(secondaryColor),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -30,7 +30,7 @@ class secondaryButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w500,
             // medium weight
