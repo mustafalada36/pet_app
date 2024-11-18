@@ -13,11 +13,11 @@ class breeds extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new,
               color: primaryColor,
             )),
-        title: Text(
+        title: const Text(
           "All categories",
           style: TextStyle(
               fontWeight: FontWeight.w700, fontSize: 25, color: primaryColor),
@@ -25,9 +25,9 @@ class breeds extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             width: double.infinity,
             height: 120,
             child: Card(
@@ -42,17 +42,17 @@ class breeds extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset("assets/images/dog.png"),
                   ),
-                  Text(
+                  const Text(
                     "Dogs",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: primaryColor,
                         fontSize: 25),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_forward,
                         color: primaryColor,
                       ))
@@ -60,9 +60,9 @@ class breeds extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             width: double.infinity,
             height: 120,
             child: Card(
@@ -77,17 +77,17 @@ class breeds extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset("assets/images/cat.png"),
                   ),
-                  Text(
+                  const Text(
                     "Cats",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: primaryColor,
                         fontSize: 25),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_forward,
                         color: primaryColor,
                       ))
@@ -95,9 +95,9 @@ class breeds extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             width: double.infinity,
             height: 120,
             child: Card(
@@ -112,17 +112,17 @@ class breeds extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Image.asset("assets/images/rabbit.png"),
                   ),
-                  Text(
+                  const Text(
                     "Rabbits",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: primaryColor,
                         fontSize: 25),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_forward,
                         color: primaryColor,
                       ))
