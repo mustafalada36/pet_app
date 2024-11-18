@@ -27,11 +27,11 @@ class _adNewAddressState extends State<addNewAddress> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new,
                 color: primaryColor,
               )),
-          title: Text(
+          title: const Text(
             "Add New Address",
             style: TextStyle(
                 fontWeight: FontWeight.w900,
@@ -43,9 +43,9 @@ class _adNewAddressState extends State<addNewAddress> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 15),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
+              const SizedBox(height: 15),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
                   "Contact",
                   style: TextStyle(
@@ -84,8 +84,8 @@ class _adNewAddressState extends State<addNewAddress> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, left: 20),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10, left: 20),
                         child: Text(
                           "Delivery",
                           style: TextStyle(
@@ -94,17 +94,17 @@ class _adNewAddressState extends State<addNewAddress> {
                               color: Colors.black),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       customDropDownButton(
                           width: double.infinity,
                           height: 60,
                           hintText: "   Pakistan",
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               color: primaryColor),
-                          dropdownItems: ["Pakistan", "NA Right Now"]),
-                      SizedBox(height: 15),
+                          dropdownItems: const ["Pakistan", "NA Right Now"]),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -114,7 +114,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -124,7 +124,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -134,7 +134,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -144,7 +144,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -154,7 +154,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: customTextField(
@@ -165,7 +165,7 @@ class _adNewAddressState extends State<addNewAddress> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Row(
                           children: [
                             Checkbox(
@@ -175,12 +175,12 @@ class _adNewAddressState extends State<addNewAddress> {
                                     isChecked1 = value ?? false;
                                   });
                                 }),
-                            Text('Save this Information')
+                            const Text('Save this Information')
                           ],
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Row(
                           children: [
                             Checkbox(
@@ -190,23 +190,23 @@ class _adNewAddressState extends State<addNewAddress> {
                                     isChecked2 = value ?? false;
                                   });
                                 }),
-                            Text('Text me with news offers')
+                            const Text('Text me with news offers')
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
-                            color: Color(0x5e99f1f1),
+                            color: const Color(0x5e99f1f1),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Text(
                                   "Free Shipping Across \n Pakistan",
                                   style: TextStyle(
@@ -215,7 +215,7 @@ class _adNewAddressState extends State<addNewAddress> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Text(
                                   "Free",
                                   style: TextStyle(
@@ -233,19 +233,19 @@ class _adNewAddressState extends State<addNewAddress> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 color: secondaryColor,
                 elevation: 0,
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, left: 20),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10, left: 20),
                         child: Text(
                           "Payment",
                           style: TextStyle(
@@ -254,9 +254,9 @@ class _adNewAddressState extends State<addNewAddress> {
                               color: Colors.black),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, left: 20),
+                      const SizedBox(height: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10, left: 20),
                         child: Text(
                           "All transactions are secure and encrypted",
                           style: TextStyle(
@@ -265,7 +265,7 @@ class _adNewAddressState extends State<addNewAddress> {
                               color: Colors.grey),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: CustomRadioButton(
@@ -281,7 +281,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           text: "Cash on Delivery (COD)",
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: CustomRadioButton(
@@ -295,19 +295,19 @@ class _adNewAddressState extends State<addNewAddress> {
                             });
                           },
                           text: "Debit - Credit Card ",
-                          imagePaths: [
+                          imagePaths: const [
                             "assets/images/jazzcash.png",
                             "assets/images/masterCard.png",
                             "assets/images/visa.png"
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
@@ -318,8 +318,8 @@ class _adNewAddressState extends State<addNewAddress> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10, left: 20),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10, left: 20),
                         child: Text(
                           "Billing Address",
                           style: TextStyle(
@@ -328,7 +328,7 @@ class _adNewAddressState extends State<addNewAddress> {
                               color: Colors.black),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: CustomRadioButton(
@@ -345,7 +345,7 @@ class _adNewAddressState extends State<addNewAddress> {
                           text: "Same as Shipping Address",
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: CustomRadioButton(
@@ -364,7 +364,7 @@ class _adNewAddressState extends State<addNewAddress> {
                         ),
                       ),
                       // Conditionally show the TextField based on useDifferentAddress
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       if (useDifferentAddress)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -375,14 +375,14 @@ class _adNewAddressState extends State<addNewAddress> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(top: 10, left: 20),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.only(top: 10, left: 20),
                 child: Text(
                   "Order Summary",
                   style: TextStyle(
@@ -391,7 +391,7 @@ class _adNewAddressState extends State<addNewAddress> {
                       color: Colors.black),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Card(
@@ -420,7 +420,7 @@ class _adNewAddressState extends State<addNewAddress> {
                                         "assets/images/pet_food1.png")),
                               ),
                             ),
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(height: 5),
@@ -432,8 +432,7 @@ class _adNewAddressState extends State<addNewAddress> {
                                       fontWeight: FontWeight.w700),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, top: 5),
+                                  padding: EdgeInsets.only(left: 5, top: 5),
                                   child: Text(
                                     "Cat Food",
                                     style: TextStyle(
@@ -443,8 +442,7 @@ class _adNewAddressState extends State<addNewAddress> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, top: 5),
+                                  padding: EdgeInsets.only(left: 5, top: 5),
                                   child: Text(
                                     "Johar Town",
                                     style: TextStyle(
@@ -454,8 +452,7 @@ class _adNewAddressState extends State<addNewAddress> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, top: 5),
+                                  padding: EdgeInsets.only(left: 5, top: 5),
                                   child: Text(
                                     "PKR 2,000",
                                     style: TextStyle(
@@ -471,9 +468,9 @@ class _adNewAddressState extends State<addNewAddress> {
                       ),
 
                       // Conditionally show the TextField based on useDifferentAddress
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      const SizedBox(height: 10),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -495,8 +492,8 @@ class _adNewAddressState extends State<addNewAddress> {
                         ),
                       ),
 
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -517,8 +514,8 @@ class _adNewAddressState extends State<addNewAddress> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -540,12 +537,12 @@ class _adNewAddressState extends State<addNewAddress> {
                         ),
                       ),
 
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 180),
+              const SizedBox(height: 180),
             ], //   main Col =========================================================
           ),
         ));
@@ -587,7 +584,7 @@ class CustomRadioButton extends StatelessWidget {
             width: 2,
           ),
         ),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Row(
           children: [
             Radio<String>(
@@ -601,7 +598,7 @@ class CustomRadioButton extends StatelessWidget {
             ),
             Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black,
                   fontWeight: FontWeight.w700),
