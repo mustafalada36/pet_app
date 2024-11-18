@@ -17,20 +17,18 @@ class _adDetailsState extends State<adDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0x2931EE21),
+        backgroundColor: secondaryColor,
         leading: IconButton(
-          color: Color(0xFF267E1E),
+          color: primaryColor,
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: Text(
+        title: const Text(
           "Include Some Details",
           style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 25,
-              color: Color(0xFF267E1E)),
+              fontWeight: FontWeight.w700, fontSize: 25, color: primaryColor),
         ),
       ),
       body: SingleChildScrollView(
@@ -38,18 +36,19 @@ class _adDetailsState extends State<adDetails> {
           children: [
             //===========================================main col
 
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Container(
-                color: Color(0x2931EE21),
+                color: secondaryColor,
                 alignment: Alignment.center,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: const Text(
+                    const Expanded(
+                      child: Text(
                         "UPLOAD UPTO 5 IMAGES",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
@@ -57,11 +56,11 @@ class _adDetailsState extends State<adDetails> {
                             color: Color(0xFF267E1E)),
                       ),
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                     IconButton(
-                      color: Color(0xFF267E1E),
+                      color: primaryColor,
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 30,
                       ),
@@ -70,7 +69,7 @@ class _adDetailsState extends State<adDetails> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
             GestureDetector(
               child: CircleAvatar(
@@ -78,10 +77,10 @@ class _adDetailsState extends State<adDetails> {
                 radius: 70,
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Image.asset("assets/images/camera.png"),
-                    SizedBox(height: 15),
-                    Text(
+                    const SizedBox(height: 15),
+                    const Text(
                       'Add Images',
                       style: TextStyle(color: Colors.grey, fontSize: 20),
                     )
@@ -90,7 +89,7 @@ class _adDetailsState extends State<adDetails> {
               ),
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             textHeading(text: "Categories *"),
 
@@ -99,11 +98,11 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: CircleAvatar(
-                    backgroundColor: Color(0x2931EE21),
+                    backgroundColor: primaryColor,
                     radius: 30,
                     child: Column(
                       children: [
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Image.asset(
                           "assets/images/loginimg.png",
                           height: 25,
@@ -111,25 +110,25 @@ class _adDetailsState extends State<adDetails> {
                           fit: BoxFit.cover,
                           filterQuality: FilterQuality.high,
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                       ],
                     ),
                   ),
                 ),
-                Text(
+                const Text(
                   "Animals",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
-                    color: Color(0xFF267E1E),
+                    color: primaryColor,
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
-            lineWidget(),
-            SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
 
             textHeading(text: "Price *"),
             Padding(
@@ -139,15 +138,15 @@ class _adDetailsState extends State<adDetails> {
                 height: 60,
               ),
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
             textHeading(text: "Breed *"),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     "None",
                     style: TextStyle(
@@ -158,19 +157,19 @@ class _adDetailsState extends State<adDetails> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Icon(
                     Icons.arrow_forward_ios_outlined,
-                    color: Color(0xFF267E1E),
+                    color: primaryColor,
                   ),
                 )
               ],
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
             textHeading(text: "Sex *"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -184,7 +183,7 @@ class _adDetailsState extends State<adDetails> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: primaryColor, width: 2)),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Male",
                           style: TextStyle(
@@ -204,7 +203,7 @@ class _adDetailsState extends State<adDetails> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Female",
                         // Hint text converted to display as regular text
@@ -223,7 +222,7 @@ class _adDetailsState extends State<adDetails> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Cross",
                         // Hint text converted to display as regular text
@@ -235,11 +234,11 @@ class _adDetailsState extends State<adDetails> {
                 ),
               ],
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
             textHeading(text: "Age *"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
                 alignment: Alignment.centerLeft,
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -247,7 +246,7 @@ class _adDetailsState extends State<adDetails> {
                     width: 120,
                     height: 60,
                     hintText: "Age",
-                    dropdownItems: [
+                    dropdownItems: const [
                       "NA",
                       "New Born",
                       "3 months",
@@ -260,12 +259,12 @@ class _adDetailsState extends State<adDetails> {
                       "5 year old",
                       "More than 5 years old"
                     ])),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
-            lineWidget(),
-            SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
             textHeading(text: "Vaccinated *"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -279,7 +278,7 @@ class _adDetailsState extends State<adDetails> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Yes",
                         // Hint text converted to display as regular text
@@ -298,7 +297,7 @@ class _adDetailsState extends State<adDetails> {
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "No",
                         style: TextStyle(
@@ -310,18 +309,18 @@ class _adDetailsState extends State<adDetails> {
               ],
             ),
 
-            SizedBox(height: 15),
-            lineWidget(),
+            const SizedBox(height: 15),
+            const lineWidget(),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             //tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
             textHeading(text: "Location *"),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     "Choose",
                     style: TextStyle(
@@ -332,7 +331,7 @@ class _adDetailsState extends State<adDetails> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Icon(
                     Icons.arrow_forward_ios_outlined,
                     color: Color(0xFF267E1E),
@@ -340,12 +339,13 @@ class _adDetailsState extends State<adDetails> {
                 )
               ],
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
             textHeading(
               text: "Ad Title *",
-              textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+              textStyle:
+                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -354,13 +354,14 @@ class _adDetailsState extends State<adDetails> {
                 height: 60,
               ),
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
 
             textHeading(
               text: "Description *",
-              textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+              textStyle:
+                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -369,9 +370,9 @@ class _adDetailsState extends State<adDetails> {
                 height: 60,
               ),
             ),
-            SizedBox(height: 15),
-            lineWidget(),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
+            const lineWidget(),
+            const SizedBox(height: 15),
 
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
