@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1028530391115",
-    "project_id": "pet-app-342b3",
-    "storage_bucket": "pet-app-342b3.appspot.com"
+    "project_number": "120140236484",
+    "project_id": "pet-app-b40aa",
+    "storage_bucket": "pet-app-b40aa.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1028530391115:android:764a5e00a8900a24d7e5ce",
+        "mobilesdk_app_id": "1:120140236484:android:1814d5c9775aff24396b91",
         "android_client_info": {
           "package_name": "com.example.pet_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCPeRpPj6lkbrJqP-3cjalfH_-BrsMCtUc"
+          "current_key": "AIzaSyA-P9wCjLyxtvxpU2xJoNyzJ1WN65PlMMY"
         }
       ],
       "services": {
