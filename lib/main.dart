@@ -1,4 +1,4 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
@@ -28,10 +28,25 @@ import 'Screens/buyDog.dart';
 import 'Screens/buyScreen.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    if (Firebase.apps.isEmpty) {
+      await Firebase.initializeApp(
+        options: FirebaseOptions(
+          apiKey: "AIzaSyA-P9wCjLyxtvxpU2xJoNyzJ1WN65PlMMY",
+          appId: "1:120140236484:android:1814d5c9775aff24396b91",
+          messagingSenderId: "120140236484",
+          projectId: "pet-app-b40aa",
+          storageBucket: "pet-app-b40aa.firebasestorage.app",
+        ),
+      );
+    }
+    runApp(const MyApp());
+  } catch (e) {
+    print("Firebase initialization error: $e");
+  }
 }
+
 //main ma kaam kerna
 
 class MyApp extends StatelessWidget {
@@ -45,7 +60,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: homeScreen(),
+      home: SignUpScreen(),
 
       //shows
       // debugShowCheckedModeBanner: false,
