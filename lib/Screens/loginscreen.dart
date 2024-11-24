@@ -1,8 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pet_app/Screens/otpscreen.dart'; // Import the google_fonts package
+import 'package:pet_app/Screens/getStarted.dart';
+import 'package:pet_app/Screens/otpscreen.dart';
+import '../Firebase_services/authetication.dart';
+import '../Firebase_services/snack_bar.dart'; // Import the google_fonts package
 
-class loginScreen extends StatelessWidget {
+class loginScreen extends StatefulWidget {
+  @override
+  State<loginScreen> createState() => _loginScreenState();
+}
+
+class _loginScreenState extends State<loginScreen> {
+  bool _obscureText = true;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passController.dispose();
+  }
+
+  void loginUsers() async {
+    String res = await AuthServices().loginUser(
+      email: emailController.text,
+      password: passController.text,
+    );
+    //if login  successful go ahead a=otherwise show error
+    if (res == 'Successful') {
+      setState(() {
+        isLoading = true;
+      });
+      //next screen
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => getStarted()));
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      showSnackBar(context, res);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,47 +59,56 @@ class loginScreen extends StatelessWidget {
                   child: Image.asset('assets/images/loginimg.png',
                       width: 360.0, height: 214.0),
                 ),
-                const SizedBox(height: 20),
-                TextField(
+                const SizedBox(height: 80),
+                TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    labelStyle: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      color: Colors.black,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.circular(22)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.circular(22)),
+                    labelStyle: TextStyle(
+                      color: Color(0xFF808B9A),
                     ),
-                    border: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
-                    color: Colors.black,
+                    border: InputBorder.none,
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 20),
-                TextField(
-                  obscureText: true,
+                TextFormField(
+                  controller: passController,
+                  obscureText: _obscureText,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      color: Colors.black,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.circular(22)),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green),
+                        borderRadius: BorderRadius.circular(22)),
+                    labelStyle: const TextStyle(
+                      color: Color(0xFF808B9A),
                     ),
-                    border: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black,
+                    border: InputBorder.none,
+                    filled: true,
+                    fillColor: Colors.white,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscureText
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: const Color(0xFFA0AEC0),
                       ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
                     ),
-                  ),
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
-                    color: Colors.black,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -83,13 +133,7 @@ class loginScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const OTPScreen()),
-                          );
-                        },
+                        onPressed: loginUsers,
                         style: ButtonStyle(
                           backgroundColor: WidgetStateProperty.all<Color>(
                               const Color(0xFF267E1E)),
