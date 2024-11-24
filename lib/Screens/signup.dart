@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
+
+import '../Firebase_services/authetication.dart';
+import '../Firebase_services/snack_bar.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,6 +17,42 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool _acceptTerms = false;
   bool _obscureText = true;
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passController.dispose();
+    nameController.dispose();
+  }
+
+  void signUpUser() async {
+    String res = await AuthServices().signUpUser(
+        email: emailController.text,
+        password: passController.text,
+        name: nameController.text);
+    //if sign up successful go ahead a=otherwise show error
+    if (res == 'Succesfull') {
+      setState(() {
+        isLoading = true;
+      });
+      //next screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => loginScreen()),
+      );
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      showSnackBar(context, res);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +105,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(height: 24.0),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
                   labelStyle: TextStyle(
+                    color: Color(0xFF808B9A),
+                  ),
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 24.0),
+              TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
+                  labelStyle: const TextStyle(
                     color: Color(0xFF808B9A),
                   ),
                   border: InputBorder.none,
@@ -77,9 +143,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
+                controller: passController,
                 obscureText: _obscureText,
                 decoration: InputDecoration(
                   labelText: 'Password',
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.green),
+                      borderRadius: BorderRadius.circular(22)),
                   labelStyle: const TextStyle(
                     color: Color(0xFF808B9A),
                   ),
@@ -102,17 +175,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: 16.0),
               Row(
                 children: [
-                  // Simple checkbox
-                  // Checkbox(
-                  //   value: _acceptTerms,
-                  //   onChanged: (value) {
-                  //     setState(() {
-                  //       _acceptTerms = value!;
-                  //     });
-                  //   },
-                  // ),
-                  // With custom border
-
                   Checkbox(
                     value: _acceptTerms,
                     onChanged: (value) {
@@ -132,7 +194,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-
                   const Text(
                     'Accept Terms and Conditions',
                     style: TextStyle(
@@ -146,9 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Add functionality for create account button
-                      },
+                      onPressed: signUpUser,
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                             const Color(0xFF267E1E)),
