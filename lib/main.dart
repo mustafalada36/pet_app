@@ -27,6 +27,7 @@ import 'Screens/addNewAddress.dart';
 import 'Screens/buyDog.dart';
 import 'Screens/buyScreen.dart';
 
+/*
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
@@ -45,6 +46,9 @@ void main() async {
   } catch (e) {
     print("Firebase initialization error: $e");
   }
+}*/
+void main() async {
+  runApp(const MyApp());
 }
 
 //main ma kaam kerna
@@ -60,7 +64,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: loginScreen(),
+      home: getStarted(),
 
       //shows
       // debugShowCheckedModeBanner: false,
