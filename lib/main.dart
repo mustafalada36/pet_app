@@ -23,9 +23,11 @@ import 'package:pet_app/Screens/seeAllPets.dart';
 import 'package:pet_app/Screens/signup.dart';
 import 'package:pet_app/Screens/splashscreen.dart';
 import 'package:pet_app/models/Chat.dart';
+import 'Other Services/search_functionality.dart';
 import 'Screens/addNewAddress.dart';
 import 'Screens/buyDog.dart';
 import 'Screens/buyScreen.dart';
+import 'Other Services/current_location.dart';
 
 /*
 void main() async {
