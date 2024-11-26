@@ -13,6 +13,23 @@ class adDetails extends StatefulWidget {
 }
 
 class _adDetailsState extends State<adDetails> {
+  String selectedBreed = "None";
+  String selectedGender = "";
+  String selectedVaccine = "";
+
+  // Function to update selected gender
+  void _selectGender(String gender) {
+    setState(() {
+      selectedGender = gender;
+    });
+  }
+
+  void _selectVaccine(String vaccine) {
+    setState(() {
+      selectedVaccine = vaccine;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,6 +146,18 @@ class _adDetailsState extends State<adDetails> {
 
             const lineWidget(),
             const SizedBox(height: 15),
+            textHeading(text: "Name *"),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: customTextField(
+                width: double.infinity,
+                height: 60,
+              ),
+            ),
+            const SizedBox(height: 15),
+            const lineWidget(),
+
+            const SizedBox(height: 15),
 
             textHeading(text: "Price *"),
             Padding(
@@ -142,28 +171,74 @@ class _adDetailsState extends State<adDetails> {
             const lineWidget(),
             const SizedBox(height: 15),
             textHeading(text: "Breed *"),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: Text(
-                    "None",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      color: Colors.grey,
+            GestureDetector(
+              onTap: () {
+                // Show a modal bottom sheet with options
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            title: const Text("Cat"),
+                            onTap: () {
+                              setState(() {
+                                selectedBreed = "Cat";
+                              });
+                              Navigator.pop(
+                                  context); // Close the bottom sheet
+                            },
+                          ),
+                          ListTile(
+                            title: const Text("Dog"),
+                            onTap: () {
+                              setState(() {
+                                selectedBreed = "Dog";
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            title: const Text("Rabbit"),
+                            onTap: () {
+                              setState(() {
+                                selectedBreed = "Rabbit";
+                              });
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      selectedBreed, // Display the selected breed
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  child: Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    color: primaryColor,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: primaryColor,
+                    ),
                   ),
-                )
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 15),
             const lineWidget(),
@@ -173,61 +248,77 @@ class _adDetailsState extends State<adDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      width: 80,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: primaryColor, width: 2)),
-                      child: const Center(
-                        child: Text(
-                          "Male",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: () => _selectGender("Male"),
+                  child: Container(
+                    width: 80,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: selectedGender == "Male"
+                          ? primaryColor
+                          : Colors.white, // Dynamic color
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Male",
+                        style: TextStyle(
+                          color: selectedGender == "Male"
+                              ? Colors.white
+                              : Colors.grey, // Dynamic text color
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                GestureDetector(
+                  onTap: () => _selectGender("Female"),
                   child: Container(
-                    width: 100, // Width from the original customTextField
-                    height: 50, // Height from the original customTextField
+                    width: 80,
+                    height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
+                      color: selectedGender == "Female"
+                          ? primaryColor
+                          : Colors.white, // Dynamic color
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Female",
-                        // Hint text converted to display as regular text
                         style: TextStyle(
-                            color: Colors.grey, fontWeight: FontWeight.bold),
+                          color: selectedGender == "Female"
+                              ? Colors.white
+                              : Colors.grey, // Dynamic text color
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                GestureDetector(
+                  onTap: () => _selectGender("Cross"),
                   child: Container(
-                    width: 80, // Width from the original customTextField
-                    height: 50, // Height from the original customTextField
+                    width: 80,
+                    height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
+                      color: selectedGender == "Cross"
+                          ? primaryColor
+                          : Colors.white, // Dynamic color
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "Cross",
-                        // Hint text converted to display as regular text
                         style: TextStyle(
-                            color: Colors.grey, fontWeight: FontWeight.bold),
+                          color: selectedGender == "Cross"
+                              ? Colors.white
+                              : Colors.grey, // Dynamic text color
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -271,37 +362,56 @@ class _adDetailsState extends State<adDetails> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Container(
-                    width: 80, // Width from the original customTextField
-                    height: 50, // Height from the original customTextField
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: primaryColor, width: 2),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Yes",
-                        // Hint text converted to display as regular text
-                        style: TextStyle(
-                            color: Colors.grey, fontWeight: FontWeight.bold),
+                  child: GestureDetector(
+                    onTap: () => _selectVaccine('Yes'),
+                    child: Container(
+                      width: 80, // Width from the original customTextField
+                      height: 50, // Height from the original customTextField
+                      decoration: BoxDecoration(
+                        color: selectedVaccine == 'Yes'
+                            ? primaryColor
+                            : Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: primaryColor, width: 2),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Yes",
+                          // Hint text converted to display as regular text
+                          style: TextStyle(
+                              color: selectedVaccine == 'Yes'
+                                  ? Colors.white
+                                  : Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Container(
-                    width: 80,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: primaryColor, width: 2),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "No",
-                        style: TextStyle(
-                            color: Colors.grey, fontWeight: FontWeight.bold),
+                  child: GestureDetector(
+                    onTap: () => _selectVaccine('No'),
+                    child: Container(
+                      width: 80, // Width from the original customTextField
+                      height: 50, // Height from the original customTextField
+                      decoration: BoxDecoration(
+                        color: selectedVaccine == 'No'
+                            ? primaryColor
+                            : Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: primaryColor, width: 2),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "No",
+                          // Hint text converted to display as regular text
+                          style: TextStyle(
+                              color: selectedVaccine == 'No'
+                                  ? Colors.white
+                                  : Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),
