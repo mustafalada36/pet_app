@@ -16,6 +16,7 @@ class _adDetailsState extends State<adDetails> {
   String selectedBreed = "None";
   String selectedGender = "";
   String selectedVaccine = "";
+  String selectedCategory = "Animals";
 
   // Function to update selected gender
   void _selectGender(String gender) {
@@ -29,6 +30,12 @@ class _adDetailsState extends State<adDetails> {
       selectedVaccine = vaccine;
     });
   }
+
+  /*void _selectCategory(String category) {
+    setState(() {
+      selectedCategory = category;
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -132,12 +139,81 @@ class _adDetailsState extends State<adDetails> {
                     ),
                   ),
                 ),
-                const Text(
-                  "Animals",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: primaryColor,
+                GestureDetector(
+                  onTap: () {
+                    // Show a modal bottom sheet with options
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ListTile(
+                                title: const Text("Animals"),
+                                onTap: () {
+                                  setState(() {
+                                    selectedCategory = "Animals";
+                                  });
+                                  Navigator.pop(
+                                      context); // Close the bottom sheet
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Food"),
+                                onTap: () {
+                                  setState(() {
+                                    selectedCategory = "Food";
+                                  });
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Maintainance"),
+                                onTap: () {
+                                  setState(() {
+                                    selectedCategory = "Maintainance";
+                                  });
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              ListTile(
+                                title: const Text("Medical"),
+                                onTap: () {
+                                  setState(() {
+                                    selectedCategory = "Medical";
+                                  });
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(
+                          selectedCategory, // Display the selected breed
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        weight: 50,
+                        color: primaryColor,
+                      )
+                    ],
                   ),
                 ),
               ],
@@ -505,7 +581,7 @@ class _adDetailsState extends State<adDetails> {
                   ),
                 ),
                 child: const Text(
-                  'Login',
+                  'Post',
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w500, // medium weight
