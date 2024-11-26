@@ -425,7 +425,7 @@ class buyScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildContactIcon(Icons.message),
+          _buildContactIcon(Icons.email),
           const SizedBox(width: 44.96),
           _buildContactIcon(Icons.call),
           const SizedBox(width: 44.96),
