@@ -48,17 +48,14 @@ class getStarted extends StatelessWidget {
                 ),
                 Positioned(
                     top: 500,
-                    left: 20,
-                    right: 20,
-                    child: Container(
-                      width: double.infinity,
-                      child: Text(
-                        'The World Most Advanced\n            Pet Community',
-                        style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green.shade800),
-                      ),
+                    left: 10,
+                    right: 12,
+                    child: Text(
+                      'The World Most Advanced\n            Pet Community',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green.shade800),
                     )),
                 //  SizedBox(height: 40),
                 Positioned(
