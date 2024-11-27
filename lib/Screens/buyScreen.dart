@@ -3,7 +3,30 @@ import 'package:pet_app/Reuseable Components/adsTemplate.dart';
 import 'package:pet_app/constants.dart';
 
 class buyScreen extends StatelessWidget {
-  const buyScreen({Key? key}) : super(key: key);
+  final String category;
+  final String name;
+  final double price;
+  final String breed;
+  final String sex;
+  final String age;
+  final String vaccine;
+  final String location;
+  final String title;
+  final String description;
+
+  const buyScreen(
+      {Key? key,
+      required this.category,
+      required this.name,
+      required this.price,
+      required this.breed,
+      required this.sex,
+      required this.age,
+      required this.vaccine,
+      required this.location,
+      required this.title,
+      required this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +105,11 @@ class buyScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 20),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'British Shorthair',
+                            "$name",
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 20,
@@ -95,7 +118,7 @@ class buyScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Rs/150,000',
+                            '$price',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 20,
@@ -108,7 +131,7 @@ class buyScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'Cat breed',
+                            '$breed',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 14,
@@ -119,8 +142,8 @@ class buyScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 14),
-                      const Text(
-                        'About British Shorthair',
+                      Text(
+                        '$title',
                         style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 20,
@@ -144,8 +167,23 @@ class buyScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Text(
+                        '$category',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 12,
+                        ),
+                      ),
+                      Text(
+                        '$description',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 12,
+                        ),
+                      ),
+
                       // Add more descriptive rows similarly
-                      _buildDescriptionRow('Eyes'),
+                      /*_buildDescriptionRow('Eyes'),
                       _buildDescriptionRow('Peke Bloodline'),
                       _buildDescriptionRow('Piki Female Kitten'),
                       _buildDescriptionRow('Age 8 Months'),
@@ -163,15 +201,15 @@ class buyScreen extends StatelessWidget {
                       _buildDescriptionRow(
                           'Who will buy both will be Discounted Inshallah'),
                       _buildDescriptionRow('Avoid Bogus Offers'),
-                      _buildDescriptionRow('No Thirds Parties or Dealers'),
+                      _buildDescriptionRow('No Thirds Parties or Dealers'),*/
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const SizedBox(height: 20),
-                          _buildInfoRow('Age', '8 months', Icons.pets),
+                          _buildInfoRow('Age', '$age', Icons.pets),
                           const SizedBox(height: 23),
-                          _buildInfoRow('Weight', '4.5 kg', Icons.scale),
+                          _buildInfoRow('Weight', '-', Icons.scale),
                           const SizedBox(height: 20),
                         ],
                       ),
@@ -180,10 +218,10 @@ class buyScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const SizedBox(height: 20),
-                          _buildInfoRow(
-                              'Vaccination', 'Yes', Icons.medical_services),
+                          _buildInfoRow('Vaccination', '$vaccine',
+                              Icons.medical_services),
                           const SizedBox(height: 23),
-                          _buildInfoRow('Sex', 'Male', Icons.transgender),
+                          _buildInfoRow('Sex', '$sex', Icons.transgender),
                           const SizedBox(height: 20),
                         ],
                       ),
