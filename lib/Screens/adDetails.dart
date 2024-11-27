@@ -3,6 +3,7 @@ import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
+import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
 import 'package:pet_app/constants.dart';
 
@@ -20,6 +21,7 @@ class _adDetailsState extends State<adDetails> {
   String selectedGender = "";
   String selectedVaccine = "";
   String selectedCategory = "Animals";
+  String selectedAge = "NA";
 
   // Function to update selected gender
   void _selectGender(String gender) {
@@ -34,11 +36,10 @@ class _adDetailsState extends State<adDetails> {
     });
   }
 
-  /*void _selectCategory(String category) {
-    setState(() {
-      selectedCategory = category;
-    });
-  }*/
+  TextEditingController nameController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -234,6 +235,7 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    controller: nameController,
                     width: double.infinity,
                     height: 60,
                     isRequired: true,
@@ -248,6 +250,7 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    controller: priceController,
                     width: double.infinity,
                     height: 60,
                   ),
@@ -419,22 +422,29 @@ class _adDetailsState extends State<adDetails> {
                     alignment: Alignment.centerLeft,
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: customDropDownButton(
-                        width: 120,
-                        height: 60,
-                        hintText: "Age",
-                        dropdownItems: const [
-                          "NA",
-                          "New Born",
-                          "3 months",
-                          "6 months",
-                          "9 months",
-                          "1 year old",
-                          "2 year old",
-                          "3 year old",
-                          "4 year old",
-                          "5 year old",
-                          "More than 5 years old"
-                        ])),
+                      width: 120,
+                      height: 60,
+                      hintText: "Age",
+                      dropdownItems: const [
+                        "NA",
+                        "New Born",
+                        "3 months",
+                        "6 months",
+                        "9 months",
+                        "1 year old",
+                        "2 year old",
+                        "3 year old",
+                        "4 year old",
+                        "5 year old",
+                        "More than 5 years old"
+                      ],
+                      onChanged: (String? value) {
+                        setState(() {
+                          selectedAge = value ??
+                              "NA"; // Update selectedAge based on user selection
+                        });
+                      },
+                    )),
                 const SizedBox(height: 10),
 
                 const lineWidget(),
@@ -596,6 +606,7 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    controller: titleController,
                     width: double.infinity,
                     height: 60,
                   ),
@@ -612,6 +623,7 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    controller: descController,
                     width: double.infinity,
                     height: 60,
                   ),
@@ -627,10 +639,34 @@ class _adDetailsState extends State<adDetails> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         // Form is valid, proceed
+                        // Convert price to double
+                        double? price = double.tryParse(priceController.text);
+                        final category = selectedCategory;
+                        final name = nameController.text;
+                        //  final price = priceController.text;
+                        final breed = selectedBreed;
+                        final sex = selectedGender;
+                        final age = selectedAge;
+                        final vaccine = selectedVaccine;
+                        final location = cityName;
+                        final title = titleController.text;
+                        final description = descController.text;
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const homeScreen()),
+                              builder: (context) => buyScreen(
+                                    category: category,
+                                    name: name,
+                                    price: price ?? 0.0,
+                                    breed: breed,
+                                    sex: sex,
+                                    age: age,
+                                    vaccine: vaccine,
+                                    location: location,
+                                    title: title,
+                                    description: description,
+                                  )),
                         );
                       } else {
                         // Form is not valid, show errors
