@@ -7,6 +7,8 @@ class customTextField extends StatelessWidget {
   final TextStyle hintStyle;
   final BorderRadius borderRadius;
   final bool useDefaultDecoration;
+  final bool
+      isRequired; // Add isRequired to make the field optional or required
 
   customTextField({
     required this.width,
@@ -15,12 +17,11 @@ class customTextField extends StatelessWidget {
     TextStyle? hintStyle,
     BorderRadius? borderRadius,
     this.useDefaultDecoration = true,
-    // Accept hintStyle as optional
+    this.isRequired = false, // Default to false (not required)
   })  : hintStyle = hintStyle ??
             const TextStyle(
-              // Set a default hintStyle if none is provided
-              color: Colors.grey, // Default hint text color
-              fontSize: 16, // Default hint text size
+              color: Colors.grey,
+              fontSize: 16,
             ),
         borderRadius = borderRadius ?? BorderRadius.circular(22);
 
@@ -29,20 +30,29 @@ class customTextField extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      child: TextField(
-          decoration: useDefaultDecoration
-              ? InputDecoration(
-                  hintText: hintText,
-                  hintStyle: hintStyle,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: borderRadius,
-                    borderSide: const BorderSide(
-                      color: Color(0xFF267E1E), // Green border color
-                      width: 2.0,
-                    ),
+      child: TextFormField(
+        validator: isRequired
+            ? (value) {
+                if (value == null || value.isEmpty) {
+                  return 'This field cannot be empty'; // Validation message
+                }
+                return null; // Valid input
+              }
+            : null, // No validation if not required
+        decoration: useDefaultDecoration
+            ? InputDecoration(
+                hintText: hintText,
+                hintStyle: hintStyle,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: borderRadius,
+                  borderSide: const BorderSide(
+                    color: Color(0xFF267E1E),
+                    width: 2.0,
                   ),
-                )
-              : InputDecoration(hintText: hintText, hintStyle: hintStyle)),
+                ),
+              )
+            : InputDecoration(hintText: hintText, hintStyle: hintStyle),
+      ),
     );
   }
 }
