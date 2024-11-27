@@ -96,14 +96,16 @@ class _adNewAddressState extends State<addNewAddress> {
                       ),
                       const SizedBox(height: 15),
                       customDropDownButton(
-                          width: double.infinity,
-                          height: 60,
-                          hintText: "   Pakistan",
-                          hintStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: primaryColor),
-                          dropdownItems: const ["Pakistan", "NA Right Now"]),
+                        width: double.infinity,
+                        height: 60,
+                        hintText: "   Pakistan",
+                        hintStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: primaryColor),
+                        dropdownItems: const ["Pakistan", "NA Right Now"],
+                        onChanged: (String? value) {},
+                      ),
                       const SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
