@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
+import 'package:pet_app/Screens/homeScreen.dart';
 import 'package:pet_app/constants.dart';
 
 class buyScreen extends StatelessWidget {
   final String category;
   final String name;
-  final double price;
+  final String price;
   final String breed;
   final String sex;
   final String age;
+  final String weight;
   final String vaccine;
   final String location;
   final String title;
   final String description;
 
-  const buyScreen(
-      {Key? key,
-      required this.category,
-      required this.name,
-      required this.price,
-      required this.breed,
-      required this.sex,
-      required this.age,
-      required this.vaccine,
-      required this.location,
-      required this.title,
-      required this.description})
-      : super(key: key);
+  const buyScreen({
+    Key? key,
+    required this.category,
+    required this.name,
+    required this.price,
+    required this.breed,
+    required this.sex,
+    required this.age,
+    required this.vaccine,
+    required this.location,
+    required this.title,
+    required this.description,
+    required this.weight,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +62,18 @@ class buyScreen extends StatelessWidget {
                             color: primaryColor,
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: Color(0xFFF6FAFF),
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => homeScreen(),
+                                  ));
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: Color(0xFFF6FAFF),
+                            ),
                           ),
                         ),
                         Row(
@@ -118,7 +130,7 @@ class buyScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '$price',
+                            'Rs/ $price',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 20,
@@ -152,27 +164,12 @@ class buyScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 13.7),
-                      const Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              'The British Shorthair Peki Female Tetra Coat Blue',
-                              style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       Text(
                         '$category',
                         style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontSize: 12,
-                        ),
+                            fontFamily: 'Montserrat',
+                            fontSize: 12,
+                            color: Colors.red),
                       ),
                       Text(
                         '$description',
@@ -181,27 +178,6 @@ class buyScreen extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-
-                      // Add more descriptive rows similarly
-                      /*_buildDescriptionRow('Eyes'),
-                      _buildDescriptionRow('Peke Bloodline'),
-                      _buildDescriptionRow('Piki Female Kitten'),
-                      _buildDescriptionRow('Age 8 Months'),
-                      _buildDescriptionRow('Very Active Mashallah'),
-                      _buildDescriptionRow('Attractive Blue Eyes'),
-                      _buildDescriptionRow('Very Playful'),
-                      _buildDescriptionRow('Very Cute Face Female'),
-                      _buildDescriptionRow('Looking for a new home.'),
-                      _buildDescriptionRow(
-                          'Girls or Lady New Owner will be Preferred.'),
-                      _buildDescriptionRow('Selling due transfer.'),
-                      _buildDescriptionRow(
-                          'Her Teenage pic is also Attached.'),
-                      _buildDescriptionRow('Both friends cats for Sale.'),
-                      _buildDescriptionRow(
-                          'Who will buy both will be Discounted Inshallah'),
-                      _buildDescriptionRow('Avoid Bogus Offers'),
-                      _buildDescriptionRow('No Thirds Parties or Dealers'),*/
                       const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -209,7 +185,8 @@ class buyScreen extends StatelessWidget {
                           const SizedBox(height: 20),
                           _buildInfoRow('Age', '$age', Icons.pets),
                           const SizedBox(height: 23),
-                          _buildInfoRow('Weight', '-', Icons.scale),
+                          _buildInfoRow(
+                              'Weight', '$weight Pounds', Icons.scale),
                           const SizedBox(height: 20),
                         ],
                       ),
@@ -229,7 +206,6 @@ class buyScreen extends StatelessWidget {
                       _buildCenteredInfoRow(
                           'Info', 'Details here', Icons.info),
                       const SizedBox(height: 20),
-
                       _buildShadowContainer(),
                       const SizedBox(height: 20),
                       _buildSafetySection(),
@@ -243,25 +219,6 @@ class buyScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  // Helper Methods
-  Widget _buildDescriptionRow(String text) {
-    return Row(
-      children: [
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ],
     );
   }
 
@@ -439,7 +396,7 @@ class buyScreen extends StatelessWidget {
           'Related ads',
           style: TextStyle(
             fontFamily: 'Montserrat',
-            fontSize: 12,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
