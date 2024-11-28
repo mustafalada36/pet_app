@@ -18,8 +18,8 @@ class adDetails extends StatefulWidget {
 class _adDetailsState extends State<adDetails> {
   final _formKey = GlobalKey<FormState>(); // Key for the form
   String selectedBreed = "None";
-  String selectedGender = "";
-  String selectedVaccine = "";
+  String selectedGender = "NA";
+  String selectedVaccine = "NA";
   String selectedCategory = "Animals";
   String selectedAge = "NA";
 
@@ -40,6 +40,7 @@ class _adDetailsState extends State<adDetails> {
   TextEditingController priceController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -250,7 +251,9 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    isRequired: true,
                     controller: priceController,
+                    textInputType: TextInputType.number,
                     width: double.infinity,
                     height: 60,
                   ),
@@ -416,35 +419,66 @@ class _adDetailsState extends State<adDetails> {
                 const SizedBox(height: 15),
                 const lineWidget(),
                 const SizedBox(height: 15),
-                textHeading(text: "Age *"),
-                const SizedBox(height: 10),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: customDropDownButton(
-                      width: 120,
-                      height: 60,
-                      hintText: "Age",
-                      dropdownItems: const [
-                        "NA",
-                        "New Born",
-                        "3 months",
-                        "6 months",
-                        "9 months",
-                        "1 year old",
-                        "2 year old",
-                        "3 year old",
-                        "4 year old",
-                        "5 year old",
-                        "More than 5 years old"
+
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          textHeading(text: "Age *"),
+                          const SizedBox(height: 10),
+                          Container(
+                              alignment: Alignment.centerLeft,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: customDropDownButton(
+                                width: 150,
+                                height: 60,
+                                hintText: "Age",
+                                dropdownItems: const [
+                                  "NA",
+                                  "New Born",
+                                  "3 months",
+                                  "6 months",
+                                  "9 months",
+                                  "1 year old",
+                                  "2 year old",
+                                  "3 year old",
+                                  "4 year old",
+                                  "5 year old",
+                                  "More than 5 years old"
+                                ],
+                                onChanged: (String? value) {
+                                  setState(() {
+                                    selectedAge = value ??
+                                        "NA"; // Update selectedAge based on user selection
+                                  });
+                                },
+                              )),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        textHeading(text: "Weight *"),
+                        const SizedBox(height: 12),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: customTextField(
+                            controller: weightController,
+                            textInputType: TextInputType.number,
+                            width: 130,
+                            height: 60,
+                            isRequired: true,
+                          ),
+                        ),
                       ],
-                      onChanged: (String? value) {
-                        setState(() {
-                          selectedAge = value ??
-                              "NA"; // Update selectedAge based on user selection
-                        });
-                      },
-                    )),
+                    )
+                  ], //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                ),
                 const SizedBox(height: 10),
 
                 const lineWidget(),
@@ -606,6 +640,7 @@ class _adDetailsState extends State<adDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: customTextField(
+                    isRequired: true,
                     controller: titleController,
                     width: double.infinity,
                     height: 60,
@@ -626,6 +661,7 @@ class _adDetailsState extends State<adDetails> {
                     controller: descController,
                     width: double.infinity,
                     height: 60,
+                    isRequired: true,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -639,14 +675,14 @@ class _adDetailsState extends State<adDetails> {
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
                         // Form is valid, proceed
-                        // Convert price to double
-                        double? price = double.tryParse(priceController.text);
+
                         final category = selectedCategory;
                         final name = nameController.text;
-                        //  final price = priceController.text;
+                        final price = priceController.text;
                         final breed = selectedBreed;
                         final sex = selectedGender;
                         final age = selectedAge;
+                        final weight = weightController.text;
                         final vaccine = selectedVaccine;
                         final location = cityName;
                         final title = titleController.text;
@@ -658,10 +694,11 @@ class _adDetailsState extends State<adDetails> {
                               builder: (context) => buyScreen(
                                     category: category,
                                     name: name,
-                                    price: price ?? 0.0,
+                                    price: price,
                                     breed: breed,
                                     sex: sex,
                                     age: age,
+                                    weight: weight,
                                     vaccine: vaccine,
                                     location: location,
                                     title: title,
