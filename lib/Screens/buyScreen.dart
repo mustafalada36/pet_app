@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
 import 'package:pet_app/Screens/homeScreen.dart';
+import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/constants.dart';
 
 class buyScreen extends StatelessWidget {
@@ -33,6 +36,22 @@ class buyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Posted Successfully!"),
+          backgroundColor: Colors.green,
+          duration:
+              Duration(seconds: 3), // Snackbar will disappear after 3 seconds
+        ),
+      );
+    });
+    Timer(const Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => myAds()),
+      );
+    });
+
     return Scaffold(
       body: Stack(
         children: [
