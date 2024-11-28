@@ -8,6 +8,7 @@ class customTextField extends StatelessWidget {
   final BorderRadius borderRadius;
   final bool useDefaultDecoration;
   final bool isRequired;
+  final TextInputType? textInputType;
 
   // Add isRequired to make the field optional or required
   final TextEditingController? controller;
@@ -20,7 +21,8 @@ class customTextField extends StatelessWidget {
     BorderRadius? borderRadius,
     this.useDefaultDecoration = true,
     this.isRequired = false,
-    this.controller, // Default to false (not required)
+    this.controller,
+    this.textInputType, // Default to false (not required)
   })  : hintStyle = hintStyle ??
             const TextStyle(
               color: Colors.grey,
@@ -34,6 +36,7 @@ class customTextField extends StatelessWidget {
       width: width,
       height: height,
       child: TextFormField(
+        keyboardType: textInputType,
         controller: controller,
         validator: isRequired
             ? (value) {
