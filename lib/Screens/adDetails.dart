@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
@@ -16,6 +19,25 @@ class adDetails extends StatefulWidget {
 }
 
 class _adDetailsState extends State<adDetails> {
+  //*************************************************
+  final ImagePicker _picker = ImagePicker();
+  List<XFile>? _selectedImages = []; // Holds selected images
+
+  // Function to pick multiple images
+  Future<void> pickImages() async {
+    try {
+      final List<XFile>? pickedImages = await _picker.pickMultiImage();
+      if (pickedImages != null) {
+        setState(() {
+          _selectedImages = pickedImages;
+        });
+      }
+    } catch (e) {
+      print('Error picking images: $e');
+    }
+  }
+
+  //*************************************************
   final _formKey = GlobalKey<FormState>(); // Key for the form
   String selectedBreed = "None";
   String selectedGender = "NA";
@@ -105,6 +127,7 @@ class _adDetailsState extends State<adDetails> {
                 const SizedBox(height: 15),
 
                 GestureDetector(
+                  onTap: pickImages,
                   child: CircleAvatar(
                     backgroundColor: secondaryColor,
                     radius: 70,
@@ -116,11 +139,29 @@ class _adDetailsState extends State<adDetails> {
                         const Text(
                           'Add Images',
                           style: TextStyle(color: Colors.grey, fontSize: 20),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
+                const SizedBox(height: 10),
+
+                // Display selected images *************************
+                _selectedImages != null && _selectedImages!.isNotEmpty
+                    ? Wrap(
+                        spacing: 8,
+                        children: _selectedImages!.map((image) {
+                          return Image.file(
+                            File(image.path),
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          );
+                        }).toList(),
+                      )
+                    : Text('No images selected'),
+
+                //****************************************
 
                 const SizedBox(height: 20),
 
