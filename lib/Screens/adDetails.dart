@@ -39,7 +39,7 @@ class _adDetailsState extends State<adDetails> {
 
   //*************************************************
   final _formKey = GlobalKey<FormState>(); // Key for the form
-  String selectedBreed = "None";
+  String selectedSpecies = "None";
   String selectedGender = "NA";
   String selectedVaccine = "NA";
   String selectedCategory = "Animals";
@@ -60,6 +60,7 @@ class _adDetailsState extends State<adDetails> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+  TextEditingController breedController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
   TextEditingController weightController = TextEditingController();
@@ -250,7 +251,8 @@ class _adDetailsState extends State<adDetails> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 15),
                             child: Text(
-                              selectedCategory, // Display the selected breed
+                              selectedCategory,
+                              // Display the selected species
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -302,7 +304,7 @@ class _adDetailsState extends State<adDetails> {
                 const SizedBox(height: 15),
                 const lineWidget(),
                 const SizedBox(height: 15),
-                textHeading(text: "Breed *"),
+                textHeading(text: "Species *"),
                 GestureDetector(
                   onTap: () {
                     // Show a modal bottom sheet with options
@@ -318,7 +320,7 @@ class _adDetailsState extends State<adDetails> {
                                 title: const Text("Cat"),
                                 onTap: () {
                                   setState(() {
-                                    selectedBreed = "Cat";
+                                    selectedSpecies = "Cat";
                                   });
                                   Navigator.pop(
                                       context); // Close the bottom sheet
@@ -328,7 +330,7 @@ class _adDetailsState extends State<adDetails> {
                                 title: const Text("Dog"),
                                 onTap: () {
                                   setState(() {
-                                    selectedBreed = "Dog";
+                                    selectedSpecies = "Dog";
                                   });
                                   Navigator.pop(context);
                                 },
@@ -337,7 +339,7 @@ class _adDetailsState extends State<adDetails> {
                                 title: const Text("Rabbit"),
                                 onTap: () {
                                   setState(() {
-                                    selectedBreed = "Rabbit";
+                                    selectedSpecies = "Rabbit";
                                   });
                                   Navigator.pop(context);
                                 },
@@ -354,7 +356,7 @@ class _adDetailsState extends State<adDetails> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          selectedBreed, // Display the selected breed
+                          selectedSpecies, // Display the selected species
                           style: const TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 15,
@@ -370,6 +372,18 @@ class _adDetailsState extends State<adDetails> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                const SizedBox(height: 15),
+                const lineWidget(),
+                const SizedBox(height: 15),
+                textHeading(text: "Breed"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: customTextField(
+                    controller: breedController,
+                    width: double.infinity,
+                    height: 60,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -509,6 +523,7 @@ class _adDetailsState extends State<adDetails> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: customTextField(
+                            hintText: "e.g 5.5 Pounds",
                             controller: weightController,
                             textInputType: TextInputType.number,
                             width: 130,
@@ -714,13 +729,50 @@ class _adDetailsState extends State<adDetails> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {
+                      if (_selectedImages == null ||
+                          _selectedImages!.isEmpty) {
+                        // Show AlertDialog if images are not selected
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text(
+                                "Images Required",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              content: const Text(
+                                "Please select at least one image before proceeding.",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pop(); // Close the dialog
+                                  },
+                                  child: const Text(
+                                    "OK",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else if (_formKey.currentState?.validate() ?? false) {
                         // Form is valid, proceed
+                        final images = _selectedImages
+                                ?.map((image) => image.path)
+                                .toList() ??
+                            [];
 
                         final category = selectedCategory;
                         final name = nameController.text;
                         final price = priceController.text;
-                        final breed = selectedBreed;
+                        final species = selectedSpecies;
+                        final breed = breedController.text;
                         final sex = selectedGender;
                         final age = selectedAge;
                         final weight = weightController.text;
@@ -736,6 +788,7 @@ class _adDetailsState extends State<adDetails> {
                                     category: category,
                                     name: name,
                                     price: price,
+                                    species: species,
                                     breed: breed,
                                     sex: sex,
                                     age: age,
@@ -744,6 +797,10 @@ class _adDetailsState extends State<adDetails> {
                                     location: location,
                                     title: title,
                                     description: description,
+                                    images: _selectedImages
+                                            ?.map((image) => image.path)
+                                            .toList() ??
+                                        [],
                                   )),
                         );
                       } else {
