@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
@@ -10,7 +11,8 @@ class buyScreen extends StatelessWidget {
   final String category;
   final String name;
   final String price;
-  final String breed;
+  final String species;
+  final String? breed;
   final String sex;
   final String age;
   final String weight;
@@ -18,13 +20,15 @@ class buyScreen extends StatelessWidget {
   final String location;
   final String title;
   final String description;
+  final List<String>? images;
 
   const buyScreen({
     Key? key,
     required this.category,
     required this.name,
     required this.price,
-    required this.breed,
+    required this.species,
+    this.breed,
     required this.sex,
     required this.age,
     required this.vaccine,
@@ -32,6 +36,7 @@ class buyScreen extends StatelessWidget {
     required this.title,
     required this.description,
     required this.weight,
+    this.images,
   }) : super(key: key);
 
   @override
@@ -46,11 +51,11 @@ class buyScreen extends StatelessWidget {
         ),
       );
     });
-    Timer(const Duration(seconds: 3), () {
+    /*Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => myAds()),
       );
-    });
+    });*/
 
     return Scaffold(
       body: Stack(
@@ -59,14 +64,35 @@ class buyScreen extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Container(
-                    width: double.infinity,
-                    height: 294,
-                    child: Image.asset(
-                      'assets/images/Rectangle 103.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  //***************
+                  // Replacing Image.asset with images ListView.builder
+                  (images != null && images!.isNotEmpty)
+                      ? Container(
+                          height: 290,
+                          width: double.infinity,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: images?.length ?? 0,
+                            shrinkWrap: true,
+                            // Shrink the ListView to fit content
+                            physics: ClampingScrollPhysics(),
+                            // Avoid bouncing overflow
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image.file(
+                                  File(images![index]),
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      : Text('No images available'),
+                  //***************
+
                   Positioned(
                     top: 16,
                     left: 16,
@@ -162,7 +188,7 @@ class buyScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '$breed',
+                            '$species',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 14,
@@ -204,8 +230,7 @@ class buyScreen extends StatelessWidget {
                           const SizedBox(height: 20),
                           _buildInfoRow('Age', '$age', Icons.pets),
                           const SizedBox(height: 23),
-                          _buildInfoRow(
-                              'Weight', '$weight Pounds', Icons.scale),
+                          _buildInfoRow('Weight', '$weight lbs', Icons.scale),
                           const SizedBox(height: 20),
                         ],
                       ),
@@ -214,16 +239,16 @@ class buyScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const SizedBox(height: 20),
-                          _buildInfoRow('Vaccination', '$vaccine',
-                              Icons.medical_services),
+                          _buildCenteredInfoRow(
+                              'Breed', '$breed', Icons.category),
                           const SizedBox(height: 23),
                           _buildInfoRow('Sex', '$sex', Icons.transgender),
                           const SizedBox(height: 20),
                         ],
                       ),
                       const SizedBox(height: 20),
-                      _buildCenteredInfoRow(
-                          'Info', 'Details here', Icons.info),
+                      _buildInfoRow(
+                          'Vaccination', '$vaccine', Icons.medical_services),
                       const SizedBox(height: 20),
                       _buildShadowContainer(),
                       const SizedBox(height: 20),
