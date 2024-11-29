@@ -51,11 +51,26 @@ class buyScreen extends StatelessWidget {
         ),
       );
     });
-    /*Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => myAds()),
+        MaterialPageRoute(
+          builder: (context) => myAds(
+            adsList: [
+              // ...adsList, // This should be the existing list of ads passed from the previous screen
+              {
+                // First image from the uploaded images
+                'image': images?.first ?? '',
+
+                'name': name,
+                'species': species,
+                'location': location,
+                'price': price,
+              }
+            ],
+          ),
+        ),
       );
-    });*/
+    });
 
     return Scaffold(
       body: Stack(

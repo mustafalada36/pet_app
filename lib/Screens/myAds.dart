@@ -1,63 +1,82 @@
+import 'dart:io';
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
-import 'package:pet_app/Screens/favourites.dart';
+import 'package:pet_app/Screens/adDetails.dart';
+import 'package:pet_app/Screens/chatsScreen.dart';
+import 'package:pet_app/Screens/homeScreen.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/constants.dart';
 
-import 'adDetails.dart';
-import 'chatsScreen.dart';
-import 'homeScreen.dart';
+ImageProvider getImageProvider(String imagePath) {
+  if (Uri.tryParse(imagePath)?.isAbsolute ?? false) {
+    return NetworkImage(imagePath);
+  } else {
+    return FileImage(File(imagePath));
+  }
+}
 
 class myAds extends StatefulWidget {
+  final List<Map<String, String>>? adsList;
+
+  // Accept the adsList as a required parameter
+  const myAds({Key? key, this.adsList}) : super(key: key);
+
   @override
   State<myAds> createState() => _myAdsState();
 }
 
 class _myAdsState extends State<myAds> {
   int _currentIndex = 3;
-  final List<Widget> _pages = [
-    const Center(child: Text('Home Screen')),
-    const Center(child: Text('Chat Screen')),
-    const Center(child: Text('Post Ad Screen')),
-    const Center(child: Text('My Ads Screen')),
-    const Center(child: Text('Profile Screen')),
-  ];
+  late List<Map<String, String>> adsList;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize adsList with the data passed to the widget
+    adsList = widget.adsList!;
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
 
-    // Here you can define the action when an item is tapped
+    // Navigation logic
     switch (index) {
       case 0:
-        print("Home tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const homeScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const homeScreen()),
+        );
         break;
       case 1:
-        print("Chat tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ChatsScreen()),
+        );
         break;
       case 2:
-        print("Post Ad tapped");
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => adDetails()));
-
+          context,
+          MaterialPageRoute(builder: (context) => adDetails()),
+        );
+        break;
       case 3:
-        print("My Ads tapped");
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => myAds()));
+          context,
+          MaterialPageRoute(builder: (context) => myAds(adsList: adsList)),
+        );
         break;
       case 4:
-        print("Profile tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => profileScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => profileScreen()),
+        );
         break;
       default:
-        print("Unknown tab");
+        break;
     }
   }
 
@@ -65,21 +84,23 @@ class _myAdsState extends State<myAds> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          leading: IconButton(
-            color: const Color(0xFF267E1E),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back),
+        centerTitle: true,
+        leading: IconButton(
+          color: const Color(0xFF267E1E),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+        title: const Text(
+          "My Ads",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w900,
+            color: primaryColor,
           ),
-          title: const Text(
-            "My Ads",
-            style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w900,
-                color: primaryColor),
-          )),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -93,33 +114,114 @@ class _myAdsState extends State<myAds> {
                 textClr: Colors.white,
                 image: Image.asset("assets/images/activeSymbol.png"),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: CircleAvatar(
                   backgroundColor: primaryColor,
                   child: Text(
-                    "1",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
+                    "${adsList.length}", // Number of ads
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 15),
-          adsCard(), // From Favourites Screen
+          Expanded(
+            child: ListView.builder(
+              itemCount: adsList.length,
+              itemBuilder: (context, index) {
+                final ad = adsList[index];
+                return Card(
+                  color: secondaryColor,
+                  elevation: 0,
+                  borderOnForeground: true,
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Image Section
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Image(
+                            image: getImageProvider(
+                                ad['imageFile'] ?? ad['image'] ?? ''),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        // Spacing between image and details
+                        // Details Section
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Name of the ad
+                              Text(
+                                ad['name'] ?? 'No Name',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              // Species and location
+                              Text(
+                                "${ad['species']}",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                "${ad['location']}",
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              // Price
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  "PKR ${ad['price']}",
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
-        items: <Widget>[
-          const Icon(Icons.home, size: 30, color: Colors.white),
-          const Icon(Icons.chat, size: 30, color: Colors.white),
-          const Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
-          const Icon(Icons.list_alt, size: 30, color: Colors.white),
-          const Icon(Icons.person, size: 30, color: Colors.white),
+        items: const <Widget>[
+          Icon(Icons.home, size: 30, color: Colors.white),
+          Icon(Icons.chat, size: 30, color: Colors.white),
+          Icon(Icons.add_circle_outline, size: 40, color: Colors.white),
+          Icon(Icons.list_alt, size: 30, color: Colors.white),
+          Icon(Icons.person, size: 30, color: Colors.white),
         ],
         onTap: _onItemTapped,
         color: Colors.green,
@@ -127,7 +229,6 @@ class _myAdsState extends State<myAds> {
         height: 60,
         animationCurve: Curves.easeInOut,
         animationDuration: const Duration(milliseconds: 600),
-        index: _currentIndex,
       ),
     );
   }
