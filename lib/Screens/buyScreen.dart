@@ -464,9 +464,9 @@ class buyScreen extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: adsTemplate()),
+            //  Expanded(child: adsTemplate()),
             const SizedBox(width: 9.39),
-            Expanded(child: adsTemplate()),
+            //  Expanded(child: adsTemplate()),
           ],
         ),
       ],
