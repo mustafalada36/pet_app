@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,9 +10,11 @@ import 'package:pet_app/Reuseable%20Components/textHeading.dart';
 import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
 import 'package:pet_app/constants.dart';
-
+import 'package:http/http.dart' as http;
 import '../Other Services/current_location.dart';
 import 'homeScreen.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class adDetails extends StatefulWidget {
   @override
@@ -19,9 +22,34 @@ class adDetails extends StatefulWidget {
 }
 
 class _adDetailsState extends State<adDetails> {
+  void addProduct() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    await firestore.collection('products').add({
+      'age': selectedAge,
+      'breed': breedController.text,
+      'category': selectedCategory,
+      'description': descController.text,
+      'image': _uploadedImageUrls,
+      'name': nameController.text,
+      'price': priceController.text,
+      'sex': selectedGender,
+      'species': selectedSpecies,
+      'timestamp': FieldValue.serverTimestamp(),
+      'title': titleController.text,
+      'vaccine': selectedVaccine,
+      'weight': weightController.text,
+    }).then((value) {
+      print('Product Added: ${value.id}');
+    }).catchError((error) {
+      print('Failed to add product: $error');
+    });
+  }
+
   //*************************************************
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _selectedImages = []; // Holds selected images
+  List<String> _uploadedImageUrls = [];
 
   // Function to pick multiple images
   Future<void> pickImages() async {
@@ -31,9 +59,42 @@ class _adDetailsState extends State<adDetails> {
         setState(() {
           _selectedImages = pickedImages;
         });
+        // Upload all selected images
+        for (var image in _selectedImages!) {
+          await _uploadToCloudinary(image);
+        }
       }
     } catch (e) {
       print('Error picking images: $e');
+    }
+  }
+
+  // Function to upload an image to Cloudinary
+  Future<void> _uploadToCloudinary(XFile imageFile) async {
+    const cloudinaryUrl =
+        'https://api.cloudinary.com/v1_1/dr5nxrgfx/image/upload';
+    const uploadPreset = 'abcdefght';
+
+    try {
+      final request = http.MultipartRequest('POST', Uri.parse(cloudinaryUrl));
+      request.fields['upload_preset'] = uploadPreset;
+      request.files
+          .add(await http.MultipartFile.fromPath('file', imageFile.path));
+
+      final response = await request.send();
+      if (response.statusCode == 200) {
+        final responseData = await http.Response.fromStream(response);
+        final responseJson = json.decode(responseData.body);
+        setState(() {
+          _uploadedImageUrls
+              .add(responseJson['secure_url']); // Add uploaded image URL
+        });
+        print('Image uploaded successfully: ${responseJson['secure_url']}');
+      } else {
+        print('Failed to upload image: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error uploading image: $e');
     }
   }
 
@@ -73,7 +134,11 @@ class _adDetailsState extends State<adDetails> {
         leading: IconButton(
           color: primaryColor,
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => homeScreen(),
+                ));
           },
           icon: const Icon(Icons.arrow_back),
         ),
@@ -729,6 +794,7 @@ class _adDetailsState extends State<adDetails> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
+                      addProduct();
                       if (_selectedImages == null ||
                           _selectedImages!.isEmpty) {
                         // Show AlertDialog if images are not selected
