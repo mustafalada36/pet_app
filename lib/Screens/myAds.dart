@@ -215,6 +215,7 @@ class _myAdsState extends State<myAds> {
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
+        index: _currentIndex,
         backgroundColor: Colors.white,
         items: const <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),

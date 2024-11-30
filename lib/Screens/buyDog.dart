@@ -98,12 +98,12 @@ class buyDog extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [adsTemplate(), adsTemplate()],
+                    //  children: [adsTemplate(), adsTemplate()],
                   ),
                   SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [adsTemplate(), adsTemplate()],
+                    //  children: [adsTemplate(), adsTemplate()],
                   ),
                 ],
               )),
