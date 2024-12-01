@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
@@ -22,10 +23,13 @@ class adDetails extends StatefulWidget {
 }
 
 class _adDetailsState extends State<adDetails> {
-  void addProduct() async {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+  void addAnimals() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    await firestore.collection('products').add({
+    await firestore.collection('Animals').add({
+      'userId': userId,
       'age': selectedAge,
       'breed': breedController.text,
       'category': selectedCategory,
@@ -40,9 +44,9 @@ class _adDetailsState extends State<adDetails> {
       'vaccine': selectedVaccine,
       'weight': weightController.text,
     }).then((value) {
-      print('Product Added: ${value.id}');
+      print('Animals Added: ${value.id}');
     }).catchError((error) {
-      print('Failed to add product: $error');
+      print('Failed to add Animals: $error');
     });
   }
 
@@ -794,7 +798,7 @@ class _adDetailsState extends State<adDetails> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      addProduct();
+                      addAnimals();
                       if (_selectedImages == null ||
                           _selectedImages!.isEmpty) {
                         // Show AlertDialog if images are not selected
