@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: seeAllPets(),
+      home: const homeScreen(),
 
       //shows
       // debugShowCheckedModeBanner: false,
