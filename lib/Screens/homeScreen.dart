@@ -1,10 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/adDetails.dart';
+import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
+import 'package:pet_app/Screens/seeAllPets.dart';
+import 'package:pet_app/Screens/temporary.dart';
 import 'package:pet_app/models/Chat.dart';
 
 import 'chatsScreen.dart';
@@ -17,6 +21,8 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const Center(child: Text('Home Screen')),
@@ -31,36 +37,38 @@ class _homeScreenState extends State<homeScreen> {
       _currentIndex = index;
     });
 
-    // Here you can define the action when an item is tapped
     switch (index) {
       case 0:
         print("Home tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const homeScreen()));
+        // Remove pushReplacement for homeScreen to avoid infinite push.
         break;
       case 1:
         print("Chat tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ChatsScreen()),
+        );
         break;
       case 2:
         print("Post Ad tapped");
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => adDetails()));
-
+          context,
+          MaterialPageRoute(builder: (context) => adDetails()),
+        );
+        break;
       case 3:
         print("My Ads tapped");
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => myAds(
-                      adsList: [],
-                    )));
-
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => myAds()),
+        );
+        break;
       case 4:
         print("Profile tapped");
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => profileScreen()));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => profileScreen()),
+        );
         break;
       default:
         print("Unknown tab");
@@ -192,20 +200,28 @@ class _homeScreenState extends State<homeScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/buysell.jpg',
-                              fit: BoxFit.cover,
-                              width: 60,
-                              height: 60,
-                            ),
-                            const Text(
-                              'Buy & Sell \n     ',
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w500),
-                            )
-                          ],
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => seeAllPets()),
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/buysell.jpg',
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              ),
+                              const Text(
+                                'Buy & Sell \n     ',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           width: 10,
@@ -281,7 +297,8 @@ class _homeScreenState extends State<homeScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Text('userid is: $userId'),
                 ],
               ),
             ),
