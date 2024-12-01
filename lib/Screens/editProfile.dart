@@ -13,7 +13,9 @@ class editProfile extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: secondaryColor,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,

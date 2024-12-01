@@ -79,7 +79,6 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // HEAD ===================================================
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(

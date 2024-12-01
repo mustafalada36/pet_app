@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
@@ -65,10 +66,22 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: const homeScreen(),
+      home: loginScreen(),
 
       //shows
       // debugShowCheckedModeBanner: false,
     );
   }
 }
+
+//save info
+/*StreamBuilder(
+stream: FirebaseAuth.instance.authStateChanges(),
+builder: (context, snapshot) {
+if (snapshot.hasData) {
+return homeScreen();
+} else {
+return loginScreen();
+}
+},
+)*/

@@ -1,6 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/editProfile.dart';
+import 'package:pet_app/Screens/loginscreen.dart';
+import 'package:pet_app/constants.dart';
 
+import '../Firebase_services/authetication.dart';
 import 'adDetails.dart';
 import 'chatsScreen.dart';
 import 'homeScreen.dart';
@@ -63,65 +67,119 @@ class _ProfileScreenState extends State<profileScreen> {
         child: Column(
           children: [
             // First Row: Image and Profile Info
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Circular Image with Color
-                Container(
-                  width: 73,
-                  height: 73,
-                  decoration: BoxDecoration(
-                    color: containerColor,
-                    shape: BoxShape.circle, // Circle shape
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.person,
-                      color: primaryColor, // Primary color for the icon
-                      size: 50,
+            Card(
+              color: secondaryColor,
+              elevation: 0,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Circular Image with Color
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Container(
+                        width: 73,
+                        height: 73,
+                        decoration: BoxDecoration(
+                          color: containerColor,
+                          shape: BoxShape.circle, // Circle shape
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.person,
+                            color: primaryColor, // Primary color for the icon
+                            size: 50,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                // Profile Info (Aligned like Favorites & Saved searches)
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Name "James"
-                      Text(
-                        'James',
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontWeight: FontWeight.w600, // Semibold
-                          fontSize: 18,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      // "View and edit profile" button
-                      TextButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all<EdgeInsets>(
-                            EdgeInsets.zero, // Remove padding for alignment
+                    const SizedBox(width: 16),
+                    // Profile Info (Aligned like Favorites & Saved searches)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Name "James"
+                          Text(
+                            'James',
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontWeight: FontWeight.w600, // Semibold
+                              fontSize: 18,
+                            ),
                           ),
-                          minimumSize: MaterialStateProperty.all(
-                              const Size(0, 0)), // Min size for alignment
-                        ),
-                        child: Text(
-                          'View and edit profile',
-                          style: TextStyle(
-                            color: primaryColor,
-                            decoration: TextDecoration.underline,
-                            // Underline text
-                            fontSize: 14,
+                          const SizedBox(height: 4),
+                          Text(
+                            'James@gmail.com',
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontWeight: FontWeight.w400, // Semibold
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 4),
+                          // "View and edit profile" button
+                          TextButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              padding: WidgetStateProperty.all<EdgeInsets>(
+                                EdgeInsets
+                                    .zero, // Remove padding for alignment
+                              ),
+                              minimumSize: WidgetStateProperty.all(
+                                  const Size(0, 0)), // Min size for alignment
+                            ),
+                            child: InkWell(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => editProfile(),
+                                  )),
+                              child: Text(
+                                'View and edit profile',
+                                style: TextStyle(
+                                  color: primaryColor,
+                                  decoration: TextDecoration.underline,
+                                  // Underline text
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, bottom: 0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context)
+                              .primaryColor, // Use primaryColor
+                          foregroundColor: Colors.white, // Text color
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(20), // Rounded corners
+                          ),
+                          minimumSize: const Size(70, 30),
+                        ),
+                        onPressed: () async {
+                          await AuthServices().signOut();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => loginScreen(),
+                              ));
+                        },
+                        child: const Text('Logout'),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
             const SizedBox(height: 41), // Spacing between rows
             // First Row: Favorites & Saved Searches
