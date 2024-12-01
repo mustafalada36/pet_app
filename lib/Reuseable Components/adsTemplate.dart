@@ -4,14 +4,14 @@ import '../constants.dart';
 class adsTemplate extends StatelessWidget {
   final String imageUrl;
   final String name;
-  final String breed;
+  final String species;
   final String location;
   final String price;
 
   adsTemplate({
     required this.imageUrl,
     required this.name,
-    required this.breed,
+    required this.species,
     required this.location,
     required this.price,
   });
@@ -49,7 +49,7 @@ class adsTemplate extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 5, top: 5),
                 child: Text(
-                  breed,
+                  species,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,

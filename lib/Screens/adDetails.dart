@@ -43,6 +43,7 @@ class _adDetailsState extends State<adDetails> {
       'title': titleController.text,
       'vaccine': selectedVaccine,
       'weight': weightController.text,
+      'location': cityName,
     }).then((value) {
       print('Animals Added: ${value.id}');
     }).catchError((error) {

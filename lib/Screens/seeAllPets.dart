@@ -132,7 +132,7 @@ class seeAllPets extends StatelessWidget {
                       var product = products[index];
                       var imageUrl = product['image'][0]; // First image URL
                       var name = product['name'];
-                      var breed = product['breed'];
+                      var species = product['species'];
                       var location = product[
                           'category']; // Assuming 'category' is location
                       var price = product['price'];
@@ -142,7 +142,7 @@ class seeAllPets extends StatelessWidget {
                           adsTemplate(
                             imageUrl: imageUrl,
                             name: name,
-                            breed: breed,
+                            species: species,
                             location: location,
                             price: price,
                           ),
