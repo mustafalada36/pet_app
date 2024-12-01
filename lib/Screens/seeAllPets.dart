@@ -95,10 +95,11 @@ class seeAllPets extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             // StreamBuilder to fetch products from Firebase
+
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
-                    .collection('products')
+                    .collection('Animals')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -110,7 +111,7 @@ class seeAllPets extends StatelessWidget {
                   }
 
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                    return const Center(child: Text("No products available"));
+                    return const Center(child: Text("No Animals available"));
                   }
 
                   var products = snapshot.data!.docs;
