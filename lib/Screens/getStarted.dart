@@ -57,6 +57,7 @@ class getStarted extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.green.shade800),
                     )),
+
                 //  SizedBox(height: 40),
                 Positioned(
                   top: 630,
