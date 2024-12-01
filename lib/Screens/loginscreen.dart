@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pet_app/Screens/forgotPassword.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
+import 'package:pet_app/Screens/signup.dart';
 import '../Firebase_services/authetication.dart';
-import '../Firebase_services/snack_bar.dart'; // Import the google_fonts package
+import '../Firebase_services/snack_bar.dart';
+import '../constants.dart'; // Import the google_fonts package
 
 class loginScreen extends StatefulWidget {
   @override
@@ -112,23 +115,8 @@ class _loginScreenState extends State<loginScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {
-                      // Forgot password action
-                    },
-                    child: Text(
-                      'Forgot password?',
-                      style: GoogleFonts.montserrat(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
+                const forgotPassword(),
+                const SizedBox(height: 30),
                 Row(
                   children: [
                     Expanded(
@@ -156,15 +144,31 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 5),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "You don’t have an account?",
-                    style: GoogleFonts.montserrat(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.black,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      padding: WidgetStateProperty.all<EdgeInsets>(
+                        EdgeInsets.zero, // Remove padding for alignment
+                      ),
+                      minimumSize: WidgetStateProperty.all(
+                          const Size(0, 0)), // Min size for alignment
+                    ),
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUpScreen(),
+                          )),
+                      child: Text(
+                        "Don't have an account? Sign Up",
+                        style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 12,
+                        ),
+                      ),
                     ),
                   ),
                 ),
