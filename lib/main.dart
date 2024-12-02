@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: loginScreen(),
+      home: homeScreen(),
 
       //shows
       // debugShowCheckedModeBanner: false,
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//save info
+//save info for login
 /*StreamBuilder(
 stream: FirebaseAuth.instance.authStateChanges(),
 builder: (context, snapshot) {

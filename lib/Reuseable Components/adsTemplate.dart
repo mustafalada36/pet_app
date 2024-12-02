@@ -29,54 +29,67 @@ class adsTemplate extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10, bottom: 0),
-                child: Image.network(
-                  imageUrl,
-                  width: 150,
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                name,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
-                child: Text(
-                  species,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      imageUrl,
+                      width: 150,
+                      height: 150, // Scales dynamically
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
-                child: Text(
-                  location,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5, top: 5),
-                child: Text(
-                  "PKR $price",
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
               const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 5),
+                      child: Text(
+                        species,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 5),
+                      child: Text(
+                        location,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5, top: 5),
+                      child: Text(
+                        "PKR $price",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              )
             ],
           ),
         ),
