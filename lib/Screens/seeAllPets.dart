@@ -7,13 +7,16 @@ import '../constants.dart';
 class seeAllPets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           Expanded(
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Pets',
@@ -25,16 +28,16 @@ class seeAllPets extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
         ],
         leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: primaryColor,
-            )),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: primaryColor,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -42,20 +45,21 @@ class seeAllPets extends StatelessWidget {
           children: [
             const SizedBox(height: 10),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 topContainer(
                   "Pets",
-                  110,
+                  screenWidth * 0.3, // Dynamic width
                   image: Image.asset("assets/images/activeSymbol.png"),
                   clr: primaryColor,
                   textClr: Colors.white,
                 ),
-                topContainer(
+                /*topContainer(
                   "Johar Town",
-                  160,
+                  screenWidth * 0.5, // Dynamic width
                   clr: secondaryColor,
                   textClr: primaryColor,
-                )
+                ),*/
               ],
             ),
             const SizedBox(height: 10),
@@ -64,38 +68,38 @@ class seeAllPets extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
+                  Expanded(
+                    child: const Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
                             text: "Showing: ",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(
-                          text: "Results for See All Pets",
-                        ),
-                      ],
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(
+                            text: "Results for See All Pets",
+                          ),
+                        ],
+                      ),
+                      softWrap: true,
                     ),
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        const Text("Sort By",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Transform(
-                          alignment: Alignment.center,
-                          transform: Matrix4.rotationZ(1.5708),
-                          child: const Icon(Icons.compare_arrows),
-                        )
-                      ],
-                    ),
-                  )
+                  Row(
+                    children: [
+                      const Text("Sort By",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16)),
+                      Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.rotationZ(1.5708),
+                        child: const Icon(Icons.compare_arrows),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 10),
-            // StreamBuilder to fetch products from Firebase
-
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
@@ -117,36 +121,27 @@ class seeAllPets extends StatelessWidget {
                   var products = snapshot.data!.docs;
 
                   return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      // Set the number of columns
-                      crossAxisSpacing: 5,
-                      // Horizontal space between items
-                      mainAxisSpacing: 5,
-                      // Vertical space between items
-                      childAspectRatio: 0.6,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: screenWidth < 600 ? 2 : 3, // Responsive
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                      childAspectRatio: screenWidth < 600 ? 0.6 : 0.65,
                     ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       var product = products[index];
-                      var imageUrl = product['image'][0]; // First image URL
+                      var imageUrl = product['image'][0];
                       var name = product['name'];
                       var species = product['species'];
-                      var location = product[
-                          'category']; // Assuming 'category' is location
+                      var location = product['location'];
                       var price = product['price'];
 
-                      return Row(
-                        children: [
-                          adsTemplate(
-                            imageUrl: imageUrl,
-                            name: name,
-                            species: species,
-                            location: location,
-                            price: price,
-                          ),
-                        ],
+                      return adsTemplate(
+                        imageUrl: imageUrl,
+                        name: name,
+                        species: species,
+                        location: location,
+                        price: price,
                       );
                     },
                   );
