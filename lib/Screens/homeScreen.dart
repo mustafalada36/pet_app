@@ -9,6 +9,7 @@ import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/Screens/seeAllPets.dart';
 import 'package:pet_app/Screens/temporary.dart';
+import 'package:pet_app/constants.dart';
 import 'package:pet_app/models/Chat.dart';
 
 import 'chatsScreen.dart';
@@ -89,16 +90,19 @@ class _homeScreenState extends State<homeScreen> {
         ),
         title: const Center(
           child: const Text(
-            'Location',
-            style: TextStyle(color: Colors.black),
+            'Pet App',
+            style:
+                TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
           ),
         ),
         actions: [
           IconButton(
             icon: const Icon(Icons.person_rounded, color: Color(0xff267E1E)),
-            onPressed: () {
-              // Add action for the profile icon
-            },
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => profileScreen(),
+                )),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/editProfile.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
@@ -16,6 +17,7 @@ class profileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<profileScreen> {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
   final Color primaryColor = const Color(0xFF267E1E);
   final Color containerColor = const Color(0xFFD9D9D9);
 
@@ -104,7 +106,7 @@ class _ProfileScreenState extends State<profileScreen> {
                         children: [
                           // Name "James"
                           Text(
-                            'James',
+                            'Haseeb',
                             style: TextStyle(
                               color: primaryColor,
                               fontWeight: FontWeight.w600, // Semibold
@@ -113,11 +115,29 @@ class _ProfileScreenState extends State<profileScreen> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            'James@gmail.com',
+                            'Gmail: haseeb@gmail.com',
                             style: TextStyle(
                               color: primaryColor,
                               fontWeight: FontWeight.w400, // Semibold
                               fontSize: 14,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'Phone: ',
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontWeight: FontWeight.w400, // Semibold
+                              fontSize: 14,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            'UserId: $userId',
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontWeight: FontWeight.w400, // Semibold
+                              fontSize: 12,
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -149,32 +169,32 @@ class _ProfileScreenState extends State<profileScreen> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, bottom: 0),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context)
-                              .primaryColor, // Use primaryColor
-                          foregroundColor: Colors.white, // Text color
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 40, bottom: 0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Theme.of(context)
+                                    .primaryColor, // Use primaryColor
+                                foregroundColor: Colors.white, // Text color
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      20), // Rounded corners
+                                ),
+                                minimumSize: const Size(70, 30),
+                              ),
+                              onPressed: () async {
+                                await AuthServices().signOut();
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => loginScreen(),
+                                    ));
+                              },
+                              child: const Text('Logout'),
+                            ),
                           ),
-                          minimumSize: const Size(70, 30),
-                        ),
-                        onPressed: () async {
-                          await AuthServices().signOut();
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => loginScreen(),
-                              ));
-                        },
-                        child: const Text('Logout'),
+                        ],
                       ),
                     ),
                   ],
