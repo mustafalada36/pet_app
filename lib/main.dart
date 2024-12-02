@@ -6,6 +6,7 @@ import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/breeds.dart';
 import 'package:pet_app/Screens/buyFood.dart';
+import 'package:pet_app/Screens/buyScreen2.dart';
 import 'package:pet_app/Screens/cashonDelivery.dart';
 import 'package:pet_app/Screens/chatsScreen.dart';
 import 'package:pet_app/Screens/creditndebit.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: adDetails(),
+      home: homeScreen(),
 
       //shows
       // debugShowCheckedModeBanner: false,
