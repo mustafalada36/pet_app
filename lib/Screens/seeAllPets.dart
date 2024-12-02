@@ -118,7 +118,7 @@ class seeAllPets extends StatelessWidget {
                     return const Center(child: Text("No Animals available"));
                   }
 
-                  var products = snapshot.data!.docs;
+                  var Animals = snapshot.data!.docs;
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -127,22 +127,24 @@ class seeAllPets extends StatelessWidget {
                       mainAxisSpacing: 8,
                       childAspectRatio: screenWidth < 600 ? 0.6 : 0.65,
                     ),
-                    itemCount: products.length,
+                    itemCount: Animals.length,
                     itemBuilder: (context, index) {
-                      var product = products[index];
-                      var imageUrl = product['image'][0];
-                      var name = product['name'];
-                      var species = product['species'];
-                      var location = product['location'];
-                      var price = product['price'];
+                      var animal = Animals[index];
+                      var imageUrl = animal['image'][0];
+                      var name = animal['name'];
+                      var species = animal['species'];
+                      var location = animal['location'];
+                      var price = animal['price'];
+                      var adId = animal.id; // Document ID
 
                       return adsTemplate(
-                        imageUrl: imageUrl,
-                        name: name,
-                        species: species,
-                        location: location,
-                        price: price,
-                      );
+                          imageUrl: imageUrl,
+                          name: name,
+                          species: species,
+                          location: location,
+                          price: price,
+                          adId: adId // Pass adId here
+                          );
                     },
                   );
                 },
