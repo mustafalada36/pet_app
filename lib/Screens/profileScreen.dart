@@ -159,7 +159,7 @@ class _ProfileScreenState extends State<profileScreen> {
                                     builder: (context) => editProfile(),
                                   )),
                               child: Text(
-                                'View and edit profile',
+                                'Click to edit profile',
                                 style: TextStyle(
                                   color: primaryColor,
                                   decoration: TextDecoration.underline,
