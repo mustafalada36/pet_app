@@ -195,7 +195,7 @@ class buyScreen2 extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            '$userId',
+                            'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']}"',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 12,
