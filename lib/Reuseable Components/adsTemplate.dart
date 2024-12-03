@@ -8,7 +8,7 @@ class adsTemplate extends StatelessWidget {
   final String name;
   final String species;
   final String location;
-  final String price;
+  final String? price;
   final String adId; // Unique document ID for the ad
 
   adsTemplate({
@@ -16,7 +16,7 @@ class adsTemplate extends StatelessWidget {
     required this.name,
     required this.species,
     required this.location,
-    required this.price,
+    this.price,
     required this.adId,
   });
 
