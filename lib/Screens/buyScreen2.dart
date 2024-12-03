@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
 import 'package:pet_app/constants.dart';
 
 class buyScreen2 extends StatelessWidget {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
   final String adId; // Ad's unique identifier
   buyScreen2({required this.adId});
 
@@ -186,6 +188,14 @@ class buyScreen2 extends StatelessWidget {
                           ),
                           Text(
                             '${ad['description']}',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            '$userId',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 12,
