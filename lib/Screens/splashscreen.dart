@@ -9,13 +9,15 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Simulate a delay before navigating to the home screen
-    Timer(const Duration(seconds: 30), () {
+    /*Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const SignUpScreen()),
       );
-    });
+    });*/
 
     return Container(
+      width: double.infinity,
+      height: double.infinity,
       color: Colors.white,
       child: Center(
         child: Column(

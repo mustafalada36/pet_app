@@ -209,10 +209,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: ElevatedButton(
                       onPressed: signUpUser,
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                             const Color(0xFF267E1E)),
                         shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                            WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
@@ -239,7 +239,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: TextStyle(
                       fontSize: 14.0,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFFA0AEC0),
+                      color: Colors.black45,
                       fontFamily: 'Noto Sans',
                     ),
                   ),
@@ -251,15 +251,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             builder: (context) => loginScreen()),
                       );
                     },
-                    // style: ButtonStyle(
-                    //   foregroundColor: MaterialStateProperty.all<Color>(
-                    //       const Color(0xFF267E1E)),
-                    //   // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    //   //   RoundedRectangleBorder(
-                    //   //     borderRadius: BorderRadius.circular(14.0),
-                    //   //   ),
-                    //   // ),
-                    // ),
                     child: const Text(
                       'Log in here!',
                       style: TextStyle(

@@ -214,7 +214,7 @@ class _homeScreenState extends State<homeScreen> {
                           child: Column(
                             children: [
                               Image.asset(
-                                'assets/images/buysell.jpg',
+                                'assets/images/buynsell.png',
                                 fit: BoxFit.cover,
                                 width: 60,
                                 height: 60,
@@ -240,10 +240,10 @@ class _homeScreenState extends State<homeScreen> {
                           child: Column(
                             children: [
                               Image.asset(
-                                'assets/images/petfood.jpg',
+                                'assets/images/foodpet.png',
                                 fit: BoxFit.cover,
                                 width: 60,
-                                height: 60,
+                                height: 70,
                               ),
                               const Text(
                                 'Pet Food \n     ',
@@ -286,13 +286,13 @@ class _homeScreenState extends State<homeScreen> {
                         Column(
                           children: [
                             Image.asset(
-                              'assets/images/adopt.png',
+                              'assets/images/doctor.png',
                               fit: BoxFit.cover,
                               width: 60,
                               height: 60,
                             ),
                             const Text(
-                              '      Pet\n Adoption',
+                              '   Medical\n Consultation',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
@@ -304,13 +304,13 @@ class _homeScreenState extends State<homeScreen> {
                         Column(
                           children: [
                             Image.asset(
-                              'assets/images/medical.jpg',
+                              'assets/images/adopt.png',
                               fit: BoxFit.cover,
                               width: 60,
                               height: 60,
                             ),
                             const Text(
-                              '   Medical\n Consultation',
+                              '      Pet\n Adoption',
                               style: TextStyle(
                                   fontSize: 12, fontWeight: FontWeight.w500),
                             )
