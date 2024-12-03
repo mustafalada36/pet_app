@@ -10,6 +10,7 @@ import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
 import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
+import 'package:pet_app/Screens/seeAllMaintainance.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
 import '../Other Services/current_location.dart';
@@ -26,29 +27,24 @@ class maintainancePost extends StatefulWidget {
 class _maintainancePostState extends State<maintainancePost> {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
-  void addAnimals() async {
+  void addMaintainance() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    await firestore.collection('Animals').add({
+    await firestore.collection('Maintainance').add({
       'userId': userId,
-      'age': selectedAge,
-      'breed': breedController.text,
+      'workHours': selectedworkHours,
+      'priceRange': selectedpriceRange,
       'category': selectedCategory,
       'description': descController.text,
       'image': _uploadedImageUrls,
       'name': nameController.text,
-      'price': priceController.text,
-      'sex': selectedGender,
-      'species': selectedSpecies,
       'timestamp': FieldValue.serverTimestamp(),
       'title': titleController.text,
-      'vaccine': selectedVaccine,
-      'weight': weightController.text,
       'location': cityName,
     }).then((value) {
-      print('Animals Added: ${value.id}');
+      print('Maintainance Added: ${value.id}');
     }).catchError((error) {
-      print('Failed to add Animals: $error');
+      print('Failed to add Maintainance: $error');
     });
   }
 
@@ -104,32 +100,16 @@ class _maintainancePostState extends State<maintainancePost> {
   }
 
   final _formKey = GlobalKey<FormState>(); // Key for the form
-  String selectedSpecies = "None";
-  String selectedGender = "NA";
+
   String selectedVaccine = "NA";
   String selectedCategory = "Animals";
   final categories = ['Animals', 'Food', 'Maintainance', 'Medical'];
-  String selectedAge = "NA";
-
-  // Function to update selected gender
-  void _selectGender(String gender) {
-    setState(() {
-      selectedGender = gender;
-    });
-  }
-
-  void _selectVaccine(String vaccine) {
-    setState(() {
-      selectedVaccine = vaccine;
-    });
-  }
+  String selectedworkHours = "NA";
+  String selectedpriceRange = "NA";
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController breedController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  TextEditingController weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -198,317 +178,78 @@ class _maintainancePostState extends State<maintainancePost> {
                   ),
                   const SizedBox(height: 15),
                   const lineWidget(),
-
                   const SizedBox(height: 15),
-
-                  // textHeading(text: "Price *"),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  //   child: customTextField(
-                  //     isRequired: true,
-                  //     controller: priceController,
-                  //     textInputType: TextInputType.number,
-                  //     width: double.infinity,
-                  //     height: 60,
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Species *"),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     // Show a modal bottom sheet with options
-                  //     showModalBottomSheet(
-                  //       context: context,
-                  //       builder: (BuildContext context) {
-                  //         return Container(
-                  //           padding: const EdgeInsets.all(10),
-                  //           child: Column(
-                  //             mainAxisSize: MainAxisSize.min,
-                  //             children: [
-                  //               ListTile(
-                  //                 title: const Text("Cat"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Cat";
-                  //                   });
-                  //                   Navigator.pop(
-                  //                       context); // Close the bottom sheet
-                  //                 },
-                  //               ),
-                  //               ListTile(
-                  //                 title: const Text("Dog"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Dog";
-                  //                   });
-                  //                   Navigator.pop(context);
-                  //                 },
-                  //               ),
-                  //               ListTile(
-                  //                 title: const Text("Rabbit"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Rabbit";
-                  //                   });
-                  //                   Navigator.pop(context);
-                  //                 },
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Padding(
-                  //         padding:
-                  //         const EdgeInsets.symmetric(horizontal: 15),
-                  //         child: Text(
-                  //           selectedSpecies,
-                  //           // Display the selected species
-                  //           style: const TextStyle(
-                  //             fontWeight: FontWeight.w500,
-                  //             fontSize: 15,
-                  //             color: Colors.grey,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       const Padding(
-                  //         padding: EdgeInsets.symmetric(horizontal: 15),
-                  //         child: Icon(
-                  //           Icons.arrow_forward_ios_outlined,
-                  //           color: primaryColor,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Breed"),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  //   child: customTextField(
-                  //     controller: breedController,
-                  //     width: double.infinity,
-                  //     height: 60,
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Sex *"),
-                  // const SizedBox(height: 10),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Male"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Male"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Male",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Male"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Female"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Female"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Female",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Female"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Cross"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Cross"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Cross",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Cross"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            textHeading(text: "Appointment Time *"),
-                            const SizedBox(height: 10),
-                            Container(
-                                alignment: Alignment.centerLeft,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 15),
-                                child: customDropDownButton(
-                                  width: 200,
-                                  height: 60,
-                                  hintText: "Hours",
-                                  dropdownItems: const [
-                                    "NA",
-                                    "9am to 12pm",
-                                    "1pm to 4pm",
-                                    "4pm to 7pm",
-                                  ],
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      selectedAge = value ??
-                                          "NA"; // Update selectedAge based on user selection
-                                    });
-                                  },
-                                )),
-                          ],
-                        ),
-                      ),
-                    ], //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        textHeading(text: "Work Hours*"),
+                        const SizedBox(height: 10),
+                        Container(
+                            alignment: Alignment.centerLeft,
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15),
+                            child: customDropDownButton(
+                              width: 200,
+                              height: 60,
+                              hintText: "9am to 12pm",
+                              dropdownItems: const [
+                                "NA",
+                                "9am to 12pm",
+                                "1pm to 4pm",
+                                "4pm to 7pm",
+                              ],
+                              onChanged: (String? value) {
+                                setState(() {
+                                  selectedworkHours = value ??
+                                      "NA"; // Update selectedAT based on user selection
+                                });
+                              },
+                            )),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 10),
-
+                  const lineWidget(),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        textHeading(text: "Price Range*"),
+                        const SizedBox(height: 10),
+                        Container(
+                            alignment: Alignment.centerLeft,
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15),
+                            child: customDropDownButton(
+                              width: 200,
+                              height: 60,
+                              hintText: "1k to 5k",
+                              dropdownItems: const [
+                                "NA",
+                                "1k to 5k",
+                                "5k to 10k",
+                                "10k to 15k",
+                                "15k to 20k",
+                                "20k to 25k",
+                                "More  than 25k"
+                              ],
+                              onChanged: (String? value) {
+                                setState(() {
+                                  selectedpriceRange = value ??
+                                      "NA"; // Update selectedAT based on user selection
+                                });
+                              },
+                            )),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
                   const lineWidget(),
                   const SizedBox(height: 15),
-                  // textHeading(text: "Vaccinated *"),
-                  // const SizedBox(height: 10),
-                  //
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.symmetric(horizontal: 15),
-                  //       child: GestureDetector(
-                  //         onTap: () => _selectVaccine('Yes'),
-                  //         child: Container(
-                  //           width: 80,
-                  //           // Width from the original customTextField
-                  //           height: 50,
-                  //           // Height from the original customTextField
-                  //           decoration: BoxDecoration(
-                  //             color: selectedVaccine == 'Yes'
-                  //                 ? primaryColor
-                  //                 : Colors.white,
-                  //             borderRadius: BorderRadius.circular(20),
-                  //             border: Border.all(
-                  //                 color: primaryColor, width: 2),
-                  //           ),
-                  //           child: Center(
-                  //             child: Text(
-                  //               "Yes",
-                  //               // Hint text converted to display as regular text
-                  //               style: TextStyle(
-                  //                   color: selectedVaccine == 'Yes'
-                  //                       ? Colors.white
-                  //                       : Colors.grey,
-                  //                   fontWeight: FontWeight.bold),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.symmetric(horizontal: 15),
-                  //       child: GestureDetector(
-                  //         onTap: () => _selectVaccine('No'),
-                  //         child: Container(
-                  //           width: 80,
-                  //           // Width from the original customTextField
-                  //           height: 50,
-                  //           // Height from the original customTextField
-                  //           decoration: BoxDecoration(
-                  //             color: selectedVaccine == 'No'
-                  //                 ? primaryColor
-                  //                 : Colors.white,
-                  //             borderRadius: BorderRadius.circular(20),
-                  //             border: Border.all(
-                  //                 color: primaryColor, width: 2),
-                  //           ),
-                  //           child: Center(
-                  //             child: Text(
-                  //               "No",
-                  //               // Hint text converted to display as regular text
-                  //               style: TextStyle(
-                  //                   color: selectedVaccine == 'No'
-                  //                       ? Colors.white
-                  //                       : Colors.grey,
-                  //                   fontWeight: FontWeight.bold),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  //
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  //
-                  // const SizedBox(height: 10),
-
-                  //tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
                   textHeading(text: "Location *"),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -600,7 +341,6 @@ class _maintainancePostState extends State<maintainancePost> {
                   const SizedBox(height: 15),
                   const lineWidget(),
                   const SizedBox(height: 15),
-
                   textHeading(
                     text: "Description *",
                     textStyle: const TextStyle(
@@ -618,13 +358,12 @@ class _maintainancePostState extends State<maintainancePost> {
                   const SizedBox(height: 15),
                   const lineWidget(),
                   const SizedBox(height: 15),
-
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        addAnimals();
+                        addMaintainance();
                         if (_selectedImages == null ||
                             _selectedImages!.isEmpty) {
                           // Show AlertDialog if images are not selected
@@ -667,13 +406,10 @@ class _maintainancePostState extends State<maintainancePost> {
 
                           final category = selectedCategory;
                           final name = nameController.text;
-                          final price = priceController.text;
-                          final species = selectedSpecies;
-                          final breed = breedController.text;
-                          final sex = selectedGender;
-                          final age = selectedAge;
-                          final weight = weightController.text;
-                          final vaccine = selectedVaccine;
+
+                          final workHours = selectedworkHours;
+                          final priceRange = selectedpriceRange;
+
                           final location = cityName;
                           final title = titleController.text;
                           final description = descController.text;
@@ -681,24 +417,7 @@ class _maintainancePostState extends State<maintainancePost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => buyScreen(
-                                      category: category,
-                                      name: name,
-                                      price: price,
-                                      species: species,
-                                      breed: breed,
-                                      sex: sex,
-                                      age: age,
-                                      weight: weight,
-                                      vaccine: vaccine,
-                                      location: location,
-                                      title: title,
-                                      description: description,
-                                      images: _selectedImages
-                                              ?.map((image) => image.path)
-                                              .toList() ??
-                                          [],
-                                    )),
+                                builder: (context) => seeAllMaintainance()),
                           );
                         } else {
                           // Form is not valid, show errors
