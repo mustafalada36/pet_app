@@ -7,6 +7,7 @@ import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/myAds.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
+import 'package:pet_app/Screens/seeAllFood.dart';
 import 'package:pet_app/Screens/seeAllPets.dart';
 import 'package:pet_app/Screens/temporary.dart';
 import 'package:pet_app/constants.dart';
@@ -229,20 +230,28 @@ class _homeScreenState extends State<homeScreen> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/petfood.jpg',
-                              fit: BoxFit.cover,
-                              width: 60,
-                              height: 60,
-                            ),
-                            const Text(
-                              'Pet Food \n     ',
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w500),
-                            )
-                          ],
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => seeAllFood()),
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/petfood.jpg',
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              ),
+                              const Text(
+                                'Pet Food \n     ',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           width: 10,
