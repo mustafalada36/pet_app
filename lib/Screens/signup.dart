@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
@@ -70,8 +71,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 width: 360.0,
                 height: 214.0,
-                child: Image.asset('assets/images/Group8.png',
-                    width: 360.0, height: 214.0),
+                child: Lottie.asset('assets/animation/anim5.json',
+                    width: 360.0, height: 215.0),
               ),
               const SizedBox(height: 8),
               Container(

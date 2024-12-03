@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pet_app/Screens/forgotPassword.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/otpscreen.dart';
@@ -59,7 +60,7 @@ class _loginScreenState extends State<loginScreen> {
               children: <Widget>[
                 const SizedBox(height: 40),
                 Center(
-                  child: Image.asset('assets/images/loginimg.png',
+                  child: Lottie.asset("assets/animation/anim3.json",
                       width: 360.0, height: 214.0),
                 ),
                 const SizedBox(height: 80),

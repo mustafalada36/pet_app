@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
@@ -128,59 +129,68 @@ class _homeScreenState extends State<homeScreen> {
               height: 200,
               width: 400,
               decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xff013220),
+                    Color(0xff39ff14),
+                  ],
+                ),
                 borderRadius: BorderRadius.circular(20.0),
-                color: const Color(0xff267E1E),
               ),
-              child: Stack(children: [
-                // FEATURED CONTAINER =====================================
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 70, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 70, 0, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Find the best pet',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        const Row(
+                          children: [
+                            Text(
+                              ' in your Location ',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Icon(
+                              Icons.place,
+                              color: Colors.white,
+                              size: 23,
+                            ),
+                          ],
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.square(12),
+                              // Width and height
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 13, vertical: 7),
+                            ),
+                            child: const Text(
+                              'View All',
+                              style: TextStyle(fontSize: 10),
+                            ))
+                      ],
+                    ),
+                  ),
+                  Column(
                     children: [
-                      const Text(
-                        'Find the best pet',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      Lottie.asset(
+                        'assets/animation/anim2.json',
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.cover,
                       ),
-                      const Row(
-                        children: [
-                          Text(
-                            ' in your Location ',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Icon(
-                            Icons.place,
-                            color: Colors.white,
-                            size: 23,
-                          ),
-                        ],
-                      ),
-                      ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.square(12),
-                            // Width and height
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 13, vertical: 7),
-                          ),
-                          child: const Text(
-                            'View All',
-                            style: TextStyle(fontSize: 10),
-                          ))
                     ],
-                  ),
-                ),
-                Positioned(
-                  right: 20,
-                  top: 35,
-                  child: Image.asset(
-                    'assets/images/girldog.png',
-                  ),
-                ),
-              ]),
+                  )
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
