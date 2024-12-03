@@ -10,6 +10,7 @@ import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
 import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
+import 'package:pet_app/Screens/seeAllFood.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
 import '../Other Services/current_location.dart';
@@ -518,6 +519,12 @@ class _foodPostState extends State<foodPost> {
                           final location = cityName;
                           final title = titleController.text;
                           final description = descController.text;
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => seeAllFood()),
+                          );
 
                           /* Navigator.push(
                             context,
