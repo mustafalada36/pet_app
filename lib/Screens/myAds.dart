@@ -137,6 +137,8 @@ class _myAdsState extends State<myAds> {
                         : null; // Use first image
 
                     return Card(
+                      color: secondaryColor,
+                      elevation: 0,
                       margin: const EdgeInsets.symmetric(
                           vertical: 8, horizontal: 16),
                       child: Padding(
