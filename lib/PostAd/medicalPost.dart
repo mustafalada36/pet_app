@@ -10,6 +10,7 @@ import 'package:pet_app/Reuseable%20Components/lineWidget.dart';
 import 'package:pet_app/Reuseable%20Components/textHeading.dart';
 import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
+import 'package:pet_app/Screens/seeAllMedical.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
 import '../Other Services/current_location.dart';
@@ -26,29 +27,25 @@ class medicalPost extends StatefulWidget {
 class _medicalPostState extends State<medicalPost> {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
-  void addAnimals() async {
+  void addMedical() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-    await firestore.collection('Animals').add({
+    await firestore.collection('Medical').add({
       'userId': userId,
-      'age': selectedAge,
-      'breed': breedController.text,
       'category': selectedCategory,
       'description': descController.text,
       'image': _uploadedImageUrls,
       'name': nameController.text,
-      'price': priceController.text,
-      'sex': selectedGender,
-      'species': selectedSpecies,
+      'fee': feeController.text,
+      'appTime': selectedAT,
       'timestamp': FieldValue.serverTimestamp(),
       'title': titleController.text,
-      'vaccine': selectedVaccine,
-      'weight': weightController.text,
+      'doctor': doctorController.text,
       'location': cityName,
     }).then((value) {
-      print('Animals Added: ${value.id}');
+      print('Medical Added: ${value.id}');
     }).catchError((error) {
-      print('Failed to add Animals: $error');
+      print('Failed to add Medical: $error');
     });
   }
 
@@ -104,32 +101,16 @@ class _medicalPostState extends State<medicalPost> {
   }
 
   final _formKey = GlobalKey<FormState>(); // Key for the form
-  String selectedSpecies = "None";
-  String selectedGender = "NA";
-  String selectedVaccine = "NA";
+
   String selectedCategory = "Animals";
   final categories = ['Animals', 'Food', 'Maintainance', 'Medical'];
-  String selectedAge = "NA";
-
-  // Function to update selected gender
-  void _selectGender(String gender) {
-    setState(() {
-      selectedGender = gender;
-    });
-  }
-
-  void _selectVaccine(String vaccine) {
-    setState(() {
-      selectedVaccine = vaccine;
-    });
-  }
+  String selectedAT = "NA";
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
-  TextEditingController breedController = TextEditingController();
+  TextEditingController feeController = TextEditingController();
+  TextEditingController doctorController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
-  TextEditingController weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -201,351 +182,35 @@ class _medicalPostState extends State<medicalPost> {
 
                   const SizedBox(height: 15),
 
-                  textHeading(text: "Fee *"),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: customTextField(
-                      isRequired: true,
-                      controller: priceController,
-                      textInputType: TextInputType.number,
-                      width: double.infinity,
-                      height: 60,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  const lineWidget(),
-                  const SizedBox(height: 15),
                   textHeading(text: "Doctor *"),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: customTextField(
                       isRequired: true,
-                      controller: priceController,
+                      controller: doctorController,
                       textInputType: TextInputType.number,
                       width: double.infinity,
                       height: 60,
                     ),
                   ),
-                  // textHeading(text: "Doctor *"),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     // Show a modal bottom sheet with options
-                  //     showModalBottomSheet(
-                  //       context: context,
-                  //       builder: (BuildContext context) {
-                  //         return Container(
-                  //           padding: const EdgeInsets.all(10),
-                  //           child: Column(
-                  //             mainAxisSize: MainAxisSize.min,
-                  //             children: [
-                  //               ListTile(
-                  //                 title: const Text("Sajjad Ali"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Sajjad Ali";
-                  //                   });
-                  //                   Navigator.pop(
-                  //                       context); // Close the bottom sheet
-                  //                 },
-                  //               ),
-                  //               ListTile(
-                  //                 title: const Text("Majid Ali"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Majid Ali";
-                  //                   });
-                  //                   Navigator.pop(context);
-                  //                 },
-                  //               ),
-                  //               ListTile(
-                  //                 title: const Text("Wajid Ali"),
-                  //                 onTap: () {
-                  //                   setState(() {
-                  //                     selectedSpecies = "Wajid Ali";
-                  //                   });
-                  //                   Navigator.pop(context);
-                  //                 },
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Padding(
-                  //         padding:
-                  //         const EdgeInsets.symmetric(horizontal: 15),
-                  //         child: Text(
-                  //           selectedSpecies,
-                  //           // Display the selected species
-                  //           style: const TextStyle(
-                  //             fontWeight: FontWeight.w500,
-                  //             fontSize: 15,
-                  //             color: Colors.grey,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       const Padding(
-                  //         padding: EdgeInsets.symmetric(horizontal: 15),
-                  //         child: Icon(
-                  //           Icons.arrow_forward_ios_outlined,
-                  //           color: primaryColor,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
+
                   const SizedBox(height: 15),
                   const lineWidget(),
+                  const SizedBox(height: 15),
+                  textHeading(text: "Fee *"),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: customTextField(
+                      isRequired: true,
+                      controller: feeController,
+                      textInputType: TextInputType.number,
+                      width: double.infinity,
+                      height: 60,
+                    ),
+                  ),
 
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Breed"),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  //   child: customTextField(
-                  //     controller: breedController,
-                  //     width: double.infinity,
-                  //     height: 60,
-                  //   ),
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Sex *"),
-                  // const SizedBox(height: 10),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Male"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Male"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Male",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Male"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Female"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Female"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Female",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Female"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     GestureDetector(
-                  //       onTap: () => _selectGender("Cross"),
-                  //       child: Container(
-                  //         width: 80,
-                  //         height: 50,
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(20),
-                  //           color: selectedGender == "Cross"
-                  //               ? primaryColor
-                  //               : Colors.white, // Dynamic color
-                  //           border:
-                  //           Border.all(color: primaryColor, width: 2),
-                  //         ),
-                  //         child: Center(
-                  //           child: Text(
-                  //             "Cross",
-                  //             style: TextStyle(
-                  //               color: selectedGender == "Cross"
-                  //                   ? Colors.white
-                  //                   : Colors.grey, // Dynamic text color
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  //
-                  // Row(
-                  //   children: [
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.symmetric(horizontal: 5),
-                  //       child: Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           textHeading(text: "Age *"),
-                  //           const SizedBox(height: 10),
-                  //           Container(
-                  //               alignment: Alignment.centerLeft,
-                  //               padding: const EdgeInsets.symmetric(
-                  //                   horizontal: 15),
-                  //               child: customDropDownButton(
-                  //                 width: 150,
-                  //                 height: 60,
-                  //                 hintText: "Age",
-                  //                 dropdownItems: const [
-                  //                   "NA",
-                  //                   "New Born",
-                  //                   "3 months",
-                  //                   "6 months",
-                  //                   "9 months",
-                  //                   "1 year old",
-                  //                   "2 year old",
-                  //                   "3 year old",
-                  //                   "4 year old",
-                  //                   "5 year old",
-                  //                   "More than 5 years old"
-                  //                 ],
-                  //                 onChanged: (String? value) {
-                  //                   setState(() {
-                  //                     selectedAge = value ??
-                  //                         "NA"; // Update selectedAge based on user selection
-                  //                   });
-                  //                 },
-                  //               )),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     Column(
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: [
-                  //         textHeading(text: "Weight *"),
-                  //         const SizedBox(height: 12),
-                  //         Padding(
-                  //           padding: const EdgeInsets.symmetric(
-                  //               horizontal: 15),
-                  //           child: customTextField(
-                  //             hintText: "e.g 5.5 Pounds",
-                  //             controller: weightController,
-                  //             textInputType: TextInputType.number,
-                  //             width: 130,
-                  //             height: 60,
-                  //             isRequired: true,
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     )
-                  //   ], //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                  // ),
-                  // const SizedBox(height: 10),
-                  //
-                  // const lineWidget(),
-                  // const SizedBox(height: 15),
-                  // textHeading(text: "Vaccinated *"),
-                  // const SizedBox(height: 10),
-                  //
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.symmetric(horizontal: 15),
-                  //       child: GestureDetector(
-                  //         onTap: () => _selectVaccine('Yes'),
-                  //         child: Container(
-                  //           width: 80,
-                  //           // Width from the original customTextField
-                  //           height: 50,
-                  //           // Height from the original customTextField
-                  //           decoration: BoxDecoration(
-                  //             color: selectedVaccine == 'Yes'
-                  //                 ? primaryColor
-                  //                 : Colors.white,
-                  //             borderRadius: BorderRadius.circular(20),
-                  //             border: Border.all(
-                  //                 color: primaryColor, width: 2),
-                  //           ),
-                  //           child: Center(
-                  //             child: Text(
-                  //               "Yes",
-                  //               // Hint text converted to display as regular text
-                  //               style: TextStyle(
-                  //                   color: selectedVaccine == 'Yes'
-                  //                       ? Colors.white
-                  //                       : Colors.grey,
-                  //                   fontWeight: FontWeight.bold),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Padding(
-                  //       padding:
-                  //       const EdgeInsets.symmetric(horizontal: 15),
-                  //       child: GestureDetector(
-                  //         onTap: () => _selectVaccine('No'),
-                  //         child: Container(
-                  //           width: 80,
-                  //           // Width from the original customTextField
-                  //           height: 50,
-                  //           // Height from the original customTextField
-                  //           decoration: BoxDecoration(
-                  //             color: selectedVaccine == 'No'
-                  //                 ? primaryColor
-                  //                 : Colors.white,
-                  //             borderRadius: BorderRadius.circular(20),
-                  //             border: Border.all(
-                  //                 color: primaryColor, width: 2),
-                  //           ),
-                  //           child: Center(
-                  //             child: Text(
-                  //               "No",
-                  //               // Hint text converted to display as regular text
-                  //               style: TextStyle(
-                  //                   color: selectedVaccine == 'No'
-                  //                       ? Colors.white
-                  //                       : Colors.grey,
-                  //                   fontWeight: FontWeight.bold),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  //
-                  // const SizedBox(height: 15),
-                  // const lineWidget(),
+                  const SizedBox(height: 15),
+                  const lineWidget(),
 
                   const SizedBox(height: 10),
                   Row(
@@ -573,7 +238,7 @@ class _medicalPostState extends State<medicalPost> {
                                   ],
                                   onChanged: (String? value) {
                                     setState(() {
-                                      selectedAge = value ??
+                                      selectedAT = value ??
                                           "NA"; // Update selectedAge based on user selection
                                     });
                                   },
@@ -703,7 +368,7 @@ class _medicalPostState extends State<medicalPost> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        addAnimals();
+                        addMedical();
                         if (_selectedImages == null ||
                             _selectedImages!.isEmpty) {
                           // Show AlertDialog if images are not selected
@@ -746,13 +411,9 @@ class _medicalPostState extends State<medicalPost> {
 
                           final category = selectedCategory;
                           final name = nameController.text;
-                          final price = priceController.text;
-                          final species = selectedSpecies;
-                          final breed = breedController.text;
-                          final sex = selectedGender;
-                          final age = selectedAge;
-                          final weight = weightController.text;
-                          final vaccine = selectedVaccine;
+                          final fee = feeController.text;
+                          final doctor = doctorController.text;
+                          final appTime = selectedAT;
                           final location = cityName;
                           final title = titleController.text;
                           final description = descController.text;
@@ -760,24 +421,7 @@ class _medicalPostState extends State<medicalPost> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => buyScreen(
-                                      category: category,
-                                      name: name,
-                                      price: price,
-                                      species: species,
-                                      breed: breed,
-                                      sex: sex,
-                                      age: age,
-                                      weight: weight,
-                                      vaccine: vaccine,
-                                      location: location,
-                                      title: title,
-                                      description: description,
-                                      images: _selectedImages
-                                              ?.map((image) => image.path)
-                                              .toList() ??
-                                          [],
-                                    )),
+                                builder: (context) => seeAllMedical()),
                           );
                         } else {
                           // Form is not valid, show errors
