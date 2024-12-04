@@ -20,78 +20,77 @@ class SplashScreen extends StatelessWidget {
       height: double.infinity,
       color: Colors.white,
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Logo Image at the top
-            Image.asset(
-              'assets/images/LogoContainer.png',
-              width: 375,
-              height: 213,
-            ),
-            // Stack containing overlapping circles and a centered image
-            SizedBox(
-              width: 500,
-              height: 570,
-              child: Stack(
-                children: [
-                  // First Circle
-                  Positioned(
-                    top: 0,
-                    left: -198,
-                    child: Container(
-                      margin: const EdgeInsets.all(30),
-                      width: 755.5,
-                      height: 621,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF31EE21).withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Logo Image at the top
+              Expanded(
+                child: Container(
+                  child: Image.asset(
+                    'assets/images/LogoContainer.png',
+                    width: 300,
+                    height: 250,
                   ),
-                  // Second Circle
-                  Positioned(
-                    top: 42.25,
-                    left: -146.25,
-                    child: Container(
-                      margin: const EdgeInsets.all(30),
-                      width: 652.01,
-                      height: 535.93,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF31EE21).withOpacity(0.35),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                  // Third Circle
-                  Positioned(
-                    top: 97,
-                    left: -77.95,
-                    bottom: 10,
-                    child: Container(
-                      margin: const EdgeInsets.all(30),
-                      width: 517.47,
-                      height: 449.16,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF31EE21).withOpacity(0.55),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                  // Centered Image
-                  Positioned(
-                    top: 94,
-                    left: -55,
-                    child: Image.asset(
-                      'assets/images/pngtree-isolated-cat-on-white-background-png-image_70949271.png',
-                      width: 516,
-                      height: 449,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+              // Stack for CircularAvatars and Centered Image using Column and Row
+              Expanded(
+                child: Stack(
+                  children: [
+                    // First CircularAvatar (Largest)
+                    Center(
+                      child: CircleAvatar(
+                        radius: 400,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            //  color: const Color(0xFF31EE21).withOpacity(0.25),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color:
+                                    const Color(0xFF31EE21).withOpacity(0.25),
+                                blurRadius: 50, // Adjust the blur effect
+                                spreadRadius: 25, // Adjust the spread effect
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Center(
+                      child: CircleAvatar(
+                        radius: 170,
+                        backgroundColor:
+                            const Color(0xFF31EE21).withOpacity(0.35),
+                      ),
+                    ),
+
+                    Center(
+                      child: CircleAvatar(
+                        radius: 140,
+                        backgroundColor:
+                            const Color(0xFF31EE21).withOpacity(0.55),
+                      ),
+                    ),
+
+                    Container(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/pngtree-isolated-cat-on-white-background-png-image_70949271.png',
+                          width: 350,
+                          height: 400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );
