@@ -18,6 +18,7 @@ class profileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<profileScreen> {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
+  final String? email = FirebaseAuth.instance.currentUser?.email;
   final Color primaryColor = const Color(0xFF267E1E);
   final Color containerColor = const Color(0xFFD9D9D9);
 
@@ -119,11 +120,11 @@ class _ProfileScreenState extends State<profileScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Gmail: haseeb@gmail.com',
+                                'Gmail: $email',
                                 style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w400, // Semibold
-                                  fontSize: 14,
+                                  fontSize: 12,
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -132,7 +133,7 @@ class _ProfileScreenState extends State<profileScreen> {
                                 style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w400, // Semibold
-                                  fontSize: 14,
+                                  fontSize: 12,
                                 ),
                               ),
                               const SizedBox(height: 4),

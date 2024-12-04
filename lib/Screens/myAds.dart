@@ -70,6 +70,22 @@ class _myAdsState extends State<myAds> {
     userId = FirebaseAuth.instance.currentUser?.uid ?? '';
   }
 
+  Future<void> deleteAd(String documentId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Animals')
+          .doc(documentId)
+          .delete();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Ad deleted successfully")),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to delete ad: $e")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,10 +147,9 @@ class _myAdsState extends State<myAds> {
                   itemCount: adsList.length,
                   itemBuilder: (context, index) {
                     final ad = adsList[index].data() as Map<String, dynamic>;
+                    final documentId = adsList[index].id; // Document ID
                     final images = ad['image'] ?? [];
-                    final imageUrl = images.isNotEmpty
-                        ? images[0]
-                        : null; // Use first image
+                    final imageUrl = images.isNotEmpty ? images[0] : null;
 
                     return Card(
                       color: secondaryColor,
@@ -196,6 +211,38 @@ class _myAdsState extends State<myAds> {
                                   ),
                                 ],
                               ),
+                            ),
+                            const SizedBox(width: 10),
+                            // Delete Icon Section
+                            IconButton(
+                              icon:
+                                  const Icon(Icons.delete, color: Colors.red),
+                              onPressed: () async {
+                                final confirm = await showDialog<bool>(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: const Text("Confirm Deletion"),
+                                    content: const Text(
+                                        "Are you sure you want to delete this ad?"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, false),
+                                        child: const Text("Cancel"),
+                                      ),
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, true),
+                                        child: const Text("Delete"),
+                                      ),
+                                    ],
+                                  ),
+                                );
+
+                                if (confirm ?? false) {
+                                  await deleteAd(documentId);
+                                }
+                              },
                             ),
                           ],
                         ),

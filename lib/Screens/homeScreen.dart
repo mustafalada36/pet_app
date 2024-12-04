@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pet_app/Screens/adDetails.dart';
+import 'package:pet_app/Screens/blogs.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/myAds.dart';
@@ -100,6 +101,15 @@ class _homeScreenState extends State<homeScreen> {
           ),
         ),
         actions: [
+          IconButton(
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => blogs(),
+                )),
+            icon: Icon(Icons.post_add),
+            color: primaryColor,
+          ),
           IconButton(
             icon: const Icon(Icons.person_rounded, color: Color(0xff267E1E)),
             onPressed: () => Navigator.push(
