@@ -44,6 +44,8 @@ class _animalPostState extends State<animalPost> {
       'title': titleController.text,
       'vaccine': selectedVaccine,
       'weight': weightController.text,
+      'email': emailController.text,
+      'phone': phoneController.text,
       'location': cityName,
     }).then((value) {
       print('Animals Added: ${value.id}');
@@ -130,6 +132,8 @@ class _animalPostState extends State<animalPost> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descController = TextEditingController();
   TextEditingController weightController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -599,6 +603,40 @@ class _animalPostState extends State<animalPost> {
                         ),
                       )
                     ],
+                  ),
+                  const SizedBox(height: 15),
+                  const lineWidget(),
+                  const SizedBox(height: 15),
+                  textHeading(
+                    text: "Email *",
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: customTextField(
+                      isRequired: true,
+                      controller: emailController,
+                      width: double.infinity,
+                      height: 60,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const lineWidget(),
+                  const SizedBox(height: 15),
+                  textHeading(
+                    text: "Phone ",
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: customTextField(
+                      isRequired: false,
+                      controller: phoneController,
+                      width: double.infinity,
+                      height: 60,
+                    ),
                   ),
                   const SizedBox(height: 15),
                   const lineWidget(),

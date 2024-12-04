@@ -7,7 +7,8 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class buyScreen2 extends StatelessWidget {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
-  final String? email = FirebaseAuth.instance.currentUser?.email;
+
+  // final String? email = FirebaseAuth.instance.currentUser?.email;
   final String adId; // Ad's unique identifier
   buyScreen2({required this.adId});
 
@@ -198,7 +199,7 @@ class buyScreen2 extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']} \n $email"',
+                            'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']} \n ${ad['email']}, ${ad['phone']}"',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 12,
@@ -238,7 +239,47 @@ class buyScreen2 extends StatelessWidget {
                           const SizedBox(height: 20),
                           _buildSafetySection(),
                           _buildRelatedAds(),
-                          _buildContactActions(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 30, bottom: 35),
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
+                              children: [
+                                /*_buildContactIcon(Icons.email, _launchGmail),*/
+
+                                launchButton(
+                                  icon: Icons.call,
+                                  onTab: () async {
+                                    Uri uri = Uri.parse('tel:${ad['phone']}');
+                                    if (!await launcher.launchUrl(uri)) {
+                                      debugPrint(
+                                          "Could not launch the uri"); // because the simulator doesn't has the phone app
+                                    }
+                                  },
+                                ),
+                                launchButton(
+                                  icon: Icons.email,
+                                  onTab: () async {
+                                    Uri uri = Uri.parse(
+                                      'mailto:${ad['email']}?subject=Pet App&body=Hi, I want to buy this pet',
+                                    );
+                                    if (!await launcher.launchUrl(uri)) {
+                                      debugPrint(
+                                          "Could not launch the uri"); // because the simulator doesn't has the email app
+                                    }
+                                  },
+                                ),
+                                launchButton(
+                                    icon: Icons.message, onTab: () {}),
+
+                                /*_buildContactIcon(Icons.call),
+          const SizedBox(width: 44.96),
+          _buildContactIcon(Icons.message),*/
+                              ],
+                            ),
+                          )
+                          // _buildContactActions(),
                         ],
                       ),
                     ),
@@ -459,30 +500,29 @@ class buyScreen2 extends StatelessWidget {
     );
   }
 
-  Widget _buildContactActions() {
+/*  Widget buildContactActions() {
     return Padding(
       padding: const EdgeInsets.only(top: 30, bottom: 35),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          /*_buildContactIcon(Icons.email, _launchGmail),*/
+          */ /*_buildContactIcon(Icons.email, _launchGmail),*/ /*
 
           launchButton(
             icon: Icons.call,
             onTab: () async {
-              Uri uri = Uri.parse('tel:+1-555-010-999');
+              Uri uri = Uri.parse('tel:${ad['phone']}');
               if (!await launcher.launchUrl(uri)) {
                 debugPrint(
                     "Could not launch the uri"); // because the simulator doesn't has the phone app
               }
             },
           ),
-          const SizedBox(width: 44.96),
           launchButton(
             icon: Icons.email,
             onTab: () async {
               Uri uri = Uri.parse(
-                'mailto:$email?subject=Flutter Url Launcher&body=Hi, Flutter developer',
+                'mailto:${ad['email']}?subject=Flutter Url Launcher&body=Hi, Flutter developer',
               );
               if (!await launcher.launchUrl(uri)) {
                 debugPrint(
@@ -490,16 +530,15 @@ class buyScreen2 extends StatelessWidget {
               }
             },
           ),
-          const SizedBox(width: 44.96),
           launchButton(icon: Icons.message, onTab: () {}),
+
+          */ /*_buildContactIcon(Icons.call),
           const SizedBox(width: 44.96),
-          /*_buildContactIcon(Icons.call),
-          const SizedBox(width: 44.96),
-          _buildContactIcon(Icons.message),*/
+          _buildContactIcon(Icons.message),*/ /*
         ],
       ),
     );
-  }
+  }*/
 
   Widget _buildContactIcon(IconData icon, VoidCallback onTap) {
     return GestureDetector(
