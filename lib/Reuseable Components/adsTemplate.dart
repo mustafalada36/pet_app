@@ -30,7 +30,8 @@ class adsTemplate extends StatelessWidget {
           )),
       child: Container(
         width: 180,
-        height: 300,
+        constraints: BoxConstraints(maxHeight: 250),
+        // height: double.infinity,
         child: Card(
           color: secondaryColor,
           elevation: 0,
@@ -38,6 +39,7 @@ class adsTemplate extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Center(
                   child: Padding(
@@ -56,50 +58,49 @@ class adsTemplate extends StatelessWidget {
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          name,
+                  child: Column(
+                    // Added a Column to be the Flex parent of Expanded
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: const TextStyle(
+                            color: primaryColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 5),
+                        child: Text(
+                          species,
                           style: const TextStyle(
-                              color: Colors.black,
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 5),
+                        child: Text(
+                          location,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5, top: 5),
+                        child: Text(
+                          "PKR $price",
+                          style: const TextStyle(
+                              color: primaryColor,
                               fontSize: 16,
                               fontWeight: FontWeight.w700),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5, top: 5),
-                          child: Text(
-                            species,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5, top: 5),
-                          child: Text(
-                            location,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5, top: 5),
-                          child: Text(
-                            "PKR $price",
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
                   ),
                 )
               ],

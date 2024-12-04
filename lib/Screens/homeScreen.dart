@@ -109,235 +109,251 @@ class _homeScreenState extends State<homeScreen> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          // SEARCH BUTTON=====================================
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Search Pets',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30.0),
+      body: Container(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            // SEARCH BUTTON=====================================
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search Pets',
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              height: 200,
-              width: 400,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xff013220),
-                    Color(0xff39ff14),
+              const SizedBox(height: 20),
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xff013220),
+                      Color(0xff39ff14),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Find the best pet',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16),
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    ' in your Location ',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    overflow: TextOverflow
+                                        .ellipsis, // Ensures text doesn't overflow
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.place,
+                                  color: Colors.white,
+                                  size: 23,
+                                ),
+                              ],
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: const Size.square(12),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 13, vertical: 7),
+                              ),
+                              child: const Text(
+                                'View All',
+                                style: TextStyle(fontSize: 10),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Lottie.asset(
+                              'assets/animation/anim2.json',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                borderRadius: BorderRadius.circular(20.0),
               ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(12, 70, 0, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Find the best pet',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        Text(
+                          'Categories',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w800),
                         ),
-                        const Row(
-                          children: [
-                            Text(
-                              ' in your Location ',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Icon(
-                              Icons.place,
-                              color: Colors.white,
-                              size: 23,
-                            ),
-                          ],
+                        Text(
+                          'See All',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w800),
                         ),
-                        ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: const Size.square(12),
-                              // Width and height
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 13, vertical: 7),
-                            ),
-                            child: const Text(
-                              'View All',
-                              style: TextStyle(fontSize: 10),
-                            ))
                       ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      Lottie.asset(
-                        'assets/animation/anim2.json',
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Categories',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w800),
-                      ),
-                      Text(
-                        'See All',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w800),
-                      ),
-                    ],
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => seeAllPets()),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => seeAllPets()),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/buynsell.png',
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                ),
+                                const Text(
+                                  'Buy & Sell \n     ',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
                           ),
-                          child: Column(
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => seeAllFood()),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/foodpet.png',
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 70,
+                                ),
+                                const Text(
+                                  'Pet Food \n     ',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => seeAllMaintainance()),
+                            ),
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/images/maintain.png',
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                ),
+                                const Text(
+                                  '         Pet\n Maintainance',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Column(
                             children: [
                               Image.asset(
-                                'assets/images/buynsell.png',
+                                'assets/images/doctor.png',
                                 fit: BoxFit.cover,
                                 width: 60,
                                 height: 60,
                               ),
                               const Text(
-                                'Buy & Sell \n     ',
+                                '   Medical\n Consultation',
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => seeAllFood()),
+                          const SizedBox(
+                            width: 10,
                           ),
-                          child: Column(
+                          Column(
                             children: [
                               Image.asset(
-                                'assets/images/foodpet.png',
-                                fit: BoxFit.cover,
-                                width: 60,
-                                height: 70,
-                              ),
-                              const Text(
-                                'Pet Food \n     ',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        GestureDetector(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => seeAllMaintainance()),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/maintain.png',
+                                'assets/images/adopt.png',
                                 fit: BoxFit.cover,
                                 width: 60,
                                 height: 60,
                               ),
                               const Text(
-                                '         Pet\n Maintainance',
+                                '      Pet\n Adoption',
                                 style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500),
                               )
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/doctor.png',
-                              fit: BoxFit.cover,
-                              width: 60,
-                              height: 60,
-                            ),
-                            const Text(
-                              '   Medical\n Consultation',
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w500),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/adopt.png',
-                              fit: BoxFit.cover,
-                              width: 60,
-                              height: 60,
-                            ),
-                            const Text(
-                              '      Pet\n Adoption',
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.w500),
-                            )
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Text('userid is: $userId'),
-                ],
+                    Text('userid is: $userId'),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: _pages[_currentIndex],
-            ),
-          ],
+              const SizedBox(height: 20),
+              Expanded(
+                child: _pages[_currentIndex],
+              ),
+            ],
+          ),
         ),
       ),
       //BOTTOM NAV BAR ======================================================================
