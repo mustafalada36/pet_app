@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
+import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
+import 'package:pet_app/Screens/addNewAddress.dart';
 import 'package:pet_app/constants.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
@@ -160,6 +162,7 @@ class buyScreen2 extends StatelessWidget {
                             ],
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 '${ad['species']}',
@@ -237,8 +240,25 @@ class buyScreen2 extends StatelessWidget {
                           const SizedBox(height: 20),
                           _buildShadowContainer(),
                           const SizedBox(height: 20),
+                          primaryButton(
+                            double.infinity,
+                            "Buy Now",
+                            () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => addNewAddress(
+                                  name: ad['name'],
+                                  firstImage: ad['image'][0],
+                                  species: ad['species'],
+                                  location: ad['location'],
+                                  price: ad['price'],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
                           _buildSafetySection(),
-                          _buildRelatedAds(),
+                          /*_buildRelatedAds(),*/
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 30, bottom: 35),

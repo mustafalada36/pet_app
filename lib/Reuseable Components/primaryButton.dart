@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../Screens/homeScreen.dart';
 
-class primaryButton extends StatelessWidget {
+class primaryButton extends StatefulWidget {
   final double width;
   final String text;
+  void Function()? onPressed;
 
-  primaryButton(this.width, this.text);
+  primaryButton(this.width, this.text, this.onPressed);
 
+  @override
+  State<primaryButton> createState() => _primaryButtonState();
+}
+
+class _primaryButtonState extends State<primaryButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
+      width: widget.width,
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const homeScreen()),
-          );
-        },
+        onPressed: widget.onPressed,
         style: ButtonStyle(
           backgroundColor:
               WidgetStateProperty.all<Color>(const Color(0xFF267E1E)),
@@ -29,7 +30,7 @@ class primaryButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          text,
+          widget.text,
           style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w500,

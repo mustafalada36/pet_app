@@ -274,8 +274,8 @@ class buyFood extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            secondaryButton(170, "Add to Cart"),
-                            primaryButton(170, "Buy Now"),
+                            /* secondaryButton(170, "Add to Cart"),
+                            primaryButton(170, "Buy Now"),*/
                           ],
                         )
                       ],
