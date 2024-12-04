@@ -176,7 +176,7 @@ class _blogsState extends State<blogs> {
           ),
         ),
         title: const Text(
-          "Blogs",
+          "Community",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
