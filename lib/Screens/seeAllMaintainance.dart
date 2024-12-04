@@ -120,10 +120,10 @@ class seeAllMaintainance extends StatelessWidget {
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: screenWidth < 600 ? 2 : 3, // Responsive
+                      crossAxisCount: 2, // Responsive
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
-                      childAspectRatio: screenWidth < 600 ? 0.6 : 0.65,
+                      childAspectRatio: 0.52,
                     ),
                     itemCount: Maintainance.length,
                     itemBuilder: (context, index) {

@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<profileScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 50),
           child: Column(
             children: [
               // First Row: Image and Profile Info
@@ -85,8 +85,8 @@ class _ProfileScreenState extends State<profileScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Container(
-                            width: 73,
-                            height: 73,
+                            width: 65,
+                            height: 65,
                             decoration: BoxDecoration(
                               color: containerColor,
                               shape: BoxShape.circle, // Circle shape
