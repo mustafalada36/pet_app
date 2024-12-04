@@ -338,21 +338,28 @@ class _homeScreenState extends State<homeScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/adopt.png',
-                                  fit: BoxFit.cover,
-                                  width: 60,
-                                  height: 60,
-                                ),
-                                const Text(
-                                  '      Pet\n Adoption',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500),
-                                )
-                              ],
+                            GestureDetector(
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => blogs()),
+                              ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/adopt.png',
+                                    fit: BoxFit.cover,
+                                    width: 60,
+                                    height: 60,
+                                  ),
+                                  const Text(
+                                    '  Community',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         ),
