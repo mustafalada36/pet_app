@@ -408,9 +408,8 @@ class _homeScreenState extends State<homeScreen> {
                                   height: 300,
                                   width: 500,
                                   child: ListView.builder(
-                                    shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
+                                    itemCount: Animals.length,
                                     itemBuilder: (context, index) {
                                       var animal = Animals[index];
                                       var imageUrl = animal['image'][0];
@@ -497,9 +496,8 @@ class _homeScreenState extends State<homeScreen> {
                                   height: 300,
                                   width: 500,
                                   child: ListView.builder(
-                                    shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
+                                    itemCount: Food.length,
                                     itemBuilder: (context, index) {
                                       var food = Food[index];
                                       var imageUrl = food['image'][0];
@@ -586,9 +584,8 @@ class _homeScreenState extends State<homeScreen> {
                                   height: 300,
                                   width: 500,
                                   child: ListView.builder(
-                                    shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
+                                    itemCount: Maintainance.length,
                                     itemBuilder: (context, index) {
                                       var maintainance = Maintainance[index];
                                       var imageUrl = maintainance['image'][0];
@@ -679,9 +676,8 @@ class _homeScreenState extends State<homeScreen> {
                                   height: 300,
                                   width: 500,
                                   child: ListView.builder(
-                                    shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: 10,
+                                    itemCount: Medical.length,
                                     itemBuilder: (context, index) {
                                       var medical = Medical[index];
                                       var imageUrl = medical['image'][0];

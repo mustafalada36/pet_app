@@ -3,9 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable Components/adsTemplate.dart';
 import 'package:pet_app/constants.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class buyScreen2 extends StatelessWidget {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
+  final String? email = FirebaseAuth.instance.currentUser?.email;
   final String adId; // Ad's unique identifier
   buyScreen2({required this.adId});
 
@@ -40,6 +42,7 @@ class buyScreen2 extends StatelessWidget {
                             ad['image'] != null && ad['image'].isNotEmpty
                                 ? SizedBox(
                                     height: 150,
+                                    width: double.infinity,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemCount: ad['image'].length,
@@ -195,7 +198,7 @@ class buyScreen2 extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           Text(
-                            'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']}"',
+                            'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']} \n $email"',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 12,
@@ -462,27 +465,86 @@ class buyScreen2 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildContactIcon(Icons.email),
+          /*_buildContactIcon(Icons.email, _launchGmail),*/
+
+          launchButton(
+            icon: Icons.call,
+            onTab: () async {
+              Uri uri = Uri.parse('tel:+1-555-010-999');
+              if (!await launcher.launchUrl(uri)) {
+                debugPrint(
+                    "Could not launch the uri"); // because the simulator doesn't has the phone app
+              }
+            },
+          ),
           const SizedBox(width: 44.96),
-          _buildContactIcon(Icons.call),
+          launchButton(
+            icon: Icons.email,
+            onTab: () async {
+              Uri uri = Uri.parse(
+                'mailto:$email?subject=Flutter Url Launcher&body=Hi, Flutter developer',
+              );
+              if (!await launcher.launchUrl(uri)) {
+                debugPrint(
+                    "Could not launch the uri"); // because the simulator doesn't has the email app
+              }
+            },
+          ),
           const SizedBox(width: 44.96),
-          _buildContactIcon(Icons.message),
+          launchButton(icon: Icons.message, onTab: () {}),
+          const SizedBox(width: 44.96),
+          /*_buildContactIcon(Icons.call),
+          const SizedBox(width: 44.96),
+          _buildContactIcon(Icons.message),*/
         ],
       ),
     );
   }
 
-  Widget _buildContactIcon(IconData icon) {
-    return Container(
-      width: 56,
-      height: 43,
-      decoration: BoxDecoration(
-        color: secondaryColor,
-        borderRadius: BorderRadius.circular(9),
+  Widget _buildContactIcon(IconData icon, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 56,
+        height: 43,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.circular(9),
+        ),
+        child: Icon(
+          icon,
+          color: primaryColor,
+        ),
       ),
-      child: Icon(
-        icon,
-        color: primaryColor,
+    );
+  }
+
+  Widget launchButton({
+    required IconData icon,
+    required Function() onTab,
+  }) {
+    return Container(
+      height: 45,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: GestureDetector(
+        onTap: onTab,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 56,
+              height: 43,
+              decoration: BoxDecoration(
+                color: secondaryColor,
+                borderRadius: BorderRadius.circular(9),
+              ),
+              child: Icon(
+                icon,
+                color: primaryColor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

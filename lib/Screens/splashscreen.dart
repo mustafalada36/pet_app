@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Screens/signup.dart';
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+class splashScreen extends StatelessWidget {
+  const splashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
