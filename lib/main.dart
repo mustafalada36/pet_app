@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/blogs.dart';
 import 'package:pet_app/Screens/breeds.dart';
+import 'package:pet_app/Screens/buttonscreen.dart';
 import 'package:pet_app/Screens/buyFood.dart';
 import 'package:pet_app/Screens/buyScreen2.dart';
 import 'package:pet_app/Screens/cashonDelivery.dart';
@@ -31,6 +33,7 @@ import 'Screens/buyDog.dart';
 import 'Screens/buyScreen.dart';
 import 'Other Services/current_location.dart';
 import 'Screens/temporary.dart';
+import 'consts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +53,14 @@ void main() async {
   } catch (e) {
     print("Firebase initialization error: $e");
   }
+  await _setup();
 }
+
+Future<void> _setup() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = stripePublishableKey;
+}
+
 /*void main() async {
   runApp(const MyApp());
 }*/
