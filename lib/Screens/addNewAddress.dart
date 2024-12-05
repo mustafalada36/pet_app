@@ -7,6 +7,7 @@ import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Screens/cashonDelivery.dart';
 import 'package:pet_app/Screens/creditndebit.dart';
 
+import '../Other Services/stripe_services.dart';
 import '../constants.dart';
 
 class addNewAddress extends StatefulWidget {
@@ -327,8 +328,8 @@ class _adNewAddressState extends State<addNewAddress> {
                           child: Text(
                             "All transactions are secure and encrypted",
                             style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
                                 color: Colors.grey),
                           ),
                         ),
@@ -613,18 +614,17 @@ class _adNewAddressState extends State<addNewAddress> {
                               if (_formKey.currentState?.validate() ??
                                   false) {
                                 if (selectedPayment == "COD") {
+                                  int total = int.parse(widget.price);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            cashonDelivery(),
+                                            cashonDelivery(total),
                                       ));
                                 } else {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => creditDebit(),
-                                      ));
+                                  int amount = int.parse(widget.price) +
+                                      99; // Calculate the amount
+                                  StripeService.instance.makePayment(amount);
                                 }
                               } else {
                                 // Form is not valid, show errors
