@@ -247,12 +247,12 @@ class buyScreen2 extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => addNewAddress(
-                                  name: ad['name'],
-                                  firstImage: ad['image'][0],
-                                  species: ad['species'],
-                                  location: ad['location'],
-                                  price: ad['price'],
-                                ),
+                                    name: ad['name'],
+                                    firstImage: ad['image'][0],
+                                    species: ad['species'],
+                                    location: ad['location'],
+                                    price: ad['price'],
+                                    sellerId: ad['userId']),
                               ),
                             ),
                           ),

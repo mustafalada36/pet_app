@@ -15,8 +15,7 @@ class seeAllPets extends StatelessWidget {
         actions: [
           Expanded(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Pets',
@@ -29,16 +28,14 @@ class seeAllPets extends StatelessWidget {
             ),
           ),
         ],
-        leading: CircleAvatar(
-          radius: 20,
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: primaryColor,
-            ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: primaryColor,
+            size: 30,
           ),
         ),
       ),

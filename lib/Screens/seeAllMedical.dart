@@ -15,11 +15,10 @@ class seeAllMedical extends StatelessWidget {
         actions: [
           Expanded(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 40, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
                 decoration: InputDecoration(
-                  hintText: 'Search Pet Medical',
+                  hintText: 'Search Pets',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
@@ -31,11 +30,12 @@ class seeAllMedical extends StatelessWidget {
         ],
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop();
           },
           icon: const Icon(
-            Icons.arrow_back_ios_new,
+            Icons.arrow_back,
             color: primaryColor,
+            size: 30,
           ),
         ),
       ),

@@ -11,8 +11,9 @@ class cashonDelivery extends StatelessWidget {
   int total;
   String image1;
   String name1;
+  String sellerId;
 
-  cashonDelivery(this.total, this.image1, this.name1);
+  cashonDelivery(this.total, this.image1, this.name1, this.sellerId);
 
   void addOrderPlaced() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -22,6 +23,7 @@ class cashonDelivery extends StatelessWidget {
       'image': image1,
       'name': name1,
       'price': total,
+      'sellerId': sellerId,
       'timestamp': FieldValue.serverTimestamp(),
     }).then((value) {
       print('OrderPlaced Added: ${value.id}');

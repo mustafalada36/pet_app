@@ -6,6 +6,7 @@ import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Screens/editProfile.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/orderPlaced.dart';
+import 'package:pet_app/Screens/orderSold.dart';
 import 'package:pet_app/constants.dart';
 
 import '../Firebase_services/authetication.dart';
@@ -237,7 +238,7 @@ class _ProfileScreenState extends State<profileScreen> {
                       () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => orderPlacedScreen(),
+                            builder: (context) => OrderSold(),
                           ))),
                 ],
               ),

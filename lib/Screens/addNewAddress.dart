@@ -16,6 +16,7 @@ class addNewAddress extends StatefulWidget {
   final String species;
   final String location;
   final String price;
+  final String sellerId;
 
   addNewAddress({
     required this.name,
@@ -23,6 +24,7 @@ class addNewAddress extends StatefulWidget {
     required this.species,
     required this.location,
     required this.price,
+    required this.sellerId,
   });
 
   @override
@@ -262,39 +264,36 @@ class _adNewAddressState extends State<addNewAddress> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: const Color(0x5e99f1f1),
-                            ),
-                            child: const Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Text(
-                                    "Free Shipping Across \n Pakistan (First PKR 10,000+) order",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
-                                  ),
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0x5e99f1f1),
+                          ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Text(
+                                  "Free Shipping Across \n Pakistan (First PKR 10,000+) order",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Text(
-                                    "Free",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.green,
-                                        fontWeight: FontWeight.w700),
-                                  ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Text(
+                                  "Free",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                                SizedBox(height: 20),
-                              ],
-                            ),
+                              ),
+                              SizedBox(height: 20),
+                            ],
                           ),
                         )
                       ],
@@ -459,7 +458,7 @@ class _adNewAddressState extends State<addNewAddress> {
                 ),
                 const SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
@@ -474,7 +473,7 @@ class _adNewAddressState extends State<addNewAddress> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 20),
+                                    horizontal: 10, vertical: 20),
                                 child: Container(
                                   width: 150,
                                   height: 150,
@@ -617,12 +616,13 @@ class _adNewAddressState extends State<addNewAddress> {
                                   int total = int.parse(widget.price);
                                   String image1 = widget.firstImage;
                                   String name1 = widget.name;
+                                  String sellerId = widget.sellerId;
 
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => cashonDelivery(
-                                            total, image1, name1),
+                                            total, image1, name1, sellerId),
                                       ));
                                 } else {
                                   int amount = int.parse(widget.price) +

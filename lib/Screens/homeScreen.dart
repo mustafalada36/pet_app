@@ -192,7 +192,13 @@ class _homeScreenState extends State<homeScreen> {
                                 ],
                               ),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => seeAllPets(),
+                                      ));
+                                },
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: const Size.square(12),
                                   padding: const EdgeInsets.symmetric(
