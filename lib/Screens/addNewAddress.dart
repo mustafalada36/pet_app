@@ -615,11 +615,14 @@ class _adNewAddressState extends State<addNewAddress> {
                                   false) {
                                 if (selectedPayment == "COD") {
                                   int total = int.parse(widget.price);
+                                  String image1 = widget.firstImage;
+                                  String name1 = widget.name;
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            cashonDelivery(total),
+                                        builder: (context) => cashonDelivery(
+                                            total, image1, name1),
                                       ));
                                 } else {
                                   int amount = int.parse(widget.price) +

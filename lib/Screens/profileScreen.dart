@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Screens/editProfile.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
+import 'package:pet_app/Screens/orderPlaced.dart';
 import 'package:pet_app/constants.dart';
 
 import '../Firebase_services/authetication.dart';
@@ -23,6 +26,7 @@ class _ProfileScreenState extends State<profileScreen> {
   final Color containerColor = const Color(0xFFD9D9D9);
 
   int _currentIndex = 4;
+
   final List<Widget> _pages = [
     const Center(child: Text('Home Screen')),
     const Center(child: Text('Chat Screen')),
@@ -114,7 +118,8 @@ class _ProfileScreenState extends State<profileScreen> {
                                 'Haseeb',
                                 style: TextStyle(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.w600, // Semibold
+                                  fontWeight: FontWeight.w600,
+                                  // Semibold
                                   fontSize: 18,
                                 ),
                               ),
@@ -123,7 +128,8 @@ class _ProfileScreenState extends State<profileScreen> {
                                 'Gmail: $email',
                                 style: TextStyle(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.w400, // Semibold
+                                  fontWeight: FontWeight.w400,
+                                  // Semibold
                                   fontSize: 12,
                                 ),
                               ),
@@ -132,7 +138,8 @@ class _ProfileScreenState extends State<profileScreen> {
                                 'Phone: ',
                                 style: TextStyle(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.w400, // Semibold
+                                  fontWeight: FontWeight.w400,
+                                  // Semibold
                                   fontSize: 12,
                                 ),
                               ),
@@ -141,7 +148,8 @@ class _ProfileScreenState extends State<profileScreen> {
                                 'UserId: $userId',
                                 style: TextStyle(
                                   color: primaryColor,
-                                  fontWeight: FontWeight.w400, // Semibold
+                                  fontWeight: FontWeight.w400,
+                                  // Semibold
                                   fontSize: 10,
                                 ),
                               ),
@@ -211,8 +219,31 @@ class _ProfileScreenState extends State<profileScreen> {
                   ),
                 ),
               ),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  primaryButton(
+                      170,
+                      "My Orders",
+                      () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => orderPlacedScreen(),
+                          ))),
+                  primaryButton(
+                      170,
+                      "Orders Sold",
+                      () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => orderPlacedScreen(),
+                          ))),
+                ],
+              ),
+
               const SizedBox(height: 41), // Spacing between rows
-              // First Row: Favorites & Saved Searches
+
               _buildProfileRow(
                 icon: Icons.favorite_border,
                 title: 'Favorites & Saved searches',

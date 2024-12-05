@@ -1,12 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import 'homeScreen.dart';
 
 class cashonDelivery extends StatelessWidget {
-  int total;
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
-  cashonDelivery(this.total);
+  int total;
+  String image1;
+  String name1;
+
+  cashonDelivery(this.total, this.image1, this.name1);
+
+  void addOrderPlaced() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    await firestore.collection('OrderPlaced').add({
+      'userId': userId,
+      'image': image1,
+      'name': name1,
+      'price': total,
+      'timestamp': FieldValue.serverTimestamp(),
+    }).then((value) {
+      print('OrderPlaced Added: ${value.id}');
+    }).catchError((error) {
+      print('Failed to add OrderPlaced: $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -171,6 +193,7 @@ class cashonDelivery extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
+                          addOrderPlaced();
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Order Successful!'),
@@ -196,7 +219,7 @@ class cashonDelivery extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          'Order Now',
+                          'Place Order',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,

@@ -19,7 +19,9 @@ class _myCartState extends State<myCart> {
       appBar: AppBar(
         backgroundColor: secondaryColor,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             icon: const Icon(
               Icons.arrow_back,
               color: primaryColor,

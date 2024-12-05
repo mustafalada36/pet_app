@@ -9,6 +9,7 @@ import 'package:pet_app/Screens/blogs.dart';
 import 'package:pet_app/Screens/getStarted.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/myAds.dart';
+import 'package:pet_app/Screens/myCart.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/Screens/seeAllFood.dart';
 import 'package:pet_app/Screens/seeAllMaintainance.dart';
@@ -90,7 +91,11 @@ class _homeScreenState extends State<homeScreen> {
         leading: IconButton(
           icon: const Icon(Icons.shopping_cart, color: Color(0xff267E1E)),
           onPressed: () {
-            // Add action for the shopping cart icon
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => myCart(),
+                ));
           },
         ),
         title: const Center(
@@ -112,7 +117,7 @@ class _homeScreenState extends State<homeScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.person_rounded, color: Color(0xff267E1E)),
-            onPressed: () => Navigator.push(
+            onPressed: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => profileScreen(),
@@ -339,7 +344,7 @@ class _homeScreenState extends State<homeScreen> {
                               width: 10,
                             ),
                             GestureDetector(
-                              onTap: () => Navigator.push(
+                              onTap: () => Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => blogs()),

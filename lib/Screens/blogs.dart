@@ -167,9 +167,7 @@ class _blogsState extends State<blogs> {
       appBar: AppBar(
         backgroundColor: primaryColor,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: const Icon(
             Icons.arrow_back_ios_new,
             color: Colors.white,

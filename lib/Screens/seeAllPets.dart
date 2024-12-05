@@ -29,13 +29,16 @@ class seeAllPets extends StatelessWidget {
             ),
           ),
         ],
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: primaryColor,
+        leading: CircleAvatar(
+          radius: 20,
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: primaryColor,
+            ),
           ),
         ),
       ),

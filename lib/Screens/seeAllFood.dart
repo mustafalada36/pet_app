@@ -121,7 +121,7 @@ class seeAllFood extends StatelessWidget {
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // Responsive
+                      crossAxisCount: 2, // Responsive
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
                       childAspectRatio: 0.52,

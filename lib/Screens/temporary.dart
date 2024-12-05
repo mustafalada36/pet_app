@@ -1,103 +1,136 @@
-import 'package:flutter/material.dart';
+/*
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:pet_app/constants.dart';
 
-class DetailsScreen extends StatelessWidget {
-  final String adId; // Ad's unique identifier
+class orderPlacedScreen extends StatefulWidget {
+  @override
+  _orderPlacedScreenState createState() => _orderPlacedScreenState();
+}
 
-  DetailsScreen({required this.adId});
+class _orderPlacedScreenState extends State<orderPlacedScreen> {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ad Details'),
-        backgroundColor: Colors.deepPurple, // Example primary color
-      ),
-      body: FutureBuilder<DocumentSnapshot>(
-        future:
-            FirebaseFirestore.instance.collection('Animals').doc(adId).get(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance
+          .collection('OrderPlaced')
+          .where('userId',
+              isEqualTo: userId) // Filter orders by the logged-in user
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+          return const Center(child: Text("No orders found"));
+        }
 
-          if (!snapshot.hasData ||
-              snapshot.data == null ||
-              !snapshot.data!.exists) {
-            return const Center(child: Text('Ad not found'));
-          }
+        final orderList = snapshot.data!.docs;
 
-          var ad = snapshot.data!;
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Ad Title
-                Text(
-                  ad['title'],
-                  style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
+        return ListView.builder(
+          itemCount: orderList.length,
+          itemBuilder: (context, index) {
+            final order = orderList[index].data() as Map<String, dynamic>;
+            final documentId = orderList[index].id; // Get document ID
+            final imageUrl = order['image'] ?? '';
+            final name = order['name'] ?? 'No Name';
+            final price = order['price'] ?? '0';
+            final orderTimestamp = order['timestamp'] as Timestamp;
+            // Convert Timestamp to DateTime
+            DateTime orderDate = orderTimestamp.toDate();
 
-                // Key Details
-                Text("Name: ${ad['name']}"),
-                Text("Price: PKR ${ad['price']}"),
-                Text("Species: ${ad['species']}"),
-                Text("Breed: ${ad['breed'] ?? 'N/A'}"),
-                Text("Sex: ${ad['sex']}"),
-                Text("Age: ${ad['age']}"),
-                Text("Weight: ${ad['weight']} kg"),
-                Text("Vaccinated: ${ad['vaccine'] == true ? 'Yes' : 'No'}"),
-                Text("Location: ${ad['location']}"),
-                const SizedBox(height: 10),
+            // Format DateTime as string (e.g., 'Dec 5, 2024')
+            String formattedDate =
+                "${orderDate.day}-${orderDate.month}-${orderDate.year}";
 
-                // Description
-                const Text(
-                  "Description:",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  ad['description'],
-                  style: const TextStyle(fontSize: 16),
-                ),
-
-                const SizedBox(height: 20),
-
-                // Image Carousel
-                ad['image'] != null && ad['image'].isNotEmpty
-                    ? SizedBox(
-                        height: 150,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: ad['image'].length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.network(
-                                  ad['image'][index],
-                                  fit: BoxFit.cover,
-                                  width: 150,
-                                  height: 150,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                    : const Text(
-                        "No images available",
-                        style: TextStyle(color: Colors.grey),
+            return Container(
+              width: double.infinity,
+              child: Card(
+                color: secondaryColor,
+                elevation: 0,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Image Section
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: imageUrl.isNotEmpty
+                            ? Image.network(
+                                imageUrl,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(Icons.image, size: 50);
+                                },
+                              )
+                            : const Icon(Icons.image, size: 100),
                       ),
-              ],
-            ),
-          );
-        },
-      ),
+                      const SizedBox(width: 20),
+                      // Order Details Section
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  name,
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: primaryColor),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  "PKR $price",
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.green),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "Order Number: $documentId",
+                              style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "Payment Method: Cash On Delivery",
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.black),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "Order Date: $formattedDate",
+                              style: const TextStyle(
+                                  fontSize: 14, color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
+*/
