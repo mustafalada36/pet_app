@@ -4,6 +4,10 @@ import '../constants.dart';
 import 'homeScreen.dart';
 
 class cashonDelivery extends StatelessWidget {
+  int total;
+
+  cashonDelivery(this.total);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +82,7 @@ class cashonDelivery extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
@@ -96,7 +100,7 @@ class cashonDelivery extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
-                            "Rs. 2,000",
+                            "Rs.  $total",
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 20,
@@ -134,7 +138,7 @@ class cashonDelivery extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
@@ -152,7 +156,7 @@ class cashonDelivery extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           child: Text(
-                            "Rs. 2,199",
+                            "Rs. ${total + 199}",
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 20,
@@ -167,6 +171,14 @@ class cashonDelivery extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Order Successful!'),
+                              duration: Duration(seconds: 2),
+                              backgroundColor:
+                                  secondaryColor, // You can customize the color
+                            ),
+                          );
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -184,7 +196,7 @@ class cashonDelivery extends StatelessWidget {
                           ),
                         ),
                         child: const Text(
-                          'Pay Now',
+                          'Order Now',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.w500,
