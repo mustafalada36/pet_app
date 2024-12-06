@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import '../constants.dart';
+import 'homeScreen.dart';
 
 class seeAllMedical extends StatelessWidget {
   @override
@@ -30,7 +31,11 @@ class seeAllMedical extends StatelessWidget {
         ],
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => homeScreen(),
+                ));
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -117,7 +122,7 @@ class seeAllMedical extends StatelessWidget {
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // Responsive
+                      crossAxisCount: 2, // Responsive
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
                       childAspectRatio: 0.52,

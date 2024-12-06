@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
+import 'package:pet_app/Screens/homeScreen.dart';
 import '../constants.dart';
 
 class seeAllPets extends StatelessWidget {
@@ -30,7 +31,11 @@ class seeAllPets extends StatelessWidget {
         ],
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => homeScreen(),
+                ));
           },
           icon: const Icon(
             Icons.arrow_back,
