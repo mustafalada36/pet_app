@@ -19,6 +19,7 @@ import 'package:pet_app/Screens/temporary.dart';
 import 'package:pet_app/constants.dart';
 import 'package:pet_app/models/Chat.dart';
 
+import '../Other Services/current_location.dart';
 import '../Reuseable Components/adsTemplate.dart';
 import 'chatsScreen.dart';
 
@@ -174,7 +175,9 @@ class _homeScreenState extends State<homeScreen> {
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      ' in your Location ',
+                                      cityName.isNotEmpty
+                                          ? "in $cityName" // Display fetched city name
+                                          : ' in your Location ',
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
@@ -184,10 +187,29 @@ class _homeScreenState extends State<homeScreen> {
                                           .ellipsis, // Ensures text doesn't overflow
                                     ),
                                   ),
-                                  const Icon(
-                                    Icons.place,
-                                    color: Colors.white,
-                                    size: 23,
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.place,
+                                      color: Colors.white,
+                                      size: 23,
+                                    ),
+                                    onPressed: () async {
+                                      // Navigate to CurrentLocation screen and get the selected city
+                                      final selectedCity =
+                                          await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              CurrentLocation(),
+                                        ),
+                                      );
+                                      // If a city is selected, update the cityName
+                                      if (selectedCity != null) {
+                                        setState(() {
+                                          cityName = selectedCity;
+                                        });
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
