@@ -134,6 +134,7 @@ class _homeScreenState extends State<homeScreen> {
             child: Column(
               // SEARCH BUTTON=====================================
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
                   decoration: InputDecoration(
@@ -180,14 +181,14 @@ class _homeScreenState extends State<homeScreen> {
                                           : ' in your Location ',
                                       style: const TextStyle(
                                         color: Colors.white,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
                                       overflow: TextOverflow
                                           .ellipsis, // Ensures text doesn't overflow
                                     ),
                                   ),
-                                  IconButton(
+                                  /*IconButton(
                                     icon: Icon(
                                       Icons.place,
                                       color: Colors.white,
@@ -210,8 +211,30 @@ class _homeScreenState extends State<homeScreen> {
                                         });
                                       }
                                     },
-                                  ),
+                                  ),*/
                                 ],
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.place,
+                                  color: Colors.white,
+                                  size: 23,
+                                ),
+                                onPressed: () async {
+                                  // Navigate to CurrentLocation screen and get the selected city
+                                  final selectedCity = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CurrentLocation(),
+                                    ),
+                                  );
+                                  // If a city is selected, update the cityName
+                                  if (selectedCity != null) {
+                                    setState(() {
+                                      cityName = selectedCity;
+                                    });
+                                  }
+                                },
                               ),
                               ElevatedButton(
                                 onPressed: () {

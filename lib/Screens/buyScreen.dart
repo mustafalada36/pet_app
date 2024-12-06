@@ -216,7 +216,7 @@ class buyScreen extends StatelessWidget {
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontSize: 12,
-                            color: Colors.red),
+                            color: Colors.black),
                       ),
                       Text(
                         '$description',

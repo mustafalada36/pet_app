@@ -176,6 +176,14 @@ class buyScreen2 extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 14),
+                          /*Text(
+                            'Category: ${ad['category']}',
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),*/
                           Text(
                             '${ad['title']}',
                             style: TextStyle(
@@ -186,13 +194,7 @@ class buyScreen2 extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 13.7),
-                          Text(
-                            '${ad['category']}',
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 12,
-                                color: Colors.red),
-                          ),
+
                           Text(
                             '${ad['description']}',
                             style: TextStyle(
@@ -201,14 +203,14 @@ class buyScreen2 extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Text(
+                          /*Text(
                             'My Id:$userId , \nJisne Post Kia Ad: "${ad['userId']} \n ${ad['email']}, ${ad['phone']}"',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontSize: 12,
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 20),*/
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

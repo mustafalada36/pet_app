@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/signup.dart';
 
 class splashScreen extends StatelessWidget {
@@ -9,11 +10,11 @@ class splashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Simulate a delay before navigating to the home screen
-    /*Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const SignUpScreen()),
+        MaterialPageRoute(builder: (_) => loginScreen()),
       );
-    });*/
+    });
 
     return Container(
       width: double.infinity,

@@ -361,7 +361,7 @@ class _adNewAddressState extends State<addNewAddress> {
                             },
                             text: "Debit - Credit Card ",
                             imagePaths: const [
-                              "assets/images/jazzcash.png",
+                              /*"assets/images/jazzcash.png",*/
                               "assets/images/masterCard.png",
                               "assets/images/visa.png"
                             ],

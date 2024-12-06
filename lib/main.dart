@@ -78,7 +78,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF267E1E)),
         useMaterial3: true,
       ),
-      home: homeScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return homeScreen();
+          } else {
+            return splashScreen();
+          }
+        },
+      ),
 
       //shows
       // debugShowCheckedModeBanner: false,

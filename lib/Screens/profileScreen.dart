@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Screens/editProfile.dart';
+import 'package:pet_app/Screens/favourites.dart';
 import 'package:pet_app/Screens/loginscreen.dart';
 import 'package:pet_app/Screens/orderPlaced.dart';
 import 'package:pet_app/Screens/orderSold.dart';
@@ -126,7 +127,7 @@ class _ProfileScreenState extends State<profileScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Gmail: $email',
+                                'Gmail:\n$email',
                                 style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w400,
@@ -221,34 +222,44 @@ class _ProfileScreenState extends State<profileScreen> {
                 ),
               ),
               SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  primaryButton(
-                      170,
-                      "My Orders",
-                      () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => orderPlacedScreen(),
-                          ))),
-                  primaryButton(
-                      170,
-                      "Orders Sold",
-                      () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => OrderSold(),
-                          ))),
-                ],
+              Container(
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    primaryButton(
+                        150,
+                        "My Orders",
+                        () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => orderPlacedScreen(),
+                            ))),
+                    primaryButton(
+                        150,
+                        "Orders Sold",
+                        () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OrderSold(),
+                            ))),
+                  ],
+                ),
               ),
 
               const SizedBox(height: 41), // Spacing between rows
 
-              _buildProfileRow(
-                icon: Icons.favorite_border,
-                title: 'Favorites & Saved searches',
-                subtitle: 'All of your favorite ads & saved filters',
+              GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => favourites(),
+                    )),
+                child: _buildProfileRow(
+                  icon: Icons.favorite_border,
+                  title: 'Favorites & Saved searches',
+                  subtitle: 'All of your favorite ads & saved filters',
+                ),
               ),
               Divider(color: primaryColor),
               const SizedBox(height: 41),

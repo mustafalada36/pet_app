@@ -227,22 +227,24 @@ class _blogsState extends State<blogs> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                blog['title'] ?? 'No Title',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  blog['title'] ?? 'No Title',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                blog['desc'] ?? 'No Description',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ],
+                                const SizedBox(height: 5),
+                                Text(
+                                  blog['desc'] ?? 'No Description',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
                           ),
                           IconButton(
                               onPressed: () {},

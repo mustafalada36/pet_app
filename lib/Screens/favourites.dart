@@ -16,7 +16,7 @@ class _favouritesState extends State<favourites> {
         title: const Text(
           "Favourites & Saved Searches",
           style: TextStyle(
-              fontWeight: FontWeight.w900, fontSize: 22, color: primaryColor),
+              fontWeight: FontWeight.w900, fontSize: 20, color: primaryColor),
         ),
         leading: IconButton(
             onPressed: () {
@@ -27,133 +27,136 @@ class _favouritesState extends State<favourites> {
               color: primaryColor,
             )),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              toggle
-                  ? Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                toggle = !toggle;
-                              });
-                            },
-                            child: const Text(
-                              "Favourites",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: primaryColor),
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                toggle
+                    ? Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggle = !toggle;
+                                });
+                              },
+                              child: const Text(
+                                "Favourites",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: primaryColor),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          color: const Color(0xFF267E1E),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            height: 3,
-                          ),
-                        )
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                toggle = !toggle;
-                              });
-                            },
-                            child: Text(
-                              "Favourites",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: primaryColor.withOpacity(0.5)),
+                          Container(
+                            color: const Color(0xFF267E1E),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 3,
+                            ),
+                          )
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 15),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggle = !toggle;
+                                });
+                              },
+                              child: Text(
+                                "Favourites",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: primaryColor.withOpacity(0.5)),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          color: primaryColor.withOpacity(0.5),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            height: 3,
-                          ),
-                        )
-                      ],
-                    ),
-              toggle
-                  ? Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                toggle = !toggle;
-                              });
-                            },
-                            child: Text(
-                              "Saved Searches",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: primaryColor.withOpacity(0.5)),
+                          Container(
+                            color: primaryColor.withOpacity(0.5),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 3,
+                            ),
+                          )
+                        ],
+                      ),
+                toggle
+                    ? Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 15),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggle = !toggle;
+                                });
+                              },
+                              child: Text(
+                                "Saved Searches",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: primaryColor.withOpacity(0.5)),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          color: primaryColor.withOpacity(0.5),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            height: 3,
-                          ),
-                        )
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 15),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                toggle = !toggle;
-                              });
-                            },
-                            child: const Text(
-                              "Saved Searches",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: primaryColor),
+                          Container(
+                            color: primaryColor.withOpacity(0.5),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 3,
+                            ),
+                          )
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 15),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggle = !toggle;
+                                });
+                              },
+                              child: const Text(
+                                "Saved Searches",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: primaryColor),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          color: primaryColor,
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            height: 3,
-                          ),
-                        )
-                      ],
-                    ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          adsCard()
-        ],
+                          Container(
+                            color: primaryColor,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: 3,
+                            ),
+                          )
+                        ],
+                      ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            adsCard()
+          ],
+        ),
       ),
     );
   }
