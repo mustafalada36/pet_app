@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_app/ChatScreen/chats_list_screen.dart';
 import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Screens/editProfile.dart';
 import 'package:pet_app/Screens/favourites.dart';
@@ -50,7 +51,7 @@ class _ProfileScreenState extends State<profileScreen> {
         break;
       case 1:
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsScreen()));
+            MaterialPageRoute(builder: (context) => const ChatsListScreen()));
         break;
       case 2:
         Navigator.push(

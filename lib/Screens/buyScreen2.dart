@@ -7,11 +7,15 @@ import 'package:pet_app/Screens/addNewAddress.dart';
 import 'package:pet_app/constants.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
+import '../ChatScreen/chat_screen.dart';
+
 class buyScreen2 extends StatelessWidget {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
 
   // final String? email = FirebaseAuth.instance.currentUser?.email;
-  final String adId; // Ad's unique identifier
+  final String adId;
+
+  // Ad's unique identifier
   buyScreen2({required this.adId});
 
   @override
@@ -32,6 +36,7 @@ class buyScreen2 extends StatelessWidget {
           }
 
           var ad = snapshot.data!;
+          final String adOwnerId = ad['userId'];
           return Stack(
             children: [
               Column(
@@ -292,10 +297,30 @@ class buyScreen2 extends StatelessWidget {
                                     }
                                   },
                                 ),
-                                launchButton(
-                                    icon: Icons.message, onTab: () {}),
+          launchButton(
+          icon: Icons.message,
+          onTab: () {
+            // Navigate to ChatScreen with the necessary parameters
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatScreen(
+                  adId: adId,
+                  adOwnerId: adOwnerId,
+                ),
+              ),
+            );
+          },
+          ),
 
-                                /*_buildContactIcon(Icons.call),
+
+
+
+
+
+
+
+          /*_buildContactIcon(Icons.call),
           const SizedBox(width: 44.96),
           _buildContactIcon(Icons.message),*/
                               ],

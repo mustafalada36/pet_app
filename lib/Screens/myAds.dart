@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pet_app/ChatScreen/chats_list_screen.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/constants.dart';
 
@@ -41,7 +42,7 @@ class _myAdsState extends State<myAds> {
       case 1:
         print("Chat tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsScreen()));
+            MaterialPageRoute(builder: (context) => const ChatsListScreen()));
         break;
       case 2:
         print("Post Ad tapped");
