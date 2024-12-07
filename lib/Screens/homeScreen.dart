@@ -19,12 +19,12 @@ import 'package:pet_app/Screens/temporary.dart';
 import 'package:pet_app/constants.dart';
 import 'package:pet_app/models/Chat.dart';
 
-<<<<<<< Updated upstream
+/*<<<<<<< Updated upstream*/
 import '../Other Services/current_location.dart';
-=======
+/*=======*/
 import '../ChatScreen/chat_screen.dart';
 import '../ChatScreen/chats_list_screen.dart';
->>>>>>> Stashed changes
+/*>>>>>>> Stashed changes*/
 import '../Reuseable Components/adsTemplate.dart';
 import 'chatsScreen.dart';
 
@@ -59,7 +59,7 @@ class _homeScreenState extends State<homeScreen> {
         print("Chat tapped");
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  ChatsListScreen()),
+          MaterialPageRoute(builder: (context) => ChatsListScreen()),
         );
         break;
       case 2:
