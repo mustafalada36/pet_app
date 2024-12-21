@@ -42,7 +42,7 @@ class _myAdsState extends State<myAds> {
       case 1:
         print("Chat tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsListScreen()));
+            MaterialPageRoute(builder: (context) =>  ChatsListScreen()));
         break;
       case 2:
         print("Post Ad tapped");

@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<profileScreen> {
         break;
       case 1:
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ChatsListScreen()));
+            MaterialPageRoute(builder: (context) =>  ChatsListScreen()));
         break;
       case 2:
         Navigator.push(

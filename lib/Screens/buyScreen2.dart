@@ -15,6 +15,7 @@ class buyScreen2 extends StatelessWidget {
   // final String? email = FirebaseAuth.instance.currentUser?.email;
   final String adId;
 
+
   // Ad's unique identifier
   buyScreen2({required this.adId});
 
@@ -298,19 +299,26 @@ class buyScreen2 extends StatelessWidget {
                                   },
                                 ),
           launchButton(
-          icon: Icons.message,
-          onTab: () {
-            // Navigate to ChatScreen with the necessary parameters
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatScreen(
-                  adId: adId,
-                  adOwnerId: adOwnerId,
+            icon: Icons.message,
+            onTab: () {
+              final String currentUserId = FirebaseAuth.instance.currentUser!.uid;
+
+              // Generate chatId as in ChatScreen
+              final String chatId = "${adId}_${currentUserId}_${adOwnerId}";
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatScreen(
+                    adId: adId,
+                    adOwnerId: adOwnerId,
+                    chatId: chatId, // Pass the same chatId
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+
+
           ),
 
 
