@@ -484,7 +484,7 @@ class _homeScreenState extends State<homeScreen> {
 
                                 return SizedBox(
                                   height: 300,
-                                  width: 500,
+                                  width: 1000,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     itemCount: Animals.length,
@@ -788,6 +788,21 @@ class _homeScreenState extends State<homeScreen> {
                 const SizedBox(height: 20),
               ],
             ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your action here
+          print('Floating Button Pressed');
+        },
+        backgroundColor: primaryColor,
+        elevation: 0,
+        child: ClipOval(
+          child: Lottie.asset(
+            'assets/animation/anim6.json',
+            // Replace with your image path
+            fit: BoxFit.cover, // Ensure the image fits well
           ),
         ),
       ),

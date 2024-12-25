@@ -44,7 +44,7 @@ class getStarted extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 20),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const homeScreen()),
