@@ -15,7 +15,6 @@ class buyScreen2 extends StatelessWidget {
   // final String? email = FirebaseAuth.instance.currentUser?.email;
   final String adId;
 
-
   // Ad's unique identifier
   buyScreen2({required this.adId});
 
@@ -200,7 +199,6 @@ class buyScreen2 extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 13.7),
-
                           Text(
                             '${ad['description']}',
                             style: TextStyle(
@@ -266,7 +264,6 @@ class buyScreen2 extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           _buildSafetySection(),
-                          /*_buildRelatedAds(),*/
                           Padding(
                             padding:
                                 const EdgeInsets.only(top: 30, bottom: 35),
@@ -298,43 +295,36 @@ class buyScreen2 extends StatelessWidget {
                                     }
                                   },
                                 ),
-          launchButton(
-            icon: Icons.message,
-            onTab: () {
-              final String currentUserId = FirebaseAuth.instance.currentUser!.uid;
+                                launchButton(
+                                  icon: Icons.message,
+                                  onTab: () {
+                                    final String currentUserId = FirebaseAuth
+                                        .instance.currentUser!.uid;
 
-              // Generate chatId as in ChatScreen
-              final String chatId = "${adId}_${currentUserId}_${adOwnerId}";
+                                    // Generate chatId as in ChatScreen
+                                    final String chatId =
+                                        "${adId}_${currentUserId}_${adOwnerId}";
 
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatScreen(
-                    adId: adId,
-                    adOwnerId: adOwnerId,
-                    chatId: chatId, // Pass the same chatId
-                  ),
-                ),
-              );
-            },
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ChatScreen(
+                                          adId: adId,
+                                          adOwnerId: adOwnerId,
+                                          chatId:
+                                              chatId, // Pass the same chatId
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
 
-
-          ),
-
-
-
-
-
-
-
-
-          /*_buildContactIcon(Icons.call),
+                                /*_buildContactIcon(Icons.call),
           const SizedBox(width: 44.96),
           _buildContactIcon(Icons.message),*/
                               ],
                             ),
                           )
-                          // _buildContactActions(),
                         ],
                       ),
                     ),
@@ -528,87 +518,6 @@ class buyScreen2 extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildRelatedAds() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 35.11),
-        const Text(
-          'Related ads',
-          style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        const SizedBox(height: 9),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [],
-        ),
-      ],
-    );
-  }
-
-/*  Widget buildContactActions() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30, bottom: 35),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          */ /*_buildContactIcon(Icons.email, _launchGmail),*/ /*
-
-          launchButton(
-            icon: Icons.call,
-            onTab: () async {
-              Uri uri = Uri.parse('tel:${ad['phone']}');
-              if (!await launcher.launchUrl(uri)) {
-                debugPrint(
-                    "Could not launch the uri"); // because the simulator doesn't has the phone app
-              }
-            },
-          ),
-          launchButton(
-            icon: Icons.email,
-            onTab: () async {
-              Uri uri = Uri.parse(
-                'mailto:${ad['email']}?subject=Flutter Url Launcher&body=Hi, Flutter developer',
-              );
-              if (!await launcher.launchUrl(uri)) {
-                debugPrint(
-                    "Could not launch the uri"); // because the simulator doesn't has the email app
-              }
-            },
-          ),
-          launchButton(icon: Icons.message, onTab: () {}),
-
-          */ /*_buildContactIcon(Icons.call),
-          const SizedBox(width: 44.96),
-          _buildContactIcon(Icons.message),*/ /*
-        ],
-      ),
-    );
-  }*/
-
-  Widget _buildContactIcon(IconData icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 56,
-        height: 43,
-        decoration: BoxDecoration(
-          color: secondaryColor,
-          borderRadius: BorderRadius.circular(9),
-        ),
-        child: Icon(
-          icon,
-          color: primaryColor,
-        ),
       ),
     );
   }
