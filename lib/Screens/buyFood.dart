@@ -13,20 +13,55 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 import '../ChatScreen/chat_screen.dart';
 import 'homeScreen.dart';
 
-class buyFood extends StatelessWidget {
-  final String? userId = FirebaseAuth.instance.currentUser?.uid;
-
-  final String? email = FirebaseAuth.instance.currentUser?.email;
+class buyFood extends StatefulWidget {
   final String adId;
 
   buyFood({required this.adId});
 
   @override
+  State<buyFood> createState() => _buyFoodState();
+}
+
+class _buyFoodState extends State<buyFood> {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+  final String? email = FirebaseAuth.instance.currentUser?.email;
+
+  String phone = '';
+
+  Future<void> fetchUserData() async {
+    if (userId == null) return;
+
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .get();
+
+      if (userDoc.exists) {
+        setState(() {
+          phone = userDoc['phone'] ?? '';
+        });
+      }
+    } catch (e) {
+      debugPrint("Error fetching user data: $e");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData(); // Fetch user data on screen initialization
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: FutureBuilder<DocumentSnapshot>(
-            future:
-                FirebaseFirestore.instance.collection('Food').doc(adId).get(),
+            future: FirebaseFirestore.instance
+                .collection('Food')
+                .doc(widget.adId)
+                .get(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
@@ -315,8 +350,7 @@ class buyFood extends StatelessWidget {
                                     LaunchButton(
                                       icon: Icons.call,
                                       onTap: () async {
-                                        Uri uri =
-                                            Uri.parse('tel:${ad['phone']}');
+                                        Uri uri = Uri.parse('tel:$phone');
                                         if (!await launcher.launchUrl(uri)) {
                                           debugPrint(
                                               "Could not launch the uri"); // because the simulator doesn't has the phone app
@@ -344,13 +378,13 @@ class buyFood extends StatelessWidget {
 
                                         // Generate chatId as in ChatScreen
                                         final String chatId =
-                                            "${adId}_${currentUserId}_${adOwnerId}";
+                                            "${widget.adId}_${currentUserId}_${adOwnerId}";
 
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) => ChatScreen(
-                                              adId: adId,
+                                              adId: widget.adId,
                                               adOwnerId: adOwnerId,
                                               chatId:
                                                   chatId, // Pass the same chatId
