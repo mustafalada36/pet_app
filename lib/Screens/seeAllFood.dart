@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
+import '../Reuseable Components/adsTemplate2.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
@@ -141,7 +141,7 @@ class seeAllFood extends StatelessWidget {
                       var price = food['price'];
                       var adId = food.id; // Document ID
 
-                      return adsTemplate(
+                      return adsTemplate2(
                           imageUrl: imageUrl,
                           name: name,
                           species: species,
