@@ -24,7 +24,38 @@ class profileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<profileScreen> {
   final String? userId = FirebaseAuth.instance.currentUser?.uid;
-  final String? email = FirebaseAuth.instance.currentUser?.email;
+  late String email = '';
+  late String name = '';
+  late String phone = '';
+
+  Future<void> fetchUserData() async {
+    if (userId == null) return;
+
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .get();
+
+      if (userDoc.exists) {
+        setState(() {
+          // Fetching and updating multiple fields
+          email = userDoc['email'] ?? '';
+          name = userDoc['name'] ?? '';
+          phone = userDoc['phone'] ?? '';
+        });
+      }
+    } catch (e) {
+      debugPrint("Error fetching user data: $e");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData(); // Fetch user data on init
+  }
+
   final Color primaryColor = const Color(0xFF267E1E);
   final Color containerColor = const Color(0xFFD9D9D9);
 
@@ -51,7 +82,7 @@ class _ProfileScreenState extends State<profileScreen> {
         break;
       case 1:
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) =>  ChatsListScreen()));
+            MaterialPageRoute(builder: (context) => ChatsListScreen()));
         break;
       case 2:
         Navigator.push(
@@ -118,7 +149,7 @@ class _ProfileScreenState extends State<profileScreen> {
                             children: [
                               // Name "James"
                               Text(
-                                'Haseeb',
+                                '$name',
                                 style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w600,
@@ -138,7 +169,7 @@ class _ProfileScreenState extends State<profileScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Phone: ',
+                                'Phone: $phone',
                                 style: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w400,
@@ -174,7 +205,7 @@ class _ProfileScreenState extends State<profileScreen> {
                                   onTap: () => Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => editProfile(),
+                                        builder: (context) => EditProfile(),
                                       )),
                                   child: Text(
                                     'Click to edit profile',
