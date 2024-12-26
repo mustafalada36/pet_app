@@ -689,7 +689,6 @@ class _animalPostState extends State<animalPost> {
 
                         if (hasValidProfile) {
                           // Proceed with adding the animal and navigating
-                          addAnimals();
 
                           if (_selectedImages == null ||
                               _selectedImages!.isEmpty) {
@@ -726,6 +725,7 @@ class _animalPostState extends State<animalPost> {
                           } else if (_formKey.currentState?.validate() ??
                               false) {
                             // Form is valid, proceed with posting the ad
+                            addAnimals();
                             final images = _selectedImages
                                     ?.map((image) => image.path)
                                     .toList() ??
@@ -743,7 +743,7 @@ class _animalPostState extends State<animalPost> {
                             final title = titleController.text;
                             final description = descController.text;
 
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => buyScreen(
@@ -789,10 +789,10 @@ class _animalPostState extends State<animalPost> {
                         }
                       },
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                             const Color(0xFF267E1E)),
                         shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                            WidgetStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),

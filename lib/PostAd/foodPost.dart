@@ -13,6 +13,7 @@ import 'package:pet_app/Screens/location.dart';
 import 'package:pet_app/Screens/seeAllFood.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
+import '../Firebase_services/emailAndPhoneValidation.dart';
 import '../Other Services/current_location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -468,106 +469,72 @@ class _foodPostState extends State<foodPost> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        addFood();
-                        if (_selectedImages == null ||
-                            _selectedImages!.isEmpty) {
-                          // Show AlertDialog if images are not selected
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text(
-                                  "Images Required",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                content: const Text(
-                                  "Please select at least one image before proceeding.",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pop(); // Close the dialog
-                                    },
-                                    child: const Text(
-                                      "OK",
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        } else if (_formKey.currentState?.validate() ??
-                            false) {
-                          // Form is valid, proceed
-                          final images = _selectedImages
-                                  ?.map((image) => image.path)
-                                  .toList() ??
-                              [];
+                      onPressed: () async {
+                        bool hasValidProfile =
+                            await emailAndPhone.checkUserProfile(context);
 
-                          final category = selectedCategory;
-                          final name = nameController.text;
-                          final price = priceController.text;
-                          final species = selectedSpecies;
-
-                          final Condition = selectedCondition;
-                          final location = cityName;
-                          final title = titleController.text;
-                          final description = descController.text;
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => seeAllFood()),
-                          );
-
-                          /* Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => buyScreen(
-                                      category: category,
-                                      name: name,
-                                      price: price,
-                                      species: species,
-                                      breed: breed,
-                                      sex: sex,
-                                      age: age,
-                                      weight: weight,
-                                      Condition: Condition,
-                                      location: location,
-                                      title: title,
-                                      description: description,
-                                      images: _selectedImages
-                                              ?.map((image) => image.path)
-                                              .toList() ??
-                                          [],
-                                    )),
-                          );*/
-                        } else {
-                          // Form is not valid, show errors
-                          showDialog(
+                        if (hasValidProfile) {
+                          if (_selectedImages == null ||
+                              _selectedImages!.isEmpty) {
+                            // Show AlertDialog if images are not selected
+                            showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
-                                  title: Text(
-                                    "Please Complete All Required Fields",
+                                  title: const Text(
+                                    "Images Required",
                                     style: TextStyle(
-                                        color: Colors.red, fontSize: 15),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  content: const Text(
+                                    "Please select at least one image before proceeding.",
+                                    style: TextStyle(fontSize: 16),
                                   ),
                                   actions: [
                                     TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text("OK")),
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Close the dialog
+                                      },
+                                      child: const Text(
+                                        "OK",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                    ),
                                   ],
                                 );
-                              });
+                              },
+                            );
+                          } else if (_formKey.currentState?.validate() ??
+                              false) {
+                            addFood();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => seeAllFood()),
+                            );
+                          } else {
+                            // Form is not valid, show errors
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      "Please Complete All Required Fields",
+                                      style: TextStyle(
+                                          color: Colors.red, fontSize: 15),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text("OK")),
+                                    ],
+                                  );
+                                });
+                          }
                         }
                       },
                       style: ButtonStyle(
