@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
+import '../Reuseable Components/adsTemplate3.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
@@ -59,12 +60,6 @@ class seeAllMaintainance extends StatelessWidget {
                   clr: primaryColor,
                   textClr: Colors.white,
                 ),
-                /*topContainer(
-                  "Johar Town",
-                  screenWidth * 0.5, // Dynamic width
-                  clr: secondaryColor,
-                  textClr: primaryColor,
-                ),*/
               ],
             ),
             const SizedBox(height: 10),
@@ -141,10 +136,10 @@ class seeAllMaintainance extends StatelessWidget {
 
                       var adId = maintainance.id; // Document ID
 
-                      return adsTemplate(
+                      return adsTemplate3(
                           imageUrl: imageUrl,
                           name: name,
-                          species: workHours,
+                          workHours: workHours,
                           price: priceRange,
                           location: location,
                           adId: adId // Pass adId here

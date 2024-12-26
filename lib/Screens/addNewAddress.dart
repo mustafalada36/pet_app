@@ -13,7 +13,8 @@ import '../constants.dart';
 class addNewAddress extends StatefulWidget {
   final String name;
   final String firstImage;
-  final String species;
+  final String? species;
+  final Timestamp? time;
   final String location;
   final String price;
   final String sellerId;
@@ -21,7 +22,8 @@ class addNewAddress extends StatefulWidget {
   addNewAddress({
     required this.name,
     required this.firstImage,
-    required this.species,
+    this.species,
+    this.time,
     required this.location,
     required this.price,
     required this.sellerId,

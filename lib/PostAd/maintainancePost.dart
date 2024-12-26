@@ -228,15 +228,15 @@ class _maintainancePostState extends State<maintainancePost> {
                             child: customDropDownButton(
                               width: 200,
                               height: 60,
-                              hintText: "1k to 5k",
+                              hintText: "5000",
                               dropdownItems: const [
                                 "NA",
-                                "1k to 5k",
-                                "5k to 10k",
-                                "10k to 15k",
-                                "15k to 20k",
-                                "20k to 25k",
-                                "More  than 25k"
+                                "1000",
+                                "5000",
+                                "10000",
+                                "15000",
+                                "20000",
+                                "25000"
                               ],
                               onChanged: (String? value) {
                                 setState(() {
