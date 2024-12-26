@@ -59,7 +59,7 @@ class _homeScreenState extends State<homeScreen> {
         break;
       case 1:
         print("Chat tapped");
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => ChatsListScreen()),
         );

@@ -40,8 +40,8 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
         break;
       case 1:
         print("Chat tapped");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ChatsListScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => ChatsListScreen()));
         break;
       case 2:
         print("Post Ad tapped");
@@ -67,6 +67,14 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          color: primaryColor,
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: primaryColor,
         title: Text(
           "Chats",
@@ -95,11 +103,13 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
             itemBuilder: (context, index) {
               final chat = chatDocs[index];
               final participants = List<String>.from(chat['participants']);
-              final otherUserId = participants.firstWhere((id) => id != currentUserId);
+              final otherUserId =
+                  participants.firstWhere((id) => id != currentUserId);
               final lastMessage = chat['lastMessage'] ?? "No messages yet";
 
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0), // Top and bottom padding
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                // Top and bottom padding
                 child: Container(
                   decoration: BoxDecoration(
                     color: Color(0xFF31EE21).withOpacity(0.16), // 16% opacity
@@ -126,8 +136,6 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
                   ),
                 ),
               );
-
-
             },
           );
         },
@@ -153,4 +161,3 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
     );
   }
 }
-
