@@ -52,8 +52,17 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chat with Ad Owner"),
+        title: Text(
+          "Chat with Ad Owner",
+          style: TextStyle(
+            color: Color(0xFF267E1E),
+            fontSize: 18,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         backgroundColor: secondaryColor,
+        iconTheme: IconThemeData(color: Color(0xFF267E1E)),
       ),
       body: Column(
         children: [
@@ -84,7 +93,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       child: Container(
                         margin: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                         padding: EdgeInsets.all(10),
-                        color: isMe ? Colors.blue[100] : Colors.grey[300],
+                        color: isMe? Color(0xFF31EE21).withOpacity(0.16): Color(0xFFF0F5F6),
                         child: Text(message['message']),
                       ),
                     );
@@ -100,13 +109,25 @@ class _ChatScreenState extends State<ChatScreen> {
                 Expanded(
                   child: TextField(
                     controller: _controller,
+                    style: TextStyle(
+                      // color: Color(0xFF267E1E),
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w400,
+                    ),
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xFF31EE21).withOpacity(0.16),
                       hintText: 'Type your message...',
+                      hintStyle: TextStyle(
+                        color: Color(0xFF267E1E),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
                   onPressed: _sendMessage,
                 ),
               ],
