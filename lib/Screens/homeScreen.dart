@@ -432,65 +432,50 @@ class _homeScreenState extends State<homeScreen> {
                           ),
                         ],
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('Animals')
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
-                                }
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('Animals')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          }
 
-                                if (snapshot.hasError) {
-                                  return const Center(
-                                      child: Text("Something went wrong"));
-                                }
+                          if (snapshot.hasError) {
+                            return const Center(
+                                child: Text("Something went wrong"));
+                          }
 
-                                if (!snapshot.hasData ||
-                                    snapshot.data!.docs.isEmpty) {
-                                  return const Center(
-                                      child: Text("No Animals available"));
-                                }
+                          if (!snapshot.hasData ||
+                              snapshot.data!.docs.isEmpty) {
+                            return const Center(
+                                child: Text("No Animals available"));
+                          }
 
-                                var Animals = snapshot.data!.docs;
+                          var animals = snapshot.data!.docs;
 
-                                return SizedBox(
-                                  height: 300,
-                                  width: 1000,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: Animals.length,
-                                    itemBuilder: (context, index) {
-                                      var animal = Animals[index];
-                                      var imageUrl = animal['image'][0];
-                                      var name = animal['name'];
-                                      var species = animal['species'];
-                                      var location = animal['location'];
-                                      var price = animal['price'];
-                                      var adId = animal.id; // Document ID
-
-                                      return adsTemplate(
-                                          imageUrl: imageUrl,
-                                          name: name,
-                                          species: species,
-                                          location: location,
-                                          price: price,
-                                          adId: adId // Pass adId here
-                                          );
-                                    },
-                                  ),
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.35,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: animals.length,
+                              itemBuilder: (context, index) {
+                                var animal = animals[index];
+                                return adsTemplate(
+                                  imageUrl: animal['image'][0],
+                                  name: animal['name'],
+                                  species: animal['species'],
+                                  location: animal['location'],
+                                  price: animal['price'],
+                                  adId: animal.id,
                                 );
                               },
                             ),
-                          ],
-                        ),
-                      ),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -520,65 +505,53 @@ class _homeScreenState extends State<homeScreen> {
                           ),
                         ],
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('Food')
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
-                                }
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('Food')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          }
 
-                                if (snapshot.hasError) {
-                                  return const Center(
-                                      child: Text("Something went wrong"));
-                                }
+                          if (snapshot.hasError) {
+                            return const Center(
+                                child: Text("Something went wrong"));
+                          }
 
-                                if (!snapshot.hasData ||
-                                    snapshot.data!.docs.isEmpty) {
-                                  return const Center(
-                                      child: Text("No Animals available"));
-                                }
+                          if (!snapshot.hasData ||
+                              snapshot.data!.docs.isEmpty) {
+                            return const Center(
+                                child: Text(
+                                    "No Food available")); // Changed text to match collection
+                          }
 
-                                var Food = snapshot.data!.docs;
+                          var foods = snapshot.data!
+                              .docs; // Changed variable name to follow convention
 
-                                return SizedBox(
-                                  height: 300,
-                                  width: 1000,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: Food.length,
-                                    itemBuilder: (context, index) {
-                                      var food = Food[index];
-                                      var imageUrl = food['image'][0];
-                                      var name = food['name'];
-                                      var species = food['species'];
-                                      var location = food['location'];
-                                      var price = food['price'];
-                                      var adId = food.id; // Document ID
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.35,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: foods.length,
+                              itemBuilder: (context, index) {
+                                var food = foods[index];
 
-                                      return adsTemplate2(
-                                          imageUrl: imageUrl,
-                                          name: name,
-                                          species: species,
-                                          location: location,
-                                          price: price,
-                                          adId: adId // Pass adId here
-                                          );
-                                    },
-                                  ),
+                                return adsTemplate2(
+                                  imageUrl: food['image'][0],
+                                  name: food['name'] ?? '',
+                                  species: food['species'] ?? '',
+                                  location: food['location'] ?? '',
+                                  price: food['price'] ?? 0,
+                                  adId: food.id,
                                 );
                               },
                             ),
-                          ],
-                        ),
-                      ),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -608,69 +581,54 @@ class _homeScreenState extends State<homeScreen> {
                           ),
                         ],
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('Maintainance')
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
-                                }
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('Maintainance')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          }
 
-                                if (snapshot.hasError) {
-                                  return const Center(
-                                      child: Text("Something went wrong"));
-                                }
+                          if (snapshot.hasError) {
+                            return const Center(
+                                child: Text("Something went wrong"));
+                          }
 
-                                if (!snapshot.hasData ||
-                                    snapshot.data!.docs.isEmpty) {
-                                  return const Center(
-                                      child: Text("No Animals available"));
-                                }
+                          if (!snapshot.hasData ||
+                              snapshot.data!.docs.isEmpty) {
+                            return const Center(
+                                child: Text(
+                                    "No Maintenance available")); // Fixed text
+                          }
 
-                                var Maintainance = snapshot.data!.docs;
+                          var maintenanceService = snapshot
+                              .data!.docs; // Changed variable name convention
 
-                                return SizedBox(
-                                  height: 300,
-                                  width: 500,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: Maintainance.length,
-                                    itemBuilder: (context, index) {
-                                      var maintainance = Maintainance[index];
-                                      var imageUrl = maintainance['image'][0];
-                                      var name = maintainance['name'];
-                                      var workHours =
-                                          maintainance['workHours'];
-                                      var location = maintainance['location'];
-                                      var priceRange =
-                                          maintainance['priceRange'];
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.35,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: maintenanceService.length,
+                              itemBuilder: (context, index) {
+                                var maintainance = maintenanceService[index];
 
-                                      var adId =
-                                          maintainance.id; // Document ID
-
-                                      return adsTemplate(
-                                          imageUrl: imageUrl,
-                                          name: name,
-                                          species: workHours,
-                                          price: priceRange,
-                                          location: location,
-                                          adId: adId // Pass adId here
-                                          );
-                                    },
-                                  ),
+                                return adsTemplate(
+                                  imageUrl: maintainance['image'][0],
+                                  name: maintainance['name'] ?? '',
+                                  species: maintainance['workHours'] ?? '',
+                                  // Note: using species field for workHours
+                                  location: maintainance['location'] ?? '',
+                                  price: maintainance['priceRange'] ?? 0,
+                                  adId: maintainance.id,
                                 );
                               },
                             ),
-                          ],
-                        ),
-                      ),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -700,66 +658,52 @@ class _homeScreenState extends State<homeScreen> {
                           ),
                         ],
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            StreamBuilder<QuerySnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('Medical')
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
-                                }
+                      StreamBuilder<QuerySnapshot>(
+                        stream: FirebaseFirestore.instance
+                            .collection('Medical')
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                                child: CircularProgressIndicator());
+                          }
 
-                                if (snapshot.hasError) {
-                                  return const Center(
-                                      child: Text("Something went wrong"));
-                                }
+                          if (snapshot.hasError) {
+                            return const Center(
+                                child: Text("Something went wrong"));
+                          }
 
-                                if (!snapshot.hasData ||
-                                    snapshot.data!.docs.isEmpty) {
-                                  return const Center(
-                                      child: Text("No Animals available"));
-                                }
+                          if (!snapshot.hasData ||
+                              snapshot.data!.docs.isEmpty) {
+                            return const Center(
+                                child: Text("No Medical services available"));
+                          }
 
-                                var Medical = snapshot.data!.docs;
+                          var medicalServices = snapshot.data!.docs;
 
-                                return SizedBox(
-                                  height: 300,
-                                  width: 500,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: Medical.length,
-                                    itemBuilder: (context, index) {
-                                      var medical = Medical[index];
-                                      var imageUrl = medical['image'][0];
-                                      var name = medical['name'];
-                                      var fee = medical['fee'];
-                                      var location = medical['location'];
-                                      var appTime = medical['appTime'];
+                          return SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.35,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: medicalServices.length,
+                              itemBuilder: (context, index) {
+                                var medical = medicalServices[index];
 
-                                      var adId = medical.id; // Document ID
-
-                                      return adsTemplate(
-                                          imageUrl: imageUrl,
-                                          name: name,
-                                          species: appTime,
-                                          price: fee,
-                                          location: location,
-                                          adId: adId // Pass adId here
-                                          );
-                                    },
-                                  ),
+                                return adsTemplate(
+                                  imageUrl: medical['image'][0],
+                                  name: medical['name'] ?? '',
+                                  species: medical['appTime'] ?? '',
+                                  // Note: using species field for appointment time
+                                  location: medical['location'] ?? '',
+                                  price: medical['fee'] ?? 0,
+                                  adId: medical.id,
                                 );
                               },
                             ),
-                          ],
-                        ),
-                      ),
+                          );
+                        },
+                      )
                     ],
                   ),
                 ),
