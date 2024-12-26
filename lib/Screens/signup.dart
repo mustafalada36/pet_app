@@ -23,6 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController passController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   bool isLoading = false;
+  String phone = "";
 
   @override
   void dispose() {
@@ -34,6 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void signUpUser() async {
     String res = await AuthServices().signUpUser(
+        phone: phone,
         email: emailController.text,
         password: passController.text,
         name: nameController.text);
