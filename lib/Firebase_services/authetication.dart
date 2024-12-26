@@ -11,7 +11,8 @@ class AuthServices {
   Future<String> signUpUser(
       {required String email,
       required String password,
-      required String name}) async {
+      required String name,
+      required String phone}) async {
     String res = 'Some Error Occured';
     try {
       if (name.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
@@ -22,6 +23,7 @@ class AuthServices {
         //for adding user in our cloud firestore
         print(credential.user!.uid);
         await _firestore.collection('Users').doc(credential.user!.uid).set({
+          'phone': phone,
           'name': name,
           'email': email,
           'uid': credential.user!.uid,
