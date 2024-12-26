@@ -50,8 +50,10 @@ dependencies:
   dio: ^5.7.0
 
 
+
   #location
   geolocator: ^13.0.2
+  get: ^4.6.6
   http: ^1.2.2
   permission_handler: ^11.3.1
   firebase_storage: ^12.3.6
