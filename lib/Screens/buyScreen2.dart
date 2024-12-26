@@ -9,21 +9,55 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 
 import '../ChatScreen/chat_screen.dart';
 
-class buyScreen2 extends StatelessWidget {
-  final String? userId = FirebaseAuth.instance.currentUser?.uid;
-
-  // final String? email = FirebaseAuth.instance.currentUser?.email;
+class buyScreen2 extends StatefulWidget {
   final String adId;
 
-  // Ad's unique identifier
   buyScreen2({required this.adId});
+
+  @override
+  State<buyScreen2> createState() => _buyScreen2State();
+}
+
+class _buyScreen2State extends State<buyScreen2> {
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+  final String? email = FirebaseAuth.instance.currentUser?.email;
+
+  String phone = '';
+
+  Future<void> fetchUserData() async {
+    if (userId == null) return;
+
+    try {
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userId)
+          .get();
+
+      if (userDoc.exists) {
+        setState(() {
+          phone = userDoc['phone'] ?? '';
+        });
+      }
+    } catch (e) {
+      debugPrint("Error fetching user data: $e");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData(); // Fetch user data on screen initialization
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<DocumentSnapshot>(
-        future:
-            FirebaseFirestore.instance.collection('Animals').doc(adId).get(),
+        future: FirebaseFirestore.instance
+            .collection('Animals')
+            .doc(widget.adId)
+            .get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -271,12 +305,10 @@ class buyScreen2 extends StatelessWidget {
                               mainAxisAlignment:
                                   MainAxisAlignment.spaceAround,
                               children: [
-                                /*_buildContactIcon(Icons.email, _launchGmail),*/
-
                                 launchButton(
                                   icon: Icons.call,
                                   onTab: () async {
-                                    Uri uri = Uri.parse('tel:${ad['phone']}');
+                                    Uri uri = Uri.parse('tel:$phone');
                                     if (!await launcher.launchUrl(uri)) {
                                       debugPrint(
                                           "Could not launch the uri"); // because the simulator doesn't has the phone app
@@ -287,7 +319,7 @@ class buyScreen2 extends StatelessWidget {
                                   icon: Icons.email,
                                   onTab: () async {
                                     Uri uri = Uri.parse(
-                                      'mailto:${ad['email']}?subject=Pet App&body=Hi, I want to buy this pet',
+                                      'mailto:$email?subject=Pet App&body=Hi, I want to buy this pet',
                                     );
                                     if (!await launcher.launchUrl(uri)) {
                                       debugPrint(
@@ -303,13 +335,13 @@ class buyScreen2 extends StatelessWidget {
 
                                     // Generate chatId as in ChatScreen
                                     final String chatId =
-                                        "${adId}_${currentUserId}_${adOwnerId}";
+                                        "${widget.adId}_${currentUserId}_${adOwnerId}";
 
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => ChatScreen(
-                                          adId: adId,
+                                          adId: widget.adId,
                                           adOwnerId: adOwnerId,
                                           chatId:
                                               chatId, // Pass the same chatId
@@ -318,10 +350,6 @@ class buyScreen2 extends StatelessWidget {
                                     );
                                   },
                                 ),
-
-                                /*_buildContactIcon(Icons.call),
-          const SizedBox(width: 44.96),
-          _buildContactIcon(Icons.message),*/
                               ],
                             ),
                           )
