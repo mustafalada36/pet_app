@@ -12,6 +12,7 @@ import 'package:pet_app/Screens/buyScreen.dart';
 import 'package:pet_app/Screens/location.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
+import '../Firebase_services/emailAndPhoneValidation.dart';
 import '../Other Services/current_location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -607,7 +608,7 @@ class _animalPostState extends State<animalPost> {
                   const SizedBox(height: 15),
                   const lineWidget(),
                   const SizedBox(height: 15),
-                  textHeading(
+                  /*textHeading(
                     text: "Email *",
                     textStyle: const TextStyle(
                         fontWeight: FontWeight.w500, fontSize: 20),
@@ -640,7 +641,7 @@ class _animalPostState extends State<animalPost> {
                   ),
                   const SizedBox(height: 15),
                   const lineWidget(),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 15),*/
                   textHeading(
                     text: "Ad Title *",
                     textStyle: const TextStyle(
@@ -681,86 +682,90 @@ class _animalPostState extends State<animalPost> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        addAnimals();
-                        if (_selectedImages == null ||
-                            _selectedImages!.isEmpty) {
-                          // Show AlertDialog if images are not selected
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text(
-                                  "Images Required",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                content: const Text(
-                                  "Please select at least one image before proceeding.",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pop(); // Close the dialog
-                                    },
-                                    child: const Text(
-                                      "OK",
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
+                      onPressed: () async {
+                        // Check if the user has a valid email and phone
+                        bool hasValidProfile =
+                            await emailAndPhone.checkUserProfile(context);
+
+                        if (hasValidProfile) {
+                          // Proceed with adding the animal and navigating
+                          addAnimals();
+
+                          if (_selectedImages == null ||
+                              _selectedImages!.isEmpty) {
+                            // Show AlertDialog if images are not selected
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text(
+                                    "Images Required",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                ],
-                              );
-                            },
-                          );
-                        } else if (_formKey.currentState?.validate() ??
-                            false) {
-                          // Form is valid, proceed
-                          final images = _selectedImages
-                                  ?.map((image) => image.path)
-                                  .toList() ??
-                              [];
+                                  content: const Text(
+                                    "Please select at least one image before proceeding.",
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop(); // Close the dialog
+                                      },
+                                      child: const Text(
+                                        "OK",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          } else if (_formKey.currentState?.validate() ??
+                              false) {
+                            // Form is valid, proceed with posting the ad
+                            final images = _selectedImages
+                                    ?.map((image) => image.path)
+                                    .toList() ??
+                                [];
+                            final category = selectedCategory;
+                            final name = nameController.text;
+                            final price = priceController.text;
+                            final species = selectedSpecies;
+                            final breed = breedController.text;
+                            final sex = selectedGender;
+                            final age = selectedAge;
+                            final weight = weightController.text;
+                            final vaccine = selectedVaccine;
+                            final location = cityName;
+                            final title = titleController.text;
+                            final description = descController.text;
 
-                          final category = selectedCategory;
-                          final name = nameController.text;
-                          final price = priceController.text;
-                          final species = selectedSpecies;
-                          final breed = breedController.text;
-                          final sex = selectedGender;
-                          final age = selectedAge;
-                          final weight = weightController.text;
-                          final vaccine = selectedVaccine;
-                          final location = cityName;
-                          final title = titleController.text;
-                          final description = descController.text;
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
                                 builder: (context) => buyScreen(
-                                      category: category,
-                                      name: name,
-                                      price: price,
-                                      species: species,
-                                      breed: breed,
-                                      sex: sex,
-                                      age: age,
-                                      weight: weight,
-                                      vaccine: vaccine,
-                                      location: location,
-                                      title: title,
-                                      description: description,
-                                      images: _selectedImages
-                                              ?.map((image) => image.path)
-                                              .toList() ??
-                                          [],
-                                    )),
-                          );
-                        } else {
-                          // Form is not valid, show errors
-                          showDialog(
+                                  category: category,
+                                  name: name,
+                                  price: price,
+                                  species: species,
+                                  breed: breed,
+                                  sex: sex,
+                                  age: age,
+                                  weight: weight,
+                                  vaccine: vaccine,
+                                  location: location,
+                                  title: title,
+                                  description: description,
+                                  images: images,
+                                ),
+                              ),
+                            );
+                          } else {
+                            // Form is not valid, show errors
+                            showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return AlertDialog(
@@ -771,20 +776,23 @@ class _animalPostState extends State<animalPost> {
                                   ),
                                   actions: [
                                     TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text("OK")),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("OK"),
+                                    ),
                                   ],
                                 );
-                              });
+                              },
+                            );
+                          }
                         }
                       },
                       style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all<Color>(
+                        backgroundColor: MaterialStateProperty.all<Color>(
                             const Color(0xFF267E1E)),
                         shape:
-                            WidgetStateProperty.all<RoundedRectangleBorder>(
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
