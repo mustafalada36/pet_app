@@ -26,7 +26,9 @@ import '../ChatScreen/chat_screen.dart';
 import '../ChatScreen/chats_list_screen.dart';
 /*>>>>>>> Stashed changes*/
 import '../Reuseable Components/adsTemplate.dart';
+import '../Reuseable Components/adsTemplate2.dart';
 import 'chatsScreen.dart';
+import 'editProfile.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -64,7 +66,7 @@ class _homeScreenState extends State<homeScreen> {
         break;
       case 2:
         print("Post Ad tapped");
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => adDetails()),
         );
@@ -193,30 +195,6 @@ class _homeScreenState extends State<homeScreen> {
                                           .ellipsis, // Ensures text doesn't overflow
                                     ),
                                   ),
-                                  /*IconButton(
-                                    icon: Icon(
-                                      Icons.place,
-                                      color: Colors.white,
-                                      size: 23,
-                                    ),
-                                    onPressed: () async {
-                                      // Navigate to CurrentLocation screen and get the selected city
-                                      final selectedCity =
-                                          await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              CurrentLocation(),
-                                        ),
-                                      );
-                                      // If a city is selected, update the cityName
-                                      if (selectedCity != null) {
-                                        setState(() {
-                                          cityName = selectedCity;
-                                        });
-                                      }
-                                    },
-                                  ),*/
                                 ],
                               ),
                               IconButton(
@@ -572,7 +550,7 @@ class _homeScreenState extends State<homeScreen> {
 
                                 return SizedBox(
                                   height: 300,
-                                  width: 500,
+                                  width: 1000,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     itemCount: Food.length,
@@ -585,7 +563,7 @@ class _homeScreenState extends State<homeScreen> {
                                       var price = food['price'];
                                       var adId = food.id; // Document ID
 
-                                      return adsTemplate(
+                                      return adsTemplate2(
                                           imageUrl: imageUrl,
                                           name: name,
                                           species: species,

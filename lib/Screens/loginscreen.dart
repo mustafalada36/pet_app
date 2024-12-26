@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pet_app/Screens/forgotPassword.dart';
@@ -38,13 +40,13 @@ class _loginScreenState extends State<loginScreen> {
         isLoading = true;
       });
       //next screen
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => getStarted()));
+      Get.offAll(() => getStarted());
     } else {
       setState(() {
         isLoading = false;
       });
-      showSnackBar(context, res);
+      //showSnackBar(context, res);
+      mySnack.error(res);
     }
   }
 
