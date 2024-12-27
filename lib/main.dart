@@ -10,6 +10,7 @@ import 'package:pet_app/Screens/blogs.dart';
 import 'package:pet_app/Screens/breeds.dart';
 import 'package:pet_app/Screens/buyFood.dart';
 import 'package:pet_app/Screens/buyMaintainanceService.dart';
+import 'package:pet_app/Screens/buyMedicalService.dart';
 import 'package:pet_app/Screens/buyScreen2.dart';
 import 'package:pet_app/Screens/cashonDelivery.dart';
 import 'package:pet_app/Screens/chatsScreen.dart';
@@ -84,7 +85,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return homeScreen();
+            return buyMedical(adId: 'bxlT189aWZUwYxCTfn8Y');
           } else {
             return splashScreen();
           }

@@ -27,6 +27,8 @@ import '../ChatScreen/chats_list_screen.dart';
 /*>>>>>>> Stashed changes*/
 import '../Reuseable Components/adsTemplate.dart';
 import '../Reuseable Components/adsTemplate2.dart';
+import '../Reuseable Components/adsTemplate3.dart';
+import '../Reuseable Components/adsTemplate4.dart';
 import 'chatsScreen.dart';
 import 'editProfile.dart';
 
@@ -615,11 +617,10 @@ class _homeScreenState extends State<homeScreen> {
                               itemBuilder: (context, index) {
                                 var maintainance = maintenanceService[index];
 
-                                return adsTemplate(
+                                return adsTemplate3(
                                   imageUrl: maintainance['image'][0],
                                   name: maintainance['name'] ?? '',
-                                  species: maintainance['workHours'] ?? '',
-                                  // Note: using species field for workHours
+                                  workHours: maintainance['workHours'] ?? '',
                                   location: maintainance['location'] ?? '',
                                   price: maintainance['priceRange'] ?? 0,
                                   adId: maintainance.id,
@@ -683,18 +684,18 @@ class _homeScreenState extends State<homeScreen> {
                           var medicalServices = snapshot.data!.docs;
 
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.38,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: medicalServices.length,
                               itemBuilder: (context, index) {
                                 var medical = medicalServices[index];
 
-                                return adsTemplate(
+                                return adsTemplate4(
                                   imageUrl: medical['image'][0],
                                   name: medical['name'] ?? '',
-                                  species: medical['appTime'] ?? '',
-                                  // Note: using species field for appointment time
+                                  doctor: medical['doctor'] ?? '',
+                                  workHours: medical['appTime'] ?? '',
                                   location: medical['location'] ?? '',
                                   price: medical['fee'] ?? 0,
                                   adId: medical.id,
