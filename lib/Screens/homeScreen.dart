@@ -92,6 +92,16 @@ class _homeScreenState extends State<homeScreen> {
     }
   }
 
+  //Seach func
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,6 +156,7 @@ class _homeScreenState extends State<homeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  controller: _searchController,
                   decoration: InputDecoration(
                     hintText: 'Search Pets',
                     prefixIcon: const Icon(Icons.search),
@@ -153,6 +164,12 @@ class _homeScreenState extends State<homeScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      _searchText =
+                          value.toLowerCase(); // Normalize text for search
+                    });
+                  },
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -456,7 +473,16 @@ class _homeScreenState extends State<homeScreen> {
                                 child: Text("No Animals available"));
                           }
 
-                          var animals = snapshot.data!.docs;
+                          // Filter data based on search query
+                          var animals = snapshot.data!.docs.where((doc) {
+                            var name = (doc['name'] as String).toLowerCase();
+                            return name.contains(_searchText);
+                          }).toList();
+
+                          if (animals.isEmpty) {
+                            return const Center(
+                                child: Text("No matching results"));
+                          }
 
                           return SizedBox(
                             height: MediaQuery.of(context).size.height * 0.35,
@@ -530,8 +556,16 @@ class _homeScreenState extends State<homeScreen> {
                                     "No Food available")); // Changed text to match collection
                           }
 
-                          var foods = snapshot.data!
-                              .docs; // Changed variable name to follow convention
+                          // Filter data based on search query
+                          var foods = snapshot.data!.docs.where((doc) {
+                            var name = (doc['name'] as String).toLowerCase();
+                            return name.contains(_searchText);
+                          }).toList();
+
+                          if (foods.isEmpty) {
+                            return const Center(
+                                child: Text("No matching results"));
+                          }
 
                           return SizedBox(
                             height: MediaQuery.of(context).size.height * 0.35,
@@ -606,8 +640,17 @@ class _homeScreenState extends State<homeScreen> {
                                     "No Maintenance available")); // Fixed text
                           }
 
-                          var maintenanceService = snapshot
-                              .data!.docs; // Changed variable name convention
+                          // Filter data based on search query
+                          var maintenanceService =
+                              snapshot.data!.docs.where((doc) {
+                            var name = (doc['name'] as String).toLowerCase();
+                            return name.contains(_searchText);
+                          }).toList();
+
+                          if (maintenanceService.isEmpty) {
+                            return const Center(
+                                child: Text("No matching results"));
+                          }
 
                           return SizedBox(
                             height: MediaQuery.of(context).size.height * 0.35,
@@ -681,7 +724,18 @@ class _homeScreenState extends State<homeScreen> {
                                 child: Text("No Medical services available"));
                           }
 
-                          var medicalServices = snapshot.data!.docs;
+                          // Filter data based on search query
+                          var medicalServices =
+                              snapshot.data!.docs.where((doc) {
+                            var name = (doc['name'] as String).toLowerCase();
+                            name = (doc['doctor'] as String).toLowerCase();
+                            return name.contains(_searchText);
+                          }).toList();
+
+                          if (medicalServices.isEmpty) {
+                            return const Center(
+                                child: Text("No matching results"));
+                          }
 
                           return SizedBox(
                             height: MediaQuery.of(context).size.height * 0.38,
