@@ -129,7 +129,7 @@ class seeAllFood extends StatelessWidget {
                       crossAxisCount: 2, // Responsive
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
-                      childAspectRatio: 0.52,
+                      childAspectRatio: 0.6,
                     ),
                     itemCount: Food.length,
                     itemBuilder: (context, index) {

@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return buyMedical(adId: 'bxlT189aWZUwYxCTfn8Y');
+            return homeScreen();
           } else {
             return splashScreen();
           }
