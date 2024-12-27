@@ -6,27 +6,47 @@ import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
-class seeAllMedical extends StatelessWidget {
+class seeAllMedical extends StatefulWidget {
+  @override
+  State<seeAllMedical> createState() => _seeAllMedicalState();
+}
+
+class _seeAllMedicalState extends State<seeAllMedical> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search Pets',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search Medical Services',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
+              onChanged: (value) {
+                setState(() {
+                  _searchText =
+                      value.toLowerCase(); // Normalize text for search
+                });
+              },
             ),
           ),
         ],
@@ -113,7 +133,15 @@ class seeAllMedical extends StatelessWidget {
                     return const Center(child: Text("No Medical available"));
                   }
 
-                  var Medical = snapshot.data!.docs;
+                  // Filter data based on search query
+                  var Medical = snapshot.data!.docs.where((doc) {
+                    var name = (doc['name'] as String).toLowerCase();
+                    return name.contains(_searchText);
+                  }).toList();
+
+                  if (Medical.isEmpty) {
+                    return const Center(child: Text("No matching results"));
+                  }
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

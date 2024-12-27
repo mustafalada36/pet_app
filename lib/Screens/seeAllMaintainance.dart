@@ -6,27 +6,47 @@ import '../Reuseable Components/adsTemplate3.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
-class seeAllMaintainance extends StatelessWidget {
+class seeAllMaintainance extends StatefulWidget {
+  @override
+  State<seeAllMaintainance> createState() => _seeAllMaintainanceState();
+}
+
+class _seeAllMaintainanceState extends State<seeAllMaintainance> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search Pets',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search Maintainance Services',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
+              onChanged: (value) {
+                setState(() {
+                  _searchText =
+                      value.toLowerCase(); // Normalize text for search
+                });
+              },
             ),
           ),
         ],
@@ -116,7 +136,15 @@ class seeAllMaintainance extends StatelessWidget {
                     return const Center(child: Text("No Animals available"));
                   }
 
-                  var Maintainance = snapshot.data!.docs;
+                  // Filter data based on search query
+                  var Maintainance = snapshot.data!.docs.where((doc) {
+                    var name = (doc['name'] as String).toLowerCase();
+                    return name.contains(_searchText);
+                  }).toList();
+
+                  if (Maintainance.isEmpty) {
+                    return const Center(child: Text("No matching results"));
+                  }
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

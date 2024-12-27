@@ -5,27 +5,48 @@ import '../Reuseable Components/adsTemplate2.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
-class seeAllFood extends StatelessWidget {
+class seeAllFood extends StatefulWidget {
+  @override
+  State<seeAllFood> createState() => _seeAllFoodState();
+}
+
+class _seeAllFoodState extends State<seeAllFood> {
+  //Seach func
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search Pets',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search Food',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
+              onChanged: (value) {
+                setState(() {
+                  _searchText =
+                      value.toLowerCase(); // Normalize text for search
+                });
+              },
             ),
           ),
         ],
@@ -59,12 +80,6 @@ class seeAllFood extends StatelessWidget {
                   clr: primaryColor,
                   textClr: Colors.white,
                 ),
-                /*topContainer(
-                  "Johar Town",
-                  screenWidth * 0.5, // Dynamic width
-                  clr: secondaryColor,
-                  textClr: primaryColor,
-                ),*/
               ],
             ),
             const SizedBox(height: 10),
@@ -122,7 +137,15 @@ class seeAllFood extends StatelessWidget {
                     return const Center(child: Text("No Animals available"));
                   }
 
-                  var Food = snapshot.data!.docs;
+                  // Filter data based on search query
+                  var Food = snapshot.data!.docs.where((doc) {
+                    var name = (doc['name'] as String).toLowerCase();
+                    return name.contains(_searchText);
+                  }).toList();
+
+                  if (Food.isEmpty) {
+                    return const Center(child: Text("No matching results"));
+                  }
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

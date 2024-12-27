@@ -5,7 +5,21 @@ import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import 'package:pet_app/Screens/homeScreen.dart';
 import '../constants.dart';
 
-class seeAllPets extends StatelessWidget {
+class seeAllPets extends StatefulWidget {
+  @override
+  State<seeAllPets> createState() => _seeAllPetsState();
+}
+
+class _seeAllPetsState extends State<seeAllPets> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchText = "";
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -14,18 +28,25 @@ class seeAllPets extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search Pets',
-                  prefixIcon: const Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 50,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search Pets',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
+              onChanged: (value) {
+                setState(() {
+                  _searchText =
+                      value.toLowerCase(); // Normalize text for search
+                });
+              },
             ),
           ),
         ],
@@ -59,12 +80,6 @@ class seeAllPets extends StatelessWidget {
                   clr: primaryColor,
                   textClr: Colors.white,
                 ),
-                /*topContainer(
-                  "Johar Town",
-                  screenWidth * 0.5, // Dynamic width
-                  clr: secondaryColor,
-                  textClr: primaryColor,
-                ),*/
               ],
             ),
             const SizedBox(height: 10),
@@ -123,7 +138,15 @@ class seeAllPets extends StatelessWidget {
                     return const Center(child: Text("No Animals available"));
                   }
 
-                  var Animals = snapshot.data!.docs;
+                  // Filter data based on search query
+                  var Animals = snapshot.data!.docs.where((doc) {
+                    var name = (doc['name'] as String).toLowerCase();
+                    return name.contains(_searchText);
+                  }).toList();
+
+                  if (Animals.isEmpty) {
+                    return const Center(child: Text("No matching results"));
+                  }
 
                   return GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
