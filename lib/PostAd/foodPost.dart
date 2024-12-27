@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pet_app/Reuseable%20Components/customDropDownTextField.dart';
 import 'package:pet_app/Reuseable%20Components/customTextField.dart';
@@ -14,6 +15,7 @@ import 'package:pet_app/Screens/seeAllFood.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
 import '../Firebase_services/emailAndPhoneValidation.dart';
+import '../Firebase_services/snack_bar.dart';
 import '../Other Services/current_location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -514,6 +516,7 @@ class _foodPostState extends State<foodPost> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllFood()),
                             );
+                            mySnack.success("Ad Posted Succesfully");
                           } else {
                             // Form is not valid, show errors
                             showDialog(

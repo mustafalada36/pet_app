@@ -19,7 +19,9 @@ class mySnack {
 //success
   static void success(String msg) {
     Get.snackbar("Success", msg,
-        backgroundColor: Colors.redAccent.shade200, colorText: Colors.white);
+        backgroundColor: Colors.green.shade200,
+        colorText: Colors.white,
+        duration: Duration(seconds: 2));
   }
 
 //error

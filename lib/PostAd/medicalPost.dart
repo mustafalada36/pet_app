@@ -14,6 +14,7 @@ import 'package:pet_app/Screens/seeAllMedical.dart';
 import 'package:pet_app/constants.dart';
 import 'package:http/http.dart' as http;
 import '../Firebase_services/emailAndPhoneValidation.dart';
+import '../Firebase_services/snack_bar.dart';
 import '../Other Services/current_location.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -413,6 +414,7 @@ class _medicalPostState extends State<medicalPost> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllMedical()),
                             );
+                            mySnack.success("Ad Posted Succesfully");
                           } else {
                             // Form is not valid, show errors
                             showDialog(
