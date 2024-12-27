@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/adsTemplate.dart';
+import 'package:pet_app/Reuseable%20Components/adsTemplate4.dart';
 import 'package:pet_app/Reuseable%20Components/topContainer.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
@@ -59,12 +60,6 @@ class seeAllMedical extends StatelessWidget {
                   clr: primaryColor,
                   textClr: Colors.white,
                 ),
-                /*topContainer(
-                  "Johar Town",
-                  screenWidth * 0.5, // Dynamic width
-                  clr: secondaryColor,
-                  textClr: primaryColor,
-                ),*/
               ],
             ),
             const SizedBox(height: 10),
@@ -135,17 +130,19 @@ class seeAllMedical extends StatelessWidget {
                       var fee = medical['fee'];
                       var location = medical['location'];
                       var appTime = medical['appTime'];
+                      var doctor = medical['doctor'];
 
                       var adId = medical.id; // Document ID
 
-                      return adsTemplate(
-                          imageUrl: imageUrl,
-                          name: name,
-                          species: appTime,
-                          price: fee,
-                          location: location,
-                          adId: adId // Pass adId here
-                          );
+                      return adsTemplate4(
+                        imageUrl: imageUrl,
+                        name: name,
+                        workHours: appTime,
+                        price: fee,
+                        location: location,
+                        adId: adId,
+                        doctor: doctor, // Pass adId here
+                      );
                     },
                   );
                 },
