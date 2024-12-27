@@ -377,21 +377,28 @@ class _homeScreenState extends State<homeScreen> {
                             const SizedBox(
                               width: 10,
                             ),
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/doctor.png',
-                                  fit: BoxFit.cover,
-                                  width: 60,
-                                  height: 60,
-                                ),
-                                const Text(
-                                  '   Medical\n Consultation',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500),
-                                )
-                              ],
+                            GestureDetector(
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => seeAllMedical()),
+                              ),
+                              child: Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/doctor.png',
+                                    fit: BoxFit.cover,
+                                    width: 60,
+                                    height: 60,
+                                  ),
+                                  const Text(
+                                    '   Medical\n Consultation',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               width: 10,
