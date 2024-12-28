@@ -143,11 +143,10 @@ class _buyFoodState extends State<buyFood> {
                                 ),
                                 Row(
                                   children: const [
-                                    Icon(Icons.favorite,
-                                        color: Color(0xFFFFFFFF)),
+                                    Icon(Icons.favorite_outline,
+                                        color: Colors.red),
                                     SizedBox(width: 10),
-                                    Icon(Icons.share,
-                                        color: Color(0xFFFFFFFF)),
+                                    Icon(Icons.share, color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -314,28 +313,21 @@ class _buyFoodState extends State<buyFood> {
                               ),
 
                               const SizedBox(height: 200),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  secondaryButton(170, "Add to Cart"),
-                                  primaryButton(
-                                    170,
-                                    "Buy Now",
-                                    () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => addNewAddress(
-                                            name: ad['name'],
-                                            firstImage: ad['image'][0],
-                                            species: ad['species'],
-                                            location: ad['location'],
-                                            price: ad['price'],
-                                            sellerId: ad['userId']),
-                                      ),
-                                    ),
+                              primaryButton(
+                                double.infinity,
+                                "Buy Now",
+                                () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => addNewAddress(
+                                        name: ad['name'],
+                                        firstImage: ad['image'][0],
+                                        species: ad['species'],
+                                        location: ad['location'],
+                                        price: ad['price'],
+                                        sellerId: ad['userId']),
                                   ),
-                                ],
+                                ),
                               ),
                               const SizedBox(height: 20),
                               SafetySection(),

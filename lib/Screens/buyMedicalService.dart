@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_app/Reuseable%20Components/primaryButton.dart';
 import 'package:pet_app/Reuseable%20Components/safetySection.dart';
+import 'package:pet_app/Reuseable%20Components/secondaryButton.dart';
 import 'package:pet_app/Screens/addNewAddress.dart';
 import 'package:pet_app/constants.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -138,10 +139,10 @@ class _buyMedicalState extends State<buyMedical> {
                             ),
                             Row(
                               children: const [
-                                Icon(Icons.favorite,
-                                    color: Color(0xFFFFFFFF)),
+                                Icon(Icons.favorite_outline,
+                                    color: Colors.red),
                                 SizedBox(width: 10),
-                                Icon(Icons.share, color: Color(0xFFFFFFFF)),
+                                Icon(Icons.share, color: Colors.black),
                               ],
                             ),
                           ],
@@ -173,7 +174,7 @@ class _buyMedicalState extends State<buyMedical> {
                   height: MediaQuery.of(context).size.height - 244,
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

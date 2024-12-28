@@ -137,10 +137,10 @@ class _buyScreen2State extends State<buyScreen2> {
                             ),
                             Row(
                               children: const [
-                                Icon(Icons.favorite,
-                                    color: Color(0xFFFFFFFF)),
+                                Icon(Icons.favorite_outline,
+                                    color: Colors.red),
                                 SizedBox(width: 10),
-                                Icon(Icons.share, color: Color(0xFFFFFFFF)),
+                                Icon(Icons.share, color: Colors.black),
                               ],
                             ),
                           ],
