@@ -118,7 +118,7 @@ class _homeScreenState extends State<homeScreen> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => myCart(),
+                  builder: (context) => const myCart(),
                 ));
           },
         ),
@@ -134,9 +134,9 @@ class _homeScreenState extends State<homeScreen> {
             onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => blogs(),
+                  builder: (context) => const blogs(),
                 )),
-            icon: Icon(Icons.post_add),
+            icon: const Icon(Icons.post_add),
             color: primaryColor,
           ),
           IconButton(
@@ -180,7 +180,7 @@ class _homeScreenState extends State<homeScreen> {
                   height: 200,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         Color(0xff013220),
                         Color(0xff39ff14),
@@ -221,7 +221,7 @@ class _homeScreenState extends State<homeScreen> {
                                 ],
                               ),
                               IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.place,
                                   color: Colors.white,
                                   size: 23,
@@ -231,7 +231,8 @@ class _homeScreenState extends State<homeScreen> {
                                   final selectedCity = await Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => CurrentLocation(),
+                                      builder: (context) =>
+                                          const CurrentLocation(),
                                     ),
                                   );
                                   // If a city is selected, update the cityName
@@ -411,7 +412,7 @@ class _homeScreenState extends State<homeScreen> {
                               onTap: () => Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => blogs()),
+                                    builder: (context) => const blogs()),
                               ),
                               child: Column(
                                 children: [
@@ -454,7 +455,7 @@ class _homeScreenState extends State<homeScreen> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllPets()),
                             ),
-                            child: Text(
+                            child: const Text(
                               'See All',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w800),
@@ -536,7 +537,7 @@ class _homeScreenState extends State<homeScreen> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllFood()),
                             ),
-                            child: Text(
+                            child: const Text(
                               'See All',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w800),
@@ -620,7 +621,7 @@ class _homeScreenState extends State<homeScreen> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllMaintainance()),
                             ),
-                            child: Text(
+                            child: const Text(
                               'See All',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w800),
@@ -705,7 +706,7 @@ class _homeScreenState extends State<homeScreen> {
                               MaterialPageRoute(
                                   builder: (context) => seeAllMedical()),
                             ),
-                            child: Text(
+                            child: const Text(
                               'See All',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w800),
@@ -781,7 +782,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.offAll(ChatbotFeature());
+          Get.offAll(const ChatbotFeature());
           print('Floating Button Pressed');
         },
         backgroundColor: primaryColor,
