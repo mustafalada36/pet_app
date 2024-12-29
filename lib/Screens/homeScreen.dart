@@ -3,7 +3,11 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_common/get_reset.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pet_app/Other%20Services/ai_chatbot.dart';
 import 'package:pet_app/Screens/adDetails.dart';
 import 'package:pet_app/Screens/blogs.dart';
 import 'package:pet_app/Screens/getStarted.dart';
@@ -777,7 +781,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your action here
+          Get.offAll(ChatbotFeature());
           print('Floating Button Pressed');
         },
         backgroundColor: primaryColor,
