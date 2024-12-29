@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../Firebase_services/snack_bar.dart';
+import '../Reuseable Components/topContainer.dart';
 import '../constants.dart';
 import 'homeScreen.dart';
 
@@ -13,186 +17,177 @@ class myCart extends StatefulWidget {
 class _myCartState extends State<myCart> {
   int quantity = 1;
 
+  final String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+  Future<void> deleteAd(String documentId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users') // Access the Users collection
+          .doc(userId) // Specify the logged-in user's document
+          .collection('Favorites')
+          .doc(documentId)
+          .delete();
+      mySnack.success("Ad deleted successfully");
+    } catch (e) {
+      mySnack.error("Failed to delete ad: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: secondaryColor,
         leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: primaryColor,
-            )),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: primaryColor,
+          ),
+        ),
         title: const Text(
           "My Cart",
           style: TextStyle(
-              fontWeight: FontWeight.w900, fontSize: 25, color: primaryColor),
+            fontWeight: FontWeight.w900,
+            fontSize: 25,
+            color: primaryColor,
+          ),
         ),
+        centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Stack(children: [
-                Card(
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('Users') // Access the Users collection
+            .doc(userId) // Specify the logged-in user's document
+            .collection('Favorites')
+            .orderBy('createdAt',
+                descending: true) // Optional: Order by timestamp
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return const Center(child: Text("No Items Added to Cart"));
+          }
+
+          final favList = snapshot.data!.docs;
+
+          return ListView.builder(
+            itemCount: favList.length,
+            itemBuilder: (context, index) {
+              final item = favList[index].data() as Map<String, dynamic>;
+              final documentId = favList[index].id; // Document ID
+              final imageUrl =
+                  item['image'] ?? ''; // Ensure image is a valid URL
+
+              return Card(
+                color: secondaryColor,
+                elevation: 0,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 130,
-                          height: 130,
-                          decoration: BoxDecoration(
-                              color: secondaryColor,
-                              borderRadius: BorderRadius.circular(20)),
-                          child:
-                              Image.asset("assets/images/Food Timothy.png"),
+                      // Image Section
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: imageUrl.isNotEmpty
+                            ? Image.network(
+                                imageUrl,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Icon(Icons.image, size: 50);
+                                },
+                              )
+                            : const Icon(Icons.image, size: 100),
+                      ),
+                      const SizedBox(width: 20),
+                      // Details Section
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item['name'] ?? 'No Name',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "PKR ${item['price'] ?? '0'}",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 20),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              "Tuna",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22,
-                                  color: primaryColor),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              "  Rs 1,500",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 20,
-                                  color: primaryColor),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 13,
-                                  backgroundColor: primaryColor,
-                                  child: IconButton(
-                                    padding: EdgeInsets.zero,
-                                    icon: const Text(
-                                      "-",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        if (quantity > 1) {
-                                          quantity--;
-                                        }
-                                      });
-                                    },
-                                  ),
+                      const SizedBox(width: 10),
+                      // Delete Icon Section
+                      IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () async {
+                          final confirm = await showDialog<bool>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("Confirm Deletion"),
+                              content: const Text(
+                                  "Are you sure you want to remove this item?"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, false),
+                                  child: const Text("Cancel"),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "$quantity",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25,
-                                        color: primaryColor),
-                                  ),
-                                ),
-                                CircleAvatar(
-                                  radius: 13,
-                                  backgroundColor: primaryColor,
-                                  child: IconButton(
-                                    padding: EdgeInsets.zero,
-                                    icon: const Text(
-                                      "+",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        quantity++;
-                                      });
-                                    },
-                                  ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, true),
+                                  child: const Text("Delete"),
                                 ),
                               ],
                             ),
-                          )
-                        ],
+                          );
+
+                          if (confirm ?? false) {
+                            try {
+                              await FirebaseFirestore.instance
+                                  .collection('Users')
+                                  .doc(userId)
+                                  .collection('Favorites')
+                                  .doc(documentId)
+                                  .delete();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Item removed successfully"),
+                                ),
+                              );
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Error: $e"),
+                                ),
+                              );
+                            }
+                          }
+                        },
                       ),
                     ],
                   ),
                 ),
-                const Positioned(
-                  right: 10,
-                  top: 10,
-                  child: CircleAvatar(
-                    radius: 13,
-                    backgroundColor: primaryColor,
-                    child: Text(
-                      "x",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
-              ]),
-            ),
-            const SizedBox(height: 180),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const homeScreen()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all<Color>(const Color(0xFF267E1E)),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14.0),
-                    ),
-                  ),
-                ),
-                child: const Text(
-                  'Next',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500, // medium weight
-                    color: Colors.white, // text color
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+              );
+            },
+          );
+        },
       ),
     );
   }
