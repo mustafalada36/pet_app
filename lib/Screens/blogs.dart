@@ -96,20 +96,43 @@ class _blogsState extends State<blogs> {
     });
   }
 
-  Future<void> deleteAd(String documentId) async {
+  Future<void> _deleteBlog(String documentId) async {
     try {
       await FirebaseFirestore.instance
           .collection('Blog')
           .doc(documentId)
           .delete();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Ad deleted successfully")),
+        const SnackBar(content: Text("Blog deleted successfully")),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to delete ad: $e")),
+        SnackBar(content: Text("Failed to delete blog: $e")),
       );
     }
+  }
+
+  void _confirmDelete(String documentId) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Delete Blog"),
+        content: const Text("Are you sure you want to delete this blog?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _deleteBlog(documentId);
+            },
+            child: const Text("Delete"),
+          ),
+        ],
+      ),
+    );
   }
 
   void _openBottomSheet() {
@@ -201,11 +224,13 @@ class _blogsState extends State<blogs> {
           return ListView.builder(
             itemCount: blogList.length,
             itemBuilder: (context, index) {
-              final blog = blogList[index].data() as Map<String, dynamic>;
-              final images = blog['images'] as List<dynamic>?;
+              final blog = blogList[index];
+              final blogData = blog.data() as Map<String, dynamic>;
+              final images = blogData['images'] as List<dynamic>?;
               final imageUrl = images != null && images.isNotEmpty
                   ? images[0]
                   : null; // Use first image
+              final blogUserId = blogData['userId'];
 
               return Card(
                 elevation: 0,
@@ -232,7 +257,7 @@ class _blogsState extends State<blogs> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  blog['title'] ?? 'No Title',
+                                  blogData['title'] ?? 'No Title',
                                   style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -240,34 +265,36 @@ class _blogsState extends State<blogs> {
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
-                                  blog['desc'] ?? 'No Description',
+                                  blogData['desc'] ?? 'No Description',
                                   style: const TextStyle(fontSize: 16),
                                 ),
                               ],
                             ),
                           ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
+                          if (blogUserId == userId)
+                            IconButton(
+                              onPressed: () => _confirmDelete(blog.id),
+                              icon: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
-                              )),
+                              ),
+                            ),
                         ],
                       ),
                     ),
                   ],
                 ),
               );
-              /*if (confirm ?? false) {
-                await deleteAd(documentId);
-              }*/
             },
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _openBottomSheet,
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         backgroundColor: primaryColor,
       ),
     );

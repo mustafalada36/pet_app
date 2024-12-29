@@ -103,12 +103,16 @@ class _ChatsListScreenState extends State<ChatsListScreen> {
             itemBuilder: (context, index) {
               final chat = chatDocs[index];
               final participants = List<String>.from(chat['participants']);
-              final otherUserId =
-                  participants.firstWhere((id) => id != currentUserId);
+              final otherUserId = participants.firstWhere(
+                (id) => id != currentUserId,
+                orElse: () => "Unknown User",
+              );
+
               final lastMessage = chat['lastMessage'] ?? "No messages yet";
 
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 // Top and bottom padding
                 child: Container(
                   decoration: BoxDecoration(

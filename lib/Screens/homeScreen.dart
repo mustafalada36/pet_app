@@ -65,7 +65,7 @@ class _homeScreenState extends State<homeScreen> {
         break;
       case 1:
         print("Chat tapped");
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => ChatsListScreen()),
         );
@@ -136,7 +136,7 @@ class _homeScreenState extends State<homeScreen> {
                 MaterialPageRoute(
                   builder: (context) => const blogs(),
                 )),
-            icon: const Icon(Icons.post_add),
+            icon: const Icon(Icons.public),
             color: primaryColor,
           ),
           IconButton(
@@ -782,7 +782,7 @@ class _homeScreenState extends State<homeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.offAll(const ChatbotFeature());
+          Get.to(const ChatbotFeature());
           print('Floating Button Pressed');
         },
         backgroundColor: primaryColor,

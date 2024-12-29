@@ -54,6 +54,14 @@ class ChatbotFeature extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        leading: IconButton(
+          color: primaryColor,
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: primaryColor,
+          ),
+        ),
         backgroundColor: secondaryColor,
         centerTitle: true,
         elevation: 2,
