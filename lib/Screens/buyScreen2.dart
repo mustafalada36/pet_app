@@ -50,6 +50,34 @@ class _buyScreen2State extends State<buyScreen2> {
     fetchUserData(); // Fetch user data on screen initialization
   }
 
+  Future<void> saveToFavorites(
+      String name, String firstImage, String price) async {
+    if (userId == null) return; // Ensure the user is logged in
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('Users') // Save data under the 'Users' collection
+          .doc(userId) // Use the current user's ID
+          .collection(
+              'Favorites') // Nested collection for user-specific favorites
+          .add({
+        'name': name,
+        // Name of the food item
+        'image': firstImage,
+        // First image URL
+        'price': price,
+        // Price of the item
+        'createdAt': FieldValue.serverTimestamp(),
+        // Optional: Add a timestamp
+      });
+      debugPrint("Favorite added successfully");
+    } catch (e) {
+      debugPrint("Error adding favorite: $e");
+    }
+  }
+
+  bool isFav = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,9 +164,21 @@ class _buyScreen2State extends State<buyScreen2> {
                               ),
                             ),
                             Row(
-                              children: const [
-                                Icon(Icons.favorite_outline,
-                                    color: Colors.red),
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                      isFav
+                                          ? Icons.favorite
+                                          : Icons.favorite_outline,
+                                      color: Colors.red),
+                                  onPressed: () {
+                                    saveToFavorites(ad['name'],
+                                        ad['image'][0], ad['price']);
+                                    setState(() {
+                                      isFav = !isFav;
+                                    });
+                                  },
+                                ),
                                 SizedBox(width: 10),
                                 Icon(Icons.share, color: Colors.black),
                               ],
