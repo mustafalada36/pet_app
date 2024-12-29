@@ -3,6 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pet_app/ChatScreen/chats_list_screen.dart';
+import 'package:pet_app/Firebase_services/snack_bar.dart';
 import 'package:pet_app/Screens/profileScreen.dart';
 import 'package:pet_app/constants.dart';
 
@@ -42,7 +43,7 @@ class _myAdsState extends State<myAds> {
       case 1:
         print("Chat tapped");
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) =>  ChatsListScreen()));
+            MaterialPageRoute(builder: (context) => ChatsListScreen()));
         break;
       case 2:
         print("Post Ad tapped");
@@ -77,13 +78,9 @@ class _myAdsState extends State<myAds> {
           .collection('Animals')
           .doc(documentId)
           .delete();
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Ad deleted successfully")),
-      );
+      mySnack.success("Ad deleted successfully");
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to delete ad: $e")),
-      );
+      mySnack.error("Failed to delete ad: $e");
     }
   }
 
