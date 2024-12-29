@@ -492,7 +492,7 @@ class _homeScreenState extends State<homeScreen> {
                           }
 
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.4,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: animals.length,
@@ -575,7 +575,7 @@ class _homeScreenState extends State<homeScreen> {
                           }
 
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.4,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: foods.length,
@@ -660,7 +660,7 @@ class _homeScreenState extends State<homeScreen> {
                           }
 
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.4,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: maintenanceService.length,
@@ -745,7 +745,7 @@ class _homeScreenState extends State<homeScreen> {
                           }
 
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.38,
+                            height: MediaQuery.of(context).size.height * 0.43,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: medicalServices.length,
@@ -790,7 +790,7 @@ class _homeScreenState extends State<homeScreen> {
           ),
         ),
       ),
-      //BOTTOM NAV BAR ======================================================================
+      //BOTTOM NAV BAR ================================================s======================
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         items: <Widget>[
