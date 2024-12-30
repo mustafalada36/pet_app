@@ -148,7 +148,7 @@ class _seeAllMedicalState extends State<seeAllMedical> {
                       crossAxisCount: 2, // Responsive
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
-                      childAspectRatio: 0.52,
+                      childAspectRatio: 0.45,
                     ),
                     itemCount: Medical.length,
                     itemBuilder: (context, index) {
