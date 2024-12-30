@@ -190,7 +190,7 @@ class _medicalPostState extends State<medicalPost> {
                     child: customTextField(
                       isRequired: true,
                       controller: doctorController,
-                      textInputType: TextInputType.number,
+                      textInputType: TextInputType.text,
                       width: double.infinity,
                       height: 60,
                     ),
