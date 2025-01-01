@@ -41,6 +41,7 @@ class _loginScreenState extends State<loginScreen> {
       });
       //next screen
       Get.offAll(() => getStarted());
+      mySnack.success("Login Successfull!");
     } else {
       setState(() {
         isLoading = false;
