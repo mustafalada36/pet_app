@@ -10,7 +10,7 @@ class splashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Simulate a delay before navigating to the home screen
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 6), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
